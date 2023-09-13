@@ -1,0 +1,33 @@
+﻿@using static Demo.Components.CreditCard.CreditCardPaths 
+
+<Wrapper ClassName="@ClassName">
+  <svg
+    width="@(Size * 1.38)"
+    height="@Size"
+    viewBox="0 0 198 143"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <g id="kawaii-creditCard">
+      <g id="kawaii-creditCard__body" fillRule="nonzero">
+        <path d="@Shape" id="kawaii-creditCard__shape" fill="@Color" />
+        <path
+          d="@Shadow"
+          id="kawaii-creditCard__shadow"
+          fill="#000"
+          opacity=".1"
+        />
+        <path
+          id="kawaii-creditCard__stripe"
+          fill="#000"
+          d="M0 17h198v27H0z"
+        />
+      </g>
+      <Face
+        Mood="@Mood"
+        Transform="translate(66 73)"
+        UniqueId="@GetUniqueId()"
+      />
+    </g>
+  </svg>
+</Wrapper>

@@ -1,0 +1,28 @@
+﻿@page "/"
+@using Demo.Components.Backpack
+@using Demo.Components.CreditCard
+@using Demo.Common
+
+<PageTitle>Blazor Kawaii Demo</PageTitle>
+
+<h1>Blazor Kawaii</h1>
+
+Welcome to your new app.<br/>
+
+<EditForm Model="@Model">
+    <InputSelect @bind-Value="Model.Mood">
+        @foreach (Mood mood in Enum.GetValues<Mood>())
+        {
+            <option value="@mood">@mood</option>
+        }
+    </InputSelect>
+</EditForm>
+
+<Backpack Mood="@Model.Mood"/>
+<CreditCard Mood="@Model.Mood"/>
+
+@code {
+
+    public IndexFormModel Model { get; } = new();
+
+}
