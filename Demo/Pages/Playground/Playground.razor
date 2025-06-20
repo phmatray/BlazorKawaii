@@ -27,6 +27,10 @@
                 <MudSelectItem Value="@("Mug")">Mug</MudSelectItem>
                 <MudSelectItem Value="@("Planet")">Planet</MudSelectItem>
                 <MudSelectItem Value="@("SpeechBubble")">Speech Bubble</MudSelectItem>
+                <MudSelectItem Value="@("Astronaut")">Astronaut</MudSelectItem>
+                <MudSelectItem Value="@("Cyborg")">Cyborg</MudSelectItem>
+                <MudSelectItem Value="@("HumanCat")">Human Cat</MudSelectItem>
+                <MudSelectItem Value="@("HumanDinosaur")">Human Dinosaur</MudSelectItem>
             </MudSelect>
 
             <MudSelect T="Mood" Label="@Localizer["Mood"]" @bind-Value="_mood" Variant="Variant.Outlined" Class="mb-4">
@@ -73,17 +77,7 @@
 
             <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["GeneratedCode"]</MudText>
 
-            <div class="code-container">
-                <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
-                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>@GetGeneratedCode()</code></pre>
-                </MudPaper>
-                <MudTooltip Text="@(_codeCopied ? Localizer["Copied"] : Localizer["CopyToClipboard"])">
-                    <MudIconButton Icon="@Icons.Material.Filled.ContentCopy"
-                                   Size="Size.Small"
-                                   Class="copy-button"
-                                   OnClick="CopyCode" />
-                </MudTooltip>
-            </div>
+            <CodeBlock Code="@GetGeneratedCode()" Language="razor" />
         </MudPaper>
     </MudItem>
 </MudGrid>
@@ -91,14 +85,11 @@
 @code {
     private string _selectedComponent = "Cat";
     private Mood _mood = Mood.Blissful;
-    private int _size = 200;
+    private int _size = 300;
     private string _color = "#FFD882";
     private bool _enableRotation;
     private bool _enableBounce;
     private bool _enablePulse;
-    private bool _codeCopied;
-
-    [Inject] private IJSRuntime JSRuntime { get; set; } = null!;
 
     private RenderFragment GetSelectedComponent() => _selectedComponent switch
     {
@@ -114,6 +105,10 @@
         "Mug" => @<Mug Mood="@_mood" Size="@_size" Color="@_color" />,
         "Planet" => @<Planet Mood="@_mood" Size="@_size" Color="@_color" />,
         "SpeechBubble" => @<SpeechBubble Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Astronaut" => @<Astronaut Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Cyborg" => @<Cyborg Mood="@_mood" Size="@_size" Color="@_color" />,
+        "HumanCat" => @<HumanCat Mood="@_mood" Size="@_size" Color="@_color" />,
+        "HumanDinosaur" => @<HumanDinosaur Mood="@_mood" Size="@_size" Color="@_color" />,
         _ => @<Cat Mood="@_mood" Size="@_size" Color="@_color" />
     };
 
@@ -150,14 +145,4 @@
         _enablePulse = false;
     }
 
-    private async Task CopyCode()
-    {
-        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", GetGeneratedCode());
-        _codeCopied = true;
-        StateHasChanged();
-
-        await Task.Delay(2000);
-        _codeCopied = false;
-        StateHasChanged();
-    }
 }

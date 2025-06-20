@@ -1,19 +1,20 @@
 using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Ghost
+public partial class Ghost : KawaiiComponentBase
 {
-    [Parameter]
-    public int Size { get; set; } = 240;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Blissful;
+    protected override double GetFaceScale()
+    {
+        // From React: figmaFaceScale = getFaceScale(62.06)
+        return 62.06 / 66.0;  // 62.06 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#E0E4E8";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        // From React: figmaFaceXYPosition = '89.09 99.3'
+        return (89.09, 99.3);  // Fixed position in 240x240 viewBox
+    }
 }

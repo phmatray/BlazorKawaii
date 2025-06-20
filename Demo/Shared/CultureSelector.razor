@@ -21,6 +21,12 @@
             Español
         </div>
     </MudMenuItem>
+    <MudMenuItem OnClick="@(() => ChangeCulture("nl"))">
+        <div class="d-flex align-center gap-2">
+            <MudIcon Icon="@(CurrentCulture == "nl" ? Icons.Material.Filled.Check : Icons.Material.Filled.Circle)" Size="Size.Small" />
+            Nederlands
+        </div>
+    </MudMenuItem>
 </MudMenu>
 
 @code {

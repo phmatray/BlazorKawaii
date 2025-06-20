@@ -9,4 +9,4 @@
     }
 </style>
 
-<Cat ClassName="floating-cat" />
+<Cat SvgClass="floating-cat" />

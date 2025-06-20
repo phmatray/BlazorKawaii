@@ -1,4 +1,4 @@
-﻿namespace BlazorKawaii.Common.Face;
+﻿namespace BlazorKawaii.Common;
 
 public static class FacePaths
 {

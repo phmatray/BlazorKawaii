@@ -1,21 +1,18 @@
 ﻿using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Backpack
+public partial class Backpack : KawaiiComponentBase
 {
-    private readonly string _uniqueId = SvgMaskHelper.GetUniqueId();
-    
-    [Parameter]
-    public int Size { get; set; } = 240;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Blissful;
+    protected override double GetFaceScale()
+    {
+        return 50.73 / 66.0;  // 50.73 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#FFD882";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        return (94.67, 106.5);  // Fixed position in 240x240 viewBox
+    }
 }

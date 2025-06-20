@@ -1,28 +1,10 @@
 @namespace BlazorKawaii.Components
-@using static BlazorKawaii.Components.SpeechBubblePaths
+@inherits KawaiiComponentBase
 
-<Wrapper ClassName="@ClassName">
-  <svg
-    width="@Size"
-    height="@Size"
-    viewBox="0 0 170 170">
-    <g id="kawaii-speechBubble">
-      <g id="speechBubble__body">
-        <path
-          id="speechBubble__body-shape"
-          fill="@Color"
-          d="@Body"/>
-        <path
-          id="speechBubble__body-shadow"
-          fill="#121212"
-          fillRule="nonzero"
-          opacity="0.1"
-          d="@SpeechBubblePaths.Shadow"/>
-      </g>
-      <Face
-        Mood="@Mood"
-        Transform="translate(47 50)"
-        UniqueId="@GetUniqueId()"/>
-    </g>
-  </svg>
+<Wrapper Class="@Class" Style="@Style">
+    <svg class="@SvgClass" style="@SvgStyle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none">
+        @((MarkupString)SpeechBubblePaths.Body.Replace("currentColor", Color ?? DefaultColor))
+        
+        <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" />
+    </svg>
 </Wrapper>

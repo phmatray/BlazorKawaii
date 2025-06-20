@@ -1,4 +1,6 @@
-﻿<g id="kawaii-face" transform="@Transform">
+﻿@namespace BlazorKawaii.Common
+
+<g id="kawaii-face" transform="@GetTransform()">
   <defs>
     <path d="@FacePaths.Defs" id="kawaii-face__path-1"/>
   </defs>
@@ -9,12 +11,12 @@
         id="kawaii-face__mouth__joy"
         transform="translate(0.000000, 1.000000)">
         <mask id=@($"kawaii-face__mask-2-{UniqueId}") fill="white">
-          <use xlinkHref="#kawaii-face__path-1"/>
+          <use xlink:href="#kawaii-face__path-1"/>
         </mask>
         <use
           id="Combined-Shape"
           fill="#000000"
-          xlinkHref="#kawaii-face__path-1"/>
+          xlink:href="#kawaii-face__path-1"/>
         <path
           d="@FacePaths.Tongue"
           id="kawaii-face__tongue"

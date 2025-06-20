@@ -264,6 +264,18 @@
   <data name="SpeechBubbleDesc" xml:space="preserve">
     <value>Speech bubble for conversations</value>
   </data>
+  <data name="AstronautDesc" xml:space="preserve">
+    <value>A cute astronaut floating in space</value>
+  </data>
+  <data name="CyborgDesc" xml:space="preserve">
+    <value>A friendly cyborg with human emotions</value>
+  </data>
+  <data name="HumanCatDesc" xml:space="preserve">
+    <value>A human-cat hybrid with kawaii features</value>
+  </data>
+  <data name="HumanDinosaurDesc" xml:space="preserve">
+    <value>A playful dinosaur-human character</value>
+  </data>
   
   <!-- Playground Page -->
   <data name="PlaygroundTitle" xml:space="preserve">
@@ -439,10 +451,10 @@
   <data name="APIReferenceDesc" xml:space="preserve">
     <value>Complete list of available components and their default values:</value>
   </data>
-  <data name="DefaultSize" xml:space="preserve">
+  <data name="DefaultSizeLabel" xml:space="preserve">
     <value>Default Size:</value>
   </data>
-  <data name="DefaultColor" xml:space="preserve">
+  <data name="DefaultColorLabel" xml:space="preserve">
     <value>Default Color:</value>
   </data>
   <data name="Namespace" xml:space="preserve">
@@ -453,6 +465,54 @@
   </data>
   <data name="PlaygroundCTA2" xml:space="preserve">
     <value>to experiment with all components and their properties.</value>
+  </data>
+  <data name="InstallViaNuGet" xml:space="preserve">
+    <value>Install via NuGet</value>
+  </data>
+  <data name="RecommendedApproach" xml:space="preserve">
+    <value>The recommended way to install BlazorKawaii</value>
+  </data>
+  <data name="OrViaPackageManager" xml:space="preserve">
+    <value>Or via Package Manager Console:</value>
+  </data>
+  <data name="AddToImports" xml:space="preserve">
+    <value>Add to your _Imports.razor:</value>
+  </data>
+  <data name="ThenUseComponents" xml:space="preserve">
+    <value>Then use any component:</value>
+  </data>
+  <data name="NuGetAvailable" xml:space="preserve">
+    <value>BlazorKawaii is now available as a NuGet package for easy integration!</value>
+  </data>
+  <data name="AddToImportsFile" xml:space="preserve">
+    <value>Add the following to your _Imports.razor file:</value>
+  </data>
+  <data name="AlternativeMethod" xml:space="preserve">
+    <value>Alternative: Install from Source</value>
+  </data>
+  <data name="IfYouPreferSource" xml:space="preserve">
+    <value>If you prefer to work with the source code or contribute to the project:</value>
+  </data>
+  <data name="BasedOn" xml:space="preserve">
+    <value>Based on</value>
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="AdaptedFor" xml:space="preserve">
+    <value>Adapted for the Blazor community by</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="QuickTip" xml:space="preserve">
+    <value>Quick Tip</value>
+  </data>
+  <data name="QuickTipText" xml:space="preserve">
+    <value>Press Ctrl+K to quickly search for components</value>
+  </data>
+  <data name="ClickToChangeMood" xml:space="preserve">
+    <value>Click to change mood</value>
   </data>
   
   <!-- Common -->
@@ -475,5 +535,52 @@
   </data>
   <data name="NotFoundMessage" xml:space="preserve">
     <value>Sorry, there's nothing at this address.</value>
+  </data>
+  
+  <!-- Best Practices & Troubleshooting -->
+  <data name="BestPractices" xml:space="preserve">
+    <value>Best Practices</value>
+  </data>
+  <data name="BestPracticesDesc" xml:space="preserve">
+    <value>Best practices for using BlazorKawaii components</value>
+  </data>
+  <data name="BestPractice1" xml:space="preserve">
+    <value>Use semantic HTML and ARIA attributes when wrapping Kawaii components</value>
+  </data>
+  <data name="BestPractice2" xml:space="preserve">
+    <value>Choose appropriate moods that match your application's context</value>
+  </data>
+  <data name="BestPractice3" xml:space="preserve">
+    <value>Keep component sizes consistent across your UI for visual harmony</value>
+  </data>
+  <data name="BestPractice4" xml:space="preserve">
+    <value>Use CSS variables for theming to maintain consistency</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Troubleshooting</value>
+  </data>
+  <data name="TroubleshootingDesc" xml:space="preserve">
+    <value>Common issues and solutions</value>
+  </data>
+  <data name="CommonIssue1" xml:space="preserve">
+    <value>Components not rendering</value>
+  </data>
+  <data name="CommonIssue1Solution" xml:space="preserve">
+    <value>Ensure you've added the necessary imports to _Imports.razor</value>
+  </data>
+  <data name="CommonIssue2" xml:space="preserve">
+    <value>SVG scaling issues</value>
+  </data>
+  <data name="CommonIssue2Solution" xml:space="preserve">
+    <value>Check that the parent container has appropriate dimensions</value>
+  </data>
+  <data name="CommonIssue3" xml:space="preserve">
+    <value>Colors not applying correctly</value>
+  </data>
+  <data name="CommonIssue3Solution" xml:space="preserve">
+    <value>Verify that color values are in valid hex format (#RRGGBB)</value>
+  </data>
+  <data name="NeedMoreHelp" xml:space="preserve">
+    <value>Need more help? Visit our</value>
   </data>
 </root>

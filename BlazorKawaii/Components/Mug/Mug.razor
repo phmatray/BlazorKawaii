@@ -1,29 +1,10 @@
 @namespace BlazorKawaii.Components
-@using static BlazorKawaii.Components.MugPaths
-@using static BlazorKawaii.Common.SvgFormatHelper
+@inherits KawaiiComponentBase
 
-<Wrapper ClassName="@ClassName">
-  <svg
-    width="@FormatSvgNumber(Size * 0.89)"
-    height="@Size"
-    viewBox="0 0 157 176">
-    <g id="kawaii-mug">
-      <g id="mug__body">
-        <path
-          id="mug__body-shape"
-          fill="@Color"
-          d="@Shape"/>
-        <path
-          id="mug__body-shadow"
-          fill="#121212"
-          fillRule="nonzero"
-          opacity="0.1"
-          d="@MugPaths.Shadow"/>
-      </g>
-      <Face
-        Mood="@Mood"
-        Transform="translate(38 71)"
-        UniqueId="@GetUniqueId()"/>
-    </g>
-  </svg>
+<Wrapper Class="@Class" Style="@Style">
+    <svg class="@SvgClass" style="@SvgStyle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none">
+        @((MarkupString)MugPaths.Body.Replace("currentColor", Color ?? DefaultColor))
+        
+        <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" />
+    </svg>
 </Wrapper>

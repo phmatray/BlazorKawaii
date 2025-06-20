@@ -264,6 +264,18 @@
   <data name="SpeechBubbleDesc" xml:space="preserve">
     <value>Bocadillo de diálogo para conversaciones</value>
   </data>
+  <data name="AstronautDesc" xml:space="preserve">
+    <value>Un lindo astronauta flotando en el espacio</value>
+  </data>
+  <data name="CyborgDesc" xml:space="preserve">
+    <value>Un cyborg amigable con emociones humanas</value>
+  </data>
+  <data name="HumanCatDesc" xml:space="preserve">
+    <value>Un híbrido humano-gato con características kawaii</value>
+  </data>
+  <data name="HumanDinosaurDesc" xml:space="preserve">
+    <value>Un personaje dinosaurio-humano juguetón</value>
+  </data>
   
   <!-- Playground Page -->
   <data name="PlaygroundTitle" xml:space="preserve">
@@ -439,10 +451,10 @@
   <data name="APIReferenceDesc" xml:space="preserve">
     <value>Lista completa de componentes disponibles y sus valores predeterminados:</value>
   </data>
-  <data name="DefaultSize" xml:space="preserve">
+  <data name="DefaultSizeLabel" xml:space="preserve">
     <value>Tamaño Predeterminado:</value>
   </data>
-  <data name="DefaultColor" xml:space="preserve">
+  <data name="DefaultColorLabel" xml:space="preserve">
     <value>Color Predeterminado:</value>
   </data>
   <data name="Namespace" xml:space="preserve">
@@ -453,6 +465,58 @@
   </data>
   <data name="PlaygroundCTA2" xml:space="preserve">
     <value>para experimentar con todos los componentes y sus propiedades.</value>
+  </data>
+  <data name="InstallViaNuGet" xml:space="preserve">
+    <value>Instalar vía NuGet</value>
+  </data>
+  <data name="RecommendedApproach" xml:space="preserve">
+    <value>La forma recomendada de instalar BlazorKawaii</value>
+  </data>
+  <data name="OrViaPackageManager" xml:space="preserve">
+    <value>O a través de la Consola del Administrador de Paquetes:</value>
+  </data>
+  <data name="AddToImports" xml:space="preserve">
+    <value>Agrega a tu _Imports.razor:</value>
+  </data>
+  <data name="ThenUseComponents" xml:space="preserve">
+    <value>Luego usa cualquier componente:</value>
+  </data>
+  <data name="NuGetAvailable" xml:space="preserve">
+    <value>Disponible en NuGet</value>
+  </data>
+  <data name="AddToImportsFile" xml:space="preserve">
+    <value>Agregar al archivo de importaciones</value>
+  </data>
+  <data name="AlternativeMethod" xml:space="preserve">
+    <value>Método alternativo</value>
+  </data>
+  <data name="IfYouPreferSource" xml:space="preserve">
+    <value>Si prefieres trabajar con el código fuente</value>
+  </data>
+  
+  <!-- Attribution -->  
+  <data name="BasedOn" xml:space="preserve">
+    <value>Basado en</value>
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>por</value>
+  </data>
+  <data name="AdaptedFor" xml:space="preserve">
+    <value>Adaptado para la comunidad Blazor por</value>
+  </data>
+  
+  <!-- Resources -->
+  <data name="Resources" xml:space="preserve">
+    <value>Recursos</value>
+  </data>
+  <data name="QuickTip" xml:space="preserve">
+    <value>Consejo Rápido</value>
+  </data>
+  <data name="QuickTipText" xml:space="preserve">
+    <value>Presiona Ctrl+K para buscar componentes rápidamente</value>
+  </data>
+  <data name="ClickToChangeMood" xml:space="preserve">
+    <value>Haz clic para cambiar el estado de ánimo</value>
   </data>
   
   <!-- Common -->
@@ -475,5 +539,52 @@
   </data>
   <data name="NotFoundMessage" xml:space="preserve">
     <value>Lo sentimos, no hay nada en esta dirección.</value>
+  </data>
+  
+  <!-- Best Practices & Troubleshooting -->
+  <data name="BestPractices" xml:space="preserve">
+    <value>Mejores Prácticas</value>
+  </data>
+  <data name="BestPracticesDesc" xml:space="preserve">
+    <value>Mejores prácticas para usar los componentes BlazorKawaii</value>
+  </data>
+  <data name="BestPractice1" xml:space="preserve">
+    <value>Use HTML semántico y atributos ARIA al envolver componentes Kawaii</value>
+  </data>
+  <data name="BestPractice2" xml:space="preserve">
+    <value>Elija estados de ánimo apropiados que coincidan con el contexto de su aplicación</value>
+  </data>
+  <data name="BestPractice3" xml:space="preserve">
+    <value>Mantenga tamaños de componentes consistentes en su UI para armonía visual</value>
+  </data>
+  <data name="BestPractice4" xml:space="preserve">
+    <value>Use variables CSS para temas para mantener la consistencia</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Solución de Problemas</value>
+  </data>
+  <data name="TroubleshootingDesc" xml:space="preserve">
+    <value>Problemas comunes y soluciones</value>
+  </data>
+  <data name="CommonIssue1" xml:space="preserve">
+    <value>Los componentes no se renderizan</value>
+  </data>
+  <data name="CommonIssue1Solution" xml:space="preserve">
+    <value>Asegúrese de haber agregado las importaciones necesarias a _Imports.razor</value>
+  </data>
+  <data name="CommonIssue2" xml:space="preserve">
+    <value>Problemas de escalado SVG</value>
+  </data>
+  <data name="CommonIssue2Solution" xml:space="preserve">
+    <value>Verifique que el contenedor padre tenga dimensiones apropiadas</value>
+  </data>
+  <data name="CommonIssue3" xml:space="preserve">
+    <value>Los colores no se aplican correctamente</value>
+  </data>
+  <data name="CommonIssue3Solution" xml:space="preserve">
+    <value>Verifique que los valores de color estén en formato hexadecimal válido (#RRGGBB)</value>
+  </data>
+  <data name="NeedMoreHelp" xml:space="preserve">
+    <value>¿Necesita más ayuda? Visite nuestro</value>
   </data>
 </root>

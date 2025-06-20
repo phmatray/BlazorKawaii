@@ -1,8 +1,57 @@
 @inject IStringLocalizer<SharedResource> Localizer
+@inject NavigationManager Navigation
 
-<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">@Localizer["Home"]</MudNavLink>
-    <MudNavLink Href="playground" Icon="@Icons.Material.Filled.Brush">@Localizer["Playground"]</MudNavLink>
-    <MudNavLink Href="components" Icon="@Icons.Material.Filled.Apps">@Localizer["Components"]</MudNavLink>
-    <MudNavLink Href="documentation" Icon="@Icons.Material.Filled.Code">@Localizer["Documentation"]</MudNavLink>
+<MudNavMenu Margin="Margin.Normal" Color="Color.Primary">
+
+    <div class="pa-4">
+        <MudStack AlignItems="AlignItems.Center" Spacing="2">
+            <Ghost Size="80" Mood="Mood.Blissful" Color="#A6E191" SvgStyle="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+            <MudText Typo="Typo.h6" Color="Color.Primary">Blazor Kawaii</MudText>
+            <MudChip T="string" Size="Size.Small" Color="Color.Success" Icon="@Icons.Material.Filled.NewReleases">v1.0.0</MudChip>
+        </MudStack>
+    </div>
+
+    <MudDivider Class="mb-4" />
+
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">
+        @Localizer["Home"]
+    </MudNavLink>
+
+    <MudNavLink Href="playground" Icon="@Icons.Material.Filled.Brush">
+        @Localizer["Playground"]
+    </MudNavLink>
+
+    <MudNavLink Href="components" Icon="@Icons.Material.Filled.Apps">
+        @Localizer["Components"]
+        <MudChip T="string" Size="Size.Small" Style="margin-left: auto;">16</MudChip>
+    </MudNavLink>
+
+    <MudNavLink Href="documentation" Icon="@Icons.Material.Filled.MenuBook">
+        @Localizer["Documentation"]
+    </MudNavLink>
+
+    <MudNavGroup Title="@Localizer["Resources"]" Icon="@Icons.Material.Filled.FolderOpen" Expanded="true">
+        <MudNavLink Href="https://github.com/phmatray/BlazorKawaii" Target="_blank" Icon="@Icons.Custom.Brands.GitHub">
+            GitHub
+            <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Style="margin-left: auto; opacity: 0.6;" />
+        </MudNavLink>
+
+        <MudNavLink Href="https://www.nuget.org/packages/BlazorKawaii" Target="_blank" Icon="@Icons.Material.Filled.Download">
+            NuGet Package
+            <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Style="margin-left: auto; opacity: 0.6;" />
+        </MudNavLink>
+
+        <MudNavLink Href="https://react-kawaii.vercel.app/" Target="_blank" Icon="@Icons.Material.Filled.Favorite">
+            React Kawaii
+            <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Style="margin-left: auto; opacity: 0.6;" />
+        </MudNavLink>
+    </MudNavGroup>
 </MudNavMenu>
+
+
+@code {
+    protected override void OnInitialized()
+    {
+        Navigation.LocationChanged += (_, _) => StateHasChanged();
+    }
+}

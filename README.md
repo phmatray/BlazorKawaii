@@ -1,6 +1,6 @@
 # 🌸 BlazorKawaii
 
-A collection of cute, customizable SVG components for Blazor WebAssembly applications. Inspired by [react-kawaii](https://react-kawaii.vercel.app/), BlazorKawaii brings adorable, expressive components to the .NET ecosystem.
+A collection of cute, customizable SVG components for Blazor WebAssembly applications. Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library by [Miuki Miu](https://github.com/miukimiu), BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.
 
 ![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
 ![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
@@ -9,13 +9,13 @@ A collection of cute, customizable SVG components for Blazor WebAssembly applica
 
 ## ✨ Features
 
-- 🎨 **12 Kawaii Components**: Backpack, Browser, Cat, Chocolate, Credit Card, File, Folder, Ghost, Ice Cream, Mug, Planet, and Speech Bubble
+- 🎨 **16 Kawaii Components**: Astronaut, Backpack, Browser, Cat, Chocolate, Credit Card, Cyborg, File, Folder, Ghost, HumanCat, HumanDinosaur, Ice Cream, Mug, Planet, and Speech Bubble
 - 😊 **7 Mood Expressions**: Sad, Shocked, Happy, Blissful, Lovestruck, Excited, and Ko
 - 🎯 **Fully Customizable**: Size, color, and mood parameters for each component
 - 🚀 **Blazor WebAssembly**: Built specifically for Blazor WASM applications
 - 📱 **Responsive**: SVG-based components that scale perfectly
 - 🧩 **Easy Integration**: Simple component-based architecture
-- 🌍 **Internationalization**: Built-in support for English and French
+- 🌍 **Internationalization**: Built-in support for English, French, Spanish, and Dutch
 - 🌓 **Dark Mode Support**: Components adapt beautifully to light and dark themes
 - 📦 **NuGet Package**: Available as a reusable Razor Class Library
 
@@ -73,25 +73,32 @@ All components share the same parameter structure:
 [Parameter] public int Size { get; set; }        // Component size in pixels
 [Parameter] public Mood Mood { get; set; }       // Expression mood
 [Parameter] public string Color { get; set; }    // Primary color (hex)
-[Parameter] public string? ClassName { get; set; } // Optional CSS class
+[Parameter] public string? Class { get; set; }     // CSS class for wrapper
+[Parameter] public string? Style { get; set; }     // CSS style for wrapper
+[Parameter] public string? SvgClass { get; set; }  // CSS class for SVG element
+[Parameter] public string? SvgStyle { get; set; }  // CSS style for SVG element
 ```
 
 #### Component List
 
 | Component | Default Size | Default Color |
 |-----------|--------------|---------------|
-| Backpack | 240 | #FFD882 |
-| Browser | 180 | #FDA7DC |
-| Cat | 320 | #596881 |
-| Chocolate | 300 | #FC105C |
-| CreditCard | 240 | #FFD882 |
-| File | 200 | #83D1FB |
-| Folder | 200 | #FFD882 |
-| Ghost | 240 | #E0E4E8 |
-| IceCream | 300 | #FCCB7E |
+| Astronaut | 240 | #A6E191 |
+| Backpack | 240 | #A6E191 |
+| Browser | 180 | #A6E191 |
+| Cat | 320 | #A6E191 |
+| Chocolate | 300 | #A6E191 |
+| CreditCard | 240 | #A6E191 |
+| Cyborg | 240 | #A6E191 |
+| File | 200 | #A6E191 |
+| Folder | 200 | #A6E191 |
+| Ghost | 240 | #A6E191 |
+| HumanCat | 240 | #A6E191 |
+| HumanDinosaur | 240 | #A6E191 |
+| IceCream | 300 | #A6E191 |
 | Mug | 200 | #A6E191 |
-| Planet | 190 | #FCCB7E |
-| SpeechBubble | 170 | #83D1FB |
+| Planet | 190 | #A6E191 |
+| SpeechBubble | 170 | #A6E191 |
 
 ### Mood Expressions
 
@@ -140,7 +147,7 @@ public enum Mood
                 Mood="@mood" 
                 Size="150" 
                 Color="@GetColorForMood(mood)" 
-                ClassName="custom-ghost" />
+                SvgClass="custom-ghost" />
             <p>@mood</p>
         </div>
     }
@@ -206,8 +213,11 @@ public partial class NewComponent
 {
     [Parameter] public int Size { get; set; } = 200;
     [Parameter] public Mood Mood { get; set; } = Mood.Blissful;
-    [Parameter] public string Color { get; set; } = "#FFD882";
-    [Parameter] public string? ClassName { get; set; }
+    [Parameter] public string Color { get; set; } = "#A6E191";
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public string? Style { get; set; }
+    [Parameter] public string? SvgClass { get; set; }
+    [Parameter] public string? SvgStyle { get; set; }
 }
 ```
 
@@ -229,9 +239,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Inspired by [react-kawaii](https://react-kawaii.vercel.app/)
+- **Original Project**: [React Kawaii](https://react-kawaii.vercel.app/) by [Miuki Miu](https://github.com/miukimiu)
+  - This project is a faithful adaptation of React Kawaii for the Blazor ecosystem
+  - All original SVG designs and moods are created by Miuki Miu
+  - Licensed under MIT License
 - Built with [Blazor WebAssembly](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
-- SVG optimization and design patterns
+- Adapted for .NET by [Philippe Matray](https://github.com/phmatray)
 
 ## 🚀 GitHub Pages Deployment
 

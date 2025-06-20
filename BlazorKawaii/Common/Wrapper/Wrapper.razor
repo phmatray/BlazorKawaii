@@ -1,15 +1,17 @@
-﻿<div style="position: relative; @Style">
+﻿@namespace BlazorKawaii.Common
+
+<div class="@Class" style="position: relative; @Style">
     @ChildContent
 </div>
 
 @code {
-    
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-    
+
     [Parameter]
     public string? Style { get; set; }
-  
+
     [Parameter]
-    public string? ClassName { get; set; }
+    public string? Class { get; set; }
 }

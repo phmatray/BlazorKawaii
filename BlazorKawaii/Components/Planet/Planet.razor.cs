@@ -1,19 +1,18 @@
 using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Planet
+public partial class Planet : KawaiiComponentBase
 {
-    [Parameter]
-    public int Size { get; set; } = 190;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Blissful;
+    protected override double GetFaceScale()
+    {
+        return 66 / 66.0;  // 66 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#FCCB7E";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        return (87, 110);  // Fixed position in 240x240 viewBox
+    }
 }

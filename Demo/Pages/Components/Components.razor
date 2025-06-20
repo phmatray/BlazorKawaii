@@ -31,50 +31,43 @@
 <MudGrid Spacing="4">
     @foreach (var component in GetFilteredComponents())
     {
-        <MudItem xs="12" md="6" lg="4">
-            <MudCard Class="component-showcase" Elevation="2">
-                <MudCardContent>
-                    <MudText Typo="Typo.h5" GutterBottom="true">@component.Name</MudText>
-
-                    <MudPaper Elevation="0" Class="pa-4 mb-3 text-center"
-                              Style="background-color: var(--mud-palette-background-grey);">
-                        @component.Render(_displayMood ?? Mood.Blissful, 120)
-                    </MudPaper>
-
-                    <MudText Typo="Typo.body2" Color="Color.Secondary" GutterBottom="true">
-                        @component.Description
-                    </MudText>
-
-                    <div class="mb-3">
-                        <MudText Typo="Typo.subtitle2" GutterBottom="true">@Localizer["DefaultValues"]</MudText>
-                        <MudChip T="string" Size="Size.Small" Color="Color.Info">@Localizer["Size"]: @component.DefaultSize px</MudChip>
-                        <MudChip T="string" Size="Size.Small" Color="Color.Primary">@Localizer["Color"]: @component.DefaultColor</MudChip>
+        <MudItem xs="12" sm="6" md="4" lg="3">
+            <MudCard Class="component-showcase" Elevation="1">
+                <MudCardContent Class="pa-0">
+                    <div class="component-preview" @onclick="@(() => CycleComponentMood(component))">
+                        <div class="component-visual">
+                            @{
+                                var mood = GetComponentMood(component);
+                                var color = GetComponentColor(component);
+                            }
+                            @component.RenderWithColor(mood, 100, color)
+                        </div>
+                        <div class="component-info">
+                            <MudText Typo="Typo.h6" Class="component-name mb-1">@component.Name</MudText>
+                            <MudText Typo="Typo.body2" Class="component-description">@component.Description</MudText>
+                        </div>
+                        <MudTooltip Text="@Localizer["ClickToChangeMood"]" Placement="Placement.Top">
+                            <MudIcon Icon="@Icons.Material.Filled.TouchApp" Size="Size.Small" Class="mood-indicator" />
+                        </MudTooltip>
                     </div>
 
-                    <MudText Typo="Typo.subtitle2" GutterBottom="true">@Localizer["AvailableMoods"]</MudText>
-                    <div>
-                        @foreach (Mood mood in Enum.GetValues<Mood>())
-                        {
-                            <MudChip T="string" Size="Size.Small" Class="mood-chip"
-                                     Color="@(_displayMood == mood ? Color.Primary : Color.Default)"
-                                     OnClick="@(() => _displayMood = mood)">
-                                @mood
-                            </MudChip>
-                        }
+                    <div class="component-actions">
+                        <MudTooltip Text="@Localizer["ViewCode"]">
+                            <MudIconButton Icon="@Icons.Material.Filled.Code"
+                                         Size="Size.Small"
+                                         OnClick="@(() => ShowCode(component))" />
+                        </MudTooltip>
+                        <MudTooltip Text="@Localizer["TryInPlayground"]">
+                            <MudIconButton Icon="@Icons.Material.Filled.Brush"
+                                         Size="Size.Small"
+                                         Href="/playground" />
+                        </MudTooltip>
+                        <MudSpacer />
+                        <MudText Typo="Typo.caption" Color="Color.Secondary" Class="mood-text">
+                            @GetComponentMood(component)
+                        </MudText>
                     </div>
                 </MudCardContent>
-                <MudCardActions>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary"
-                               StartIcon="@Icons.Material.Filled.Code"
-                               OnClick="@(() => ShowCode(component))">
-                        @Localizer["ViewCode"]
-                    </MudButton>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary"
-                               StartIcon="@Icons.Material.Filled.Brush"
-                               Href="/playground">
-                        @Localizer["TryInPlayground"]
-                    </MudButton>
-                </MudCardActions>
             </MudCard>
         </MudItem>
     }
@@ -84,9 +77,9 @@
 <MudOverlay Visible="_showCodeDialog" OnClick="@(() => _showCodeDialog = false)" DarkBackground="true">
     <MudPaper Class="pa-6" Style="max-width: 800px; width: 90vw;" @onclick:stopPropagation="true">
         <MudText Typo="Typo.h5" Class="mb-4">@_selectedComponentForCode?.Name @Localizer["CodeExample"]</MudText>
-        <MudPaper Outlined="true" Class="pa-3 mb-4" Style="background-color: var(--mud-palette-background-grey);">
-            <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; overflow-x: auto;"><code>@GetCodeExample()</code></pre>
-        </MudPaper>
+        <div class="mb-4">
+            <CodeBlock Code="@GetCodeExample()" Language="razor" ShowCopyButton="false" />
+        </div>
         <div class="d-flex justify-end gap-2">
             <MudButton OnClick="@(() => _showCodeDialog = false)">@Localizer["Close"]</MudButton>
             <MudButton Color="Color.Primary" OnClick="CopyCodeExample"
@@ -102,7 +95,6 @@
 @code {
     private string _searchTerm = "";
     private Mood? _filterMood;
-    private Mood? _displayMood = Mood.Blissful;
     private bool _showCodeDialog;
     private ComponentInfo? _selectedComponentForCode;
     [Inject] private ISnackbar Snackbar { get; set; } = null!;
@@ -114,8 +106,18 @@
         string Description,
         int DefaultSize,
         string DefaultColor,
-        Func<Mood, int, RenderFragment> Render
-    );
+        Func<Mood, int, RenderFragment> Render)
+    {
+        public RenderFragment RenderWithColor(Mood mood, int size, string color) =>
+            builder =>
+            {
+                builder.OpenComponent(0, Type.GetType($"BlazorKawaii.Components.{Name}, BlazorKawaii")!);
+                builder.AddAttribute(1, "Mood", mood);
+                builder.AddAttribute(2, "Size", size);
+                builder.AddAttribute(3, "Color", color);
+                builder.CloseComponent();
+            };
+    }
 
     private List<ComponentInfo> _components = [];
 
@@ -123,30 +125,38 @@
     {
         _components =
         [
-            new("Backpack", Localizer["BackpackDesc"].Value, 240, "#FFD882",
+            new("Backpack", Localizer["BackpackDesc"].Value, 240, "#A6E191",
                 (mood, size) => @<Backpack Mood="@mood" Size="@size" />),
-            new("Browser", Localizer["BrowserDesc"].Value, 180, "#FDA7DC",
+            new("Browser", Localizer["BrowserDesc"].Value, 180, "#A6E191",
                 (mood, size) => @<Browser Mood="@mood" Size="@size" />),
-            new("Cat", Localizer["CatDesc"].Value, 320, "#596881",
+            new("Cat", Localizer["CatDesc"].Value, 320, "#A6E191",
                 (mood, size) => @<Cat Mood="@mood" Size="@size" />),
-            new("Chocolate", Localizer["ChocolateDesc"].Value, 300, "#FC105C",
+            new("Chocolate", Localizer["ChocolateDesc"].Value, 300, "#A6E191",
                 (mood, size) => @<Chocolate Mood="@mood" Size="@size" />),
-            new("CreditCard", Localizer["CreditCardDesc"].Value, 240, "#FFD882",
+            new("CreditCard", Localizer["CreditCardDesc"].Value, 240, "#A6E191",
                 (mood, size) => @<CreditCard Mood="@mood" Size="@size" />),
-            new("File", Localizer["FileDesc"].Value, 200, "#83D1FB",
+            new("File", Localizer["FileDesc"].Value, 200, "#A6E191",
                 (mood, size) => @<File Mood="@mood" Size="@size" />),
-            new("Folder", Localizer["FolderDesc"].Value, 200, "#FFD882",
+            new("Folder", Localizer["FolderDesc"].Value, 200, "#A6E191",
                 (mood, size) => @<Folder Mood="@mood" Size="@size" />),
-            new("Ghost", Localizer["GhostDesc"].Value, 240, "#E0E4E8",
+            new("Ghost", Localizer["GhostDesc"].Value, 240, "#A6E191",
                 (mood, size) => @<Ghost Mood="@mood" Size="@size" />),
-            new("IceCream", Localizer["IceCreamDesc"].Value, 300, "#FCCB7E",
+            new("IceCream", Localizer["IceCreamDesc"].Value, 300, "#A6E191",
                 (mood, size) => @<IceCream Mood="@mood" Size="@size" />),
             new("Mug", Localizer["MugDesc"].Value, 200, "#A6E191",
                 (mood, size) => @<Mug Mood="@mood" Size="@size" />),
-            new("Planet", Localizer["PlanetDesc"].Value, 190, "#FCCB7E",
+            new("Planet", Localizer["PlanetDesc"].Value, 190, "#A6E191",
                 (mood, size) => @<Planet Mood="@mood" Size="@size" />),
-            new("SpeechBubble", Localizer["SpeechBubbleDesc"].Value, 170, "#83D1FB",
-                (mood, size) => @<SpeechBubble Mood="@mood" Size="@size" />)
+            new("SpeechBubble", Localizer["SpeechBubbleDesc"].Value, 170, "#A6E191",
+                (mood, size) => @<SpeechBubble Mood="@mood" Size="@size" />),
+            new("Astronaut", Localizer["AstronautDesc"].Value, 240, "#A6E191",
+                (mood, size) => @<Astronaut Mood="@mood" Size="@size" />),
+            new("Cyborg", Localizer["CyborgDesc"].Value, 240, "#A6E191",
+                (mood, size) => @<Cyborg Mood="@mood" Size="@size" />),
+            new("HumanCat", Localizer["HumanCatDesc"].Value, 240, "#A6E191",
+                (mood, size) => @<HumanCat Mood="@mood" Size="@size" />),
+            new("HumanDinosaur", Localizer["HumanDinosaurDesc"].Value, 240, "#A6E191",
+                (mood, size) => @<HumanDinosaur Mood="@mood" Size="@size" />)
         ];
     }
 
@@ -184,8 +194,8 @@
         var basicUsage = Localizer["BasicUsageComment"].Value;
         var withProps = Localizer["WithCustomPropertiesComment"].Value;
         var allMoods = Localizer["AllMoodsExampleComment"].Value;
-        
-        return $@"@using BlazorKawaii.Components.{_selectedComponentForCode.Name}
+
+        return $@"@using BlazorKawaii.Components
 @using BlazorKawaii.Common
 
 {{* {basicUsage} *}}
@@ -193,7 +203,7 @@
 
 {{* {withProps} *}}
 <{_selectedComponentForCode.Name}
-    Mood=""Mood.{_displayMood ?? Mood.Blissful}""
+    Mood=""Mood.{GetComponentMood(_selectedComponentForCode)}""
     Size=""{_selectedComponentForCode.DefaultSize}""
     Color=""{_selectedComponentForCode.DefaultColor}"" />
 
@@ -208,5 +218,47 @@
     {
         await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", GetCodeExample());
         Snackbar.Add(Localizer["CodeCopiedToClipboard"], Severity.Success);
+    }
+
+    private readonly Dictionary<string, Mood> _componentMoods = new();
+    private readonly Dictionary<string, string> _componentColors = new();
+    private readonly Mood[] _moodCycle = { Mood.Blissful, Mood.Happy, Mood.Excited, Mood.Sad, Mood.Shocked };
+    private readonly string[] _colorPalette =
+    {
+        "#A6E191", // green
+        "#FFB3BA", // pastel red
+        "#FCCB7E", // yellow
+        "#ADD2FF", // blue
+        "#D7BAFF", // pastel purple
+        "#FFBAE1"  // pastel magenta
+    };
+    private readonly Random _random = new();
+
+    private Mood GetComponentMood(ComponentInfo component)
+    {
+        return _componentMoods.TryGetValue(component.Name, out var mood) ? mood : Mood.Blissful;
+    }
+
+    private string GetComponentColor(ComponentInfo component)
+    {
+        if (!_componentColors.TryGetValue(component.Name, out var color))
+        {
+            color = component.DefaultColor;
+            _componentColors[component.Name] = color;
+        }
+        return color;
+    }
+
+    private void CycleComponentMood(ComponentInfo component)
+    {
+        // Cycle mood
+        var currentMood = GetComponentMood(component);
+        var currentIndex = Array.IndexOf(_moodCycle, currentMood);
+        var nextIndex = (currentIndex + 1) % _moodCycle.Length;
+        _componentMoods[component.Name] = _moodCycle[nextIndex];
+
+        // Pick random color
+        var randomColor = _colorPalette[_random.Next(_colorPalette.Length)];
+        _componentColors[component.Name] = randomColor;
     }
 }

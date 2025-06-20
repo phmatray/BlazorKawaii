@@ -1,4 +1,1 @@
-@using BlazorKawaii.Components.Cat
-@using BlazorKawaii.Common
-
 <Cat Mood="Mood.Blissful" Size="200" Color="#596881" />

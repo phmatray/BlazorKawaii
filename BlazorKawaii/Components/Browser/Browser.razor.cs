@@ -1,19 +1,18 @@
 ﻿using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Browser
+public partial class Browser : KawaiiComponentBase
 {
-    [Parameter]
-    public int Size { get; set; } = 180;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Ko;
+    protected override double GetFaceScale()
+    {
+        return 52.78 / 66.0;  // 52.78 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#FDA7DC";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        return (93.58, 115.38);  // Fixed position in 240x240 viewBox
+    }
 }

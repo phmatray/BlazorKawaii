@@ -1,19 +1,18 @@
 using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Mug
+public partial class Mug : KawaiiComponentBase
 {
-    [Parameter]
-    public int Size { get; set; } = 200;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Blissful;
+    protected override double GetFaceScale()
+    {
+        return 53.95 / 66.0;  // 53.95 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#A6E191";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        return (93.03, 107.33);  // Fixed position in 240x240 viewBox
+    }
 }

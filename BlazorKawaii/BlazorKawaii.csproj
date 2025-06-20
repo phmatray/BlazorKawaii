@@ -4,13 +4,14 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    
+
     <!-- NuGet Package Metadata -->
     <PackageId>BlazorKawaii</PackageId>
     <Version>1.0.0</Version>
     <Authors>phmatray</Authors>
-    <Company>BlazorKawaii</Company>
-    <Description>A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 12 kawaii components with 7 different moods.</Description>
+    <Company>Atypical Consulting SRL
+    </Company>
+    <Description>A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 16 kawaii components with 7 different moods.</Description>
     <PackageTags>Blazor;WebAssembly;Components;SVG;Kawaii;UI</PackageTags>
     <PackageProjectUrl>https://github.com/phmatray/BlazorKawaii</PackageProjectUrl>
     <RepositoryUrl>https://github.com/phmatray/BlazorKawaii</RepositoryUrl>
@@ -32,6 +33,7 @@
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
     <None Include="icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

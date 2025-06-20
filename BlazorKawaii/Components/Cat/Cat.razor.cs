@@ -1,21 +1,20 @@
 using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Cat
+public partial class Cat : KawaiiComponentBase
 {
-    private readonly string _uniqueId = SvgMaskHelper.GetUniqueId();
-    
-    [Parameter]
-    public int Size { get; set; } = 320;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Blissful;
+    protected override double GetFaceScale()
+    {
+        // From React: figmaFaceScale = getFaceScale(51.67)
+        return 51.67 / 66.0;  // 51.67 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#596881";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        // From React: figmaFaceXYPosition = '93.83 86.36'
+        return (93.83, 86.36);  // Fixed position in 240x240 viewBox
+    }
 }

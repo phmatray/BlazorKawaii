@@ -1,19 +1,18 @@
 using BlazorKawaii.Common;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
-public partial class Folder
+public partial class Folder : KawaiiComponentBase
 {
-    [Parameter]
-    public int Size { get; set; } = 200;
+    protected override string DefaultColor => "#A6E191";
 
-    [Parameter]
-    public Mood Mood { get; set; } = Mood.Blissful;
+    protected override double GetFaceScale()
+    {
+        return 52 / 66.0;  // 52 is the face width in Figma, 66 is the original face width
+    }
 
-    [Parameter]
-    public string Color { get; set; } = "#FFD882";
-  
-    [Parameter]
-    public string? ClassName { get; set; }
+    protected override (double x, double y) GetFacePosition()
+    {
+        return (94, 116);  // Fixed position in 240x240 viewBox
+    }
 }

@@ -1,4 +1,2 @@
-@using YourProject.Common
-@using YourProject.Common.Face
-@using YourProject.Common.Wrapper
-@using static YourProject.SvgMaskHelper
+@using BlazorKawaii.Components
+@using BlazorKawaii.Common

@@ -1,4 +1,4 @@
-namespace BlazorKawaii;
+namespace BlazorKawaii.Common;
 
 public static class SvgMaskHelper
 {

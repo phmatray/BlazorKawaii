@@ -5,7 +5,7 @@ namespace Demo.Extensions;
 
 public static class WebAssemblyHostExtensions
 {
-    private static readonly string[] SupportedCultures = { "en", "fr", "es" };
+    private static readonly string[] SupportedCultures = { "en", "fr", "es", "nl" };
     
     public static async Task ConfigureCultureAsync(this Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHost host)
     {
