@@ -1,0 +1,19 @@
+@inject IStringLocalizer<SharedResource> Localizer
+
+<PageTitle>@Localizer["NotFound"]</PageTitle>
+<LayoutView Layout="@typeof(MainLayout)">
+    <MudContainer Class="mt-16">
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" sm="8" md="6" Class="text-center">
+                <Ghost Mood="Sad" Size="200" Color="#E0E4E8" />
+                <MudText Typo="Typo.h3" Class="mt-4">@Localizer["NotFound"]</MudText>
+                <MudText Typo="Typo.body1" Class="mt-2">@Localizer["NotFoundMessage"]</MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary"
+                           Href="/" Class="mt-4"
+                           StartIcon="@Icons.Material.Filled.Home">
+                    @Localizer["Home"]
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</LayoutView>

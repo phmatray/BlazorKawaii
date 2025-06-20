@@ -1,0 +1,28 @@
+@namespace BlazorKawaii.Components
+@using static BlazorKawaii.Components.PlanetPaths
+
+<Wrapper ClassName="@ClassName">
+  <svg
+    width="@Size"
+    height="@Size"
+    viewBox="0 0 190 190">
+    <g id="kawaii-planet">
+      <g id="planet__body">
+        <path
+          id="planet__body-shape"
+          fill="@Color"
+          d="@Shape"/>
+        <path
+          id="planet__body-shadow"
+          fill="#121212"
+          fillRule="nonzero"
+          opacity="0.1"
+          d="@PlanetPaths.Shadow"/>
+      </g>
+      <Face
+        Mood="@Mood"
+        Transform="translate(53 75)"
+        UniqueId="@GetUniqueId()"/>
+    </g>
+  </svg>
+</Wrapper>

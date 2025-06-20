@@ -1,28 +1,192 @@
-﻿@page "/"
-@using Demo.Components.Backpack
-@using Demo.Components.CreditCard
-@using Demo.Common
+@page "/"
+@inject IStringLocalizer<SharedResource> Localizer
 
-<PageTitle>Blazor Kawaii Demo</PageTitle>
+<PageTitle>Blazor Kawaii - @Localizer["Home"]</PageTitle>
 
-<h1>Blazor Kawaii</h1>
 
-Welcome to your new app.<br/>
+<div class="hero-section">
+    <div class="floating-kawaii floating-kawaii-1">
+        <ghost Size="200" Mood="Mood.Blissful" Color="#FFFFFF" />
+    </div>
+    <div class="floating-kawaii floating-kawaii-2">
+        <cat Size="150" Mood="Mood.Happy" Color="#FFFFFF" />
+    </div>
+    <div class="floating-kawaii floating-kawaii-3">
+        <planet Size="180" Mood="Mood.Lovestruck" Color="#FFFFFF" />
+    </div>
+    <div class="floating-kawaii floating-kawaii-4">
+        <IceCream Size="160" Mood="Mood.Excited" Color="#FFFFFF" />
+    </div>
+    <div class="floating-kawaii floating-kawaii-5">
+        <mug Size="140" Mood="Mood.Blissful" Color="#FFFFFF" />
+    </div>
 
-<EditForm Model="@Model">
-    <InputSelect @bind-Value="Model.Mood">
-        @foreach (Mood mood in Enum.GetValues<Mood>())
-        {
-            <option value="@mood">@mood</option>
-        }
-    </InputSelect>
-</EditForm>
+    <MudContainer>
+        <h1 class="hero-title">@Localizer["WelcomeToBlazorKawaii"]</h1>
+        <p class="hero-subtitle">@Localizer["CuteCustomizableSVGComponents"]</p>
+        <MudStack Row="true" Justify="Justify.Center" Spacing="4">
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Size="Size.Large"
+                       StartIcon="@Icons.Material.Filled.Brush"
+                       Href="/playground">
+                @Localizer["TryPlayground"]
+            </MudButton>
+            <MudButton Variant="Variant.Outlined"
+                       Color="Color.Dark"
+                       Size="Size.Large"
+                       StartIcon="@Icons.Material.Filled.Code"
+                       Href="/documentation"
+                       Style="color: white; border-color: white;">
+                @Localizer["ViewDocs"]
+            </MudButton>
+        </MudStack>
+    </MudContainer>
+</div>
 
-<Backpack Mood="@Model.Mood"/>
-<CreditCard Mood="@Model.Mood"/>
+<MudContainer>
+    <!-- Demo Section -->
+    <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true" Class="mb-8">
+        @Localizer["SeeThemInAction"]
+    </MudText>
+
+    <MudPaper Elevation="2" Class="pa-6 mb-8">
+        <div class="demo-kawaii-container">
+            @{
+                var angle = 0;
+                var radius = 80;
+                var components = _demoComponents.ToList();
+                var angleStep = 360.0 / components.Count;
+            }
+            @foreach (var (component, index) in components.Select((c, i) => (c, i)))
+            {
+                var currentAngle = (angle + angleStep * index) * Math.PI / 180;
+                var x = Math.Cos(currentAngle) * radius;
+                var y = Math.Sin(currentAngle) * radius;
+
+                <div class="demo-kawaii-item" style="transform: translate(@(x)px, @(y)px)">
+                    @component(Mood.Happy, 80)
+                </div>
+            }
+        </div>
+    </MudPaper>
+
+    <!-- Features Grid -->
+    <MudGrid Spacing="4" Class="mb-8">
+        <MudItem xs="12" md="4">
+            <MudCard Class="feature-card">
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.EmojiEmotions"
+                             Style="font-size: 3rem;"
+                             Color="Color.Primary" />
+                    <MudText Typo="Typo.h5" Class="mt-3">@Localizer["SevenMoods"]</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary">
+                        @Localizer["ExpressDifferentEmotions"]
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard Class="feature-card">
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Palette"
+                             Style="font-size: 3rem;"
+                             Color="Color.Secondary" />
+                    <MudText Typo="Typo.h5" Class="mt-3">@Localizer["FullyCustomizable"]</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary">
+                        @Localizer["ChangeColorsAndSizes"]
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard Class="feature-card">
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Speed"
+                             Style="font-size: 3rem;"
+                             Color="Color.Success" />
+                    <MudText Typo="Typo.h5" Class="mt-3">@Localizer["BlazingFast"]</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary">
+                        @Localizer["LightweightSVGComponents"]
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Stats Section -->
+    <MudPaper Elevation="0" Class="pa-8 mb-8" Style="background-color: var(--mud-palette-background-grey);">
+        <MudGrid>
+            <MudItem xs="12" md="4" Class="text-center">
+                <div class="stats-number">12</div>
+                <MudText Typo="Typo.h6">@Localizer["KawaiiComponents"]</MudText>
+            </MudItem>
+            <MudItem xs="12" md="4" Class="text-center">
+                <div class="stats-number">7</div>
+                <MudText Typo="Typo.h6">@Localizer["MoodExpressions"]</MudText>
+            </MudItem>
+            <MudItem xs="12" md="4" Class="text-center">
+                <div class="stats-number">∞</div>
+                <MudText Typo="Typo.h6">@Localizer["Customizations"]</MudText>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Code Example -->
+    <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-4">
+        @Localizer["QuickStart"]
+    </MudText>
+
+    <MudPaper Elevation="2" Class="pa-4 mb-8">
+        <MudText Typo="Typo.body2" Class="mb-2">
+            @Localizer["ItsAsEasyAs"]
+        </MudText>
+        <CodeBlock Language="razor" CodeFile="code-samples/quick-start-example.txt" />
+    </MudPaper>
+
+    <!-- Call to Action -->
+    <MudPaper Elevation="3" Class="pa-8 text-center" Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <MudText Typo="Typo.h4" GutterBottom="true">
+            @Localizer["ReadyToMakeYourAppKawaii"]
+        </MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            @Localizer["ExploreAllComponents"]
+        </MudText>
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Size="Size.Large"
+                   StartIcon="@Icons.Material.Filled.Apps"
+                   Href="/components"
+                   Style="background-color: white; color: #667eea;">
+            @Localizer["BrowseComponents"]
+        </MudButton>
+    </MudPaper>
+</MudContainer>
 
 @code {
+    private Timer? _timer;
+    private int _angle;
 
-    public IndexFormModel Model { get; } = new();
+    private readonly List<Func<Mood, int, RenderFragment>> _demoComponents = new()
+    {
+        (mood, size) => @<cat Mood="@mood" Size="@size" />,
+        (mood, size) => @<ghost Mood="@mood" Size="@size" />,
+        (mood, size) => @<IceCream Mood="@mood" Size="@size" />,
+        (mood, size) => @<planet Mood="@mood" Size="@size" />,
+        (mood, size) => @<mug Mood="@mood" Size="@size" />
+    };
 
+    protected override void OnInitialized()
+    {
+        _timer = new Timer(_ =>
+        {
+            _angle = (_angle + 1) % 360;
+            InvokeAsync(StateHasChanged);
+        }, null, 0, 50);
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
 }

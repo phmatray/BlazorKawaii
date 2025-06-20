@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- Navigation -->
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Components" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="Playground" xml:space="preserve">
+    <value>Playground</value>
+  </data>
+  <data name="Documentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  
+  <!-- Home Page -->
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Cute SVG components for Blazor</value>
+  </data>
+  <data name="HomeSubtitle" xml:space="preserve">
+    <value>A collection of customizable kawaii illustrations for your Blazor applications</value>
+  </data>
+  <data name="ViewComponents" xml:space="preserve">
+    <value>View Components</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="ComponentsCount" xml:space="preserve">
+    <value>12 Components</value>
+  </data>
+  <data name="ComponentsCountDesc" xml:space="preserve">
+    <value>Diverse collection of kawaii illustrations</value>
+  </data>
+  <data name="MoodsCount" xml:space="preserve">
+    <value>7 Moods</value>
+  </data>
+  <data name="MoodsCountDesc" xml:space="preserve">
+    <value>Express different emotions</value>
+  </data>
+  <data name="FullyCustomizable" xml:space="preserve">
+    <value>Fully Customizable</value>
+  </data>
+  <data name="FullyCustomizableDesc" xml:space="preserve">
+    <value>Size, color, and mood options</value>
+  </data>
+  <data name="QuickStart" xml:space="preserve">
+    <value>Quick Start</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Install the package</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import the namespace</value>
+  </data>
+  <data name="UseComponent" xml:space="preserve">
+    <value>Use a component</value>
+  </data>
+  <data name="WelcomeToBlazorKawaii" xml:space="preserve">
+    <value>Welcome to Blazor Kawaii</value>
+  </data>
+  <data name="CuteCustomizableSVGComponents" xml:space="preserve">
+    <value>Cute, customizable SVG components for your Blazor applications</value>
+  </data>
+  <data name="TryPlayground" xml:space="preserve">
+    <value>Try Playground</value>
+  </data>
+  <data name="ViewDocs" xml:space="preserve">
+    <value>View Docs</value>
+  </data>
+  <data name="SeeThemInAction" xml:space="preserve">
+    <value>See Them in Action</value>
+  </data>
+  <data name="SevenMoods" xml:space="preserve">
+    <value>7 Moods</value>
+  </data>
+  <data name="ExpressDifferentEmotions" xml:space="preserve">
+    <value>Express different emotions with built-in mood presets</value>
+  </data>
+  <data name="ChangeColorsAndSizes" xml:space="preserve">
+    <value>Change colors, sizes, and moods to match your design</value>
+  </data>
+  <data name="BlazingFast" xml:space="preserve">
+    <value>Blazing Fast</value>
+  </data>
+  <data name="LightweightSVGComponents" xml:space="preserve">
+    <value>Lightweight SVG components with zero dependencies</value>
+  </data>
+  <data name="KawaiiComponents" xml:space="preserve">
+    <value>Kawaii Components</value>
+  </data>
+  <data name="MoodExpressions" xml:space="preserve">
+    <value>Mood Expressions</value>
+  </data>
+  <data name="Customizations" xml:space="preserve">
+    <value>Customizations</value>
+  </data>
+  <data name="ItsAsEasyAs" xml:space="preserve">
+    <value>It's as easy as importing a component and using it:</value>
+  </data>
+  <data name="ReadyToMakeYourAppKawaii" xml:space="preserve">
+    <value>Ready to make your app kawaii?</value>
+  </data>
+  <data name="ExploreAllComponents" xml:space="preserve">
+    <value>Explore all components and customize them to your liking</value>
+  </data>
+  <data name="BrowseComponents" xml:space="preserve">
+    <value>Browse Components</value>
+  </data>
+  
+  <!-- Components Page -->
+  <data name="ComponentsTitle" xml:space="preserve">
+    <value>Component Gallery</value>
+  </data>
+  <data name="ComponentsSubtitle" xml:space="preserve">
+    <value>Explore all available kawaii components</value>
+  </data>
+  <data name="SearchComponents" xml:space="preserve">
+    <value>Search components...</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+  <data name="DefaultSize" xml:space="preserve">
+    <value>Default Size</value>
+  </data>
+  <data name="DefaultColor" xml:space="preserve">
+    <value>Default Color</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="FilterByMood" xml:space="preserve">
+    <value>Filter by mood</value>
+  </data>
+  <data name="DefaultValues" xml:space="preserve">
+    <value>Default Values:</value>
+  </data>
+  <data name="AvailableMoods" xml:space="preserve">
+    <value>Available Moods:</value>
+  </data>
+  <data name="ViewCode" xml:space="preserve">
+    <value>View Code</value>
+  </data>
+  <data name="TryInPlayground" xml:space="preserve">
+    <value>Try in Playground</value>
+  </data>
+  <data name="CodeExample" xml:space="preserve">
+    <value>Code Example</value>
+  </data>
+  <data name="CopyCode" xml:space="preserve">
+    <value>Copy Code</value>
+  </data>
+  <data name="CodeCopiedToClipboard" xml:space="preserve">
+    <value>Code copied to clipboard!</value>
+  </data>
+  <data name="BasicUsageComment" xml:space="preserve">
+    <value>Basic usage</value>
+  </data>
+  <data name="WithCustomPropertiesComment" xml:space="preserve">
+    <value>With custom properties</value>
+  </data>
+  <data name="AllMoodsExampleComment" xml:space="preserve">
+    <value>All moods example</value>
+  </data>
+  
+  <!-- Component Descriptions -->
+  <data name="BackpackDesc" xml:space="preserve">
+    <value>A cute backpack with straps and pockets</value>
+  </data>
+  <data name="BrowserDesc" xml:space="preserve">
+    <value>Web browser window with address bar</value>
+  </data>
+  <data name="CatDesc" xml:space="preserve">
+    <value>Adorable cat with ears and whiskers</value>
+  </data>
+  <data name="ChocolateDesc" xml:space="preserve">
+    <value>Chocolate bar with wrapper</value>
+  </data>
+  <data name="CreditCardDesc" xml:space="preserve">
+    <value>Credit card with chip and details</value>
+  </data>
+  <data name="FileDesc" xml:space="preserve">
+    <value>Document file icon</value>
+  </data>
+  <data name="FolderDesc" xml:space="preserve">
+    <value>Folder for organizing files</value>
+  </data>
+  <data name="GhostDesc" xml:space="preserve">
+    <value>Friendly floating ghost</value>
+  </data>
+  <data name="IceCreamDesc" xml:space="preserve">
+    <value>Delicious ice cream cone</value>
+  </data>
+  <data name="MugDesc" xml:space="preserve">
+    <value>Coffee or tea mug with handle</value>
+  </data>
+  <data name="PlanetDesc" xml:space="preserve">
+    <value>Round planet in space</value>
+  </data>
+  <data name="SpeechBubbleDesc" xml:space="preserve">
+    <value>Speech bubble for conversations</value>
+  </data>
+  
+  <!-- Playground Page -->
+  <data name="PlaygroundTitle" xml:space="preserve">
+    <value>Component Playground</value>
+  </data>
+  <data name="PlaygroundSubtitle" xml:space="preserve">
+    <value>Customize and preview kawaii components in real-time</value>
+  </data>
+  <data name="CustomizeComponent" xml:space="preserve">
+    <value>Customize Component</value>
+  </data>
+  <data name="Component" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="Mood" xml:space="preserve">
+    <value>Mood</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="AnimationEffects" xml:space="preserve">
+    <value>Animation Effects</value>
+  </data>
+  <data name="Rotation" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
+  <data name="Bounce" xml:space="preserve">
+    <value>Bounce</value>
+  </data>
+  <data name="Pulse" xml:space="preserve">
+    <value>Pulse</value>
+  </data>
+  <data name="ResetToDefaults" xml:space="preserve">
+    <value>Reset to Defaults</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="GeneratedCode" xml:space="preserve">
+    <value>Generated Code</value>
+  </data>
+  <data name="CopyToClipboard" xml:space="preserve">
+    <value>Copy to clipboard</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied!</value>
+  </data>
+  <data name="SizePx" xml:space="preserve">
+    <value>Size: {0} px</value>
+  </data>
+  
+  <!-- Documentation Page -->
+  <data name="DocumentationTitle" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="DocumentationSubtitle" xml:space="preserve">
+    <value>Everything you need to know about using Blazor Kawaii components</value>
+  </data>
+  <data name="TableOfContents" xml:space="preserve">
+    <value>Table of Contents</value>
+  </data>
+  <data name="GettingStarted" xml:space="preserve">
+    <value>Getting Started</value>
+  </data>
+  <data name="Installation" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="BasicUsage" xml:space="preserve">
+    <value>Basic Usage</value>
+  </data>
+  <data name="ComponentProperties" xml:space="preserve">
+    <value>Component Properties</value>
+  </data>
+  <data name="Moods" xml:space="preserve">
+    <value>Moods</value>
+  </data>
+  <data name="Customization" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+  <data name="Examples" xml:space="preserve">
+    <value>Examples</value>
+  </data>
+  <data name="APIReference" xml:space="preserve">
+    <value>API Reference</value>
+  </data>
+  <data name="GettingStartedDesc" xml:space="preserve">
+    <value>Blazor Kawaii is a collection of cute SVG illustrations that you can use as Blazor components. They are designed to add personality and fun to your applications while maintaining a professional look.</value>
+  </data>
+  <data name="GettingStartedDesc2" xml:space="preserve">
+    <value>All components are built with customization in mind, allowing you to change colors, sizes, and moods to match your application's design.</value>
+  </data>
+  <data name="InstallationDesc" xml:space="preserve">
+    <value>To use Blazor Kawaii components in your project, follow these steps:</value>
+  </data>
+  <data name="CloneRepository" xml:space="preserve">
+    <value>Clone the repository</value>
+  </data>
+  <data name="CopyComponents" xml:space="preserve">
+    <value>Copy components to your project</value>
+  </data>
+  <data name="CopyComponentsDesc" xml:space="preserve">
+    <value>Copy the Components and Common folders to your Blazor project.</value>
+  </data>
+  <data name="AddImports" xml:space="preserve">
+    <value>Add necessary imports</value>
+  </data>
+  <data name="BasicUsageDesc" xml:space="preserve">
+    <value>Using a Kawaii component is as simple as adding it to your Razor page:</value>
+  </data>
+  <data name="BasicUsageDesc2" xml:space="preserve">
+    <value>This will render a cat component with default properties. You can customize it by passing parameters.</value>
+  </data>
+  <data name="ComponentPropertiesDesc" xml:space="preserve">
+    <value>All Kawaii components share the same set of properties:</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="SizeDesc" xml:space="preserve">
+    <value>The size of the component in pixels</value>
+  </data>
+  <data name="MoodDesc" xml:space="preserve">
+    <value>The facial expression of the component</value>
+  </data>
+  <data name="ColorDesc" xml:space="preserve">
+    <value>The primary color (hex format)</value>
+  </data>
+  <data name="ClassNameDesc" xml:space="preserve">
+    <value>Optional CSS class name</value>
+  </data>
+  <data name="VariesByComponent" xml:space="preserve">
+    <value>Varies by component</value>
+  </data>
+  <data name="ExampleWithAllProperties" xml:space="preserve">
+    <value>Example with all properties:</value>
+  </data>
+  <data name="MoodsDesc" xml:space="preserve">
+    <value>Each component can express different emotions through the Mood property:</value>
+  </data>
+  <data name="StylingWithCSS" xml:space="preserve">
+    <value>Styling with CSS</value>
+  </data>
+  <data name="StylingWithCSSDesc" xml:space="preserve">
+    <value>You can apply custom CSS classes to components:</value>
+  </data>
+  <data name="DynamicProperties" xml:space="preserve">
+    <value>Dynamic Properties</value>
+  </data>
+  <data name="DynamicPropertiesDesc" xml:space="preserve">
+    <value>Bind component properties to variables for dynamic behavior:</value>
+  </data>
+  <data name="LoadingStates" xml:space="preserve">
+    <value>Loading States</value>
+  </data>
+  <data name="ErrorStates" xml:space="preserve">
+    <value>Error States</value>
+  </data>
+  <data name="EmptyStates" xml:space="preserve">
+    <value>Empty States</value>
+  </data>
+  <data name="APIReferenceDesc" xml:space="preserve">
+    <value>Complete list of available components and their default values:</value>
+  </data>
+  <data name="DefaultSize" xml:space="preserve">
+    <value>Default Size:</value>
+  </data>
+  <data name="DefaultColor" xml:space="preserve">
+    <value>Default Color:</value>
+  </data>
+  <data name="Namespace" xml:space="preserve">
+    <value>Namespace:</value>
+  </data>
+  <data name="PlaygroundCTA" xml:space="preserve">
+    <value>For a complete interactive experience, visit the</value>
+  </data>
+  <data name="PlaygroundCTA2" xml:space="preserve">
+    <value>to experiment with all components and their properties.</value>
+  </data>
+  
+  <!-- Common -->
+  <data name="DarkMode" xml:space="preserve">
+    <value>Dark Mode</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="ToggleDarkMode" xml:space="preserve">
+    <value>Toggle Dark Mode</value>
+  </data>
+  <data name="GitHubRepository" xml:space="preserve">
+    <value>GitHub Repository</value>
+  </data>
+  
+  <!-- Not Found Page -->
+  <data name="NotFound" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="NotFoundMessage" xml:space="preserve">
+    <value>Sorry, there's nothing at this address.</value>
+  </data>
+</root>

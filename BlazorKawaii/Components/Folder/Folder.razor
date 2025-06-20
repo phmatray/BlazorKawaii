@@ -1,0 +1,29 @@
+@namespace BlazorKawaii.Components
+@using static BlazorKawaii.Components.FolderPaths
+@using static BlazorKawaii.Common.SvgFormatHelper
+
+<Wrapper ClassName="@ClassName">
+  <svg
+    width="@FormatSvgNumber(Size * 0.79)"
+    height="@Size"
+    viewBox="0 0 136 172">
+    <g id="kawaii-folder">
+      <g id="folder__body">
+        <path
+          id="folder__body-shape"
+          fill="@Color"
+          d="@Shape"/>
+        <path
+          id="folder__body-shadow"
+          fill="#121212"
+          fillRule="nonzero"
+          opacity="0.1"
+          d="@FolderPaths.Shadow"/>
+      </g>
+      <Face
+        Mood="@Mood"
+        Transform="translate(34 76)"
+        UniqueId="@GetUniqueId()"/>
+    </g>
+  </svg>
+</Wrapper>

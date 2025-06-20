@@ -1,0 +1,163 @@
+@page "/playground"
+@inject IStringLocalizer<SharedResource> Localizer
+
+<PageTitle>Blazor Kawaii - @Localizer["Playground"]</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">@Localizer["PlaygroundTitle"]</MudText>
+<MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-6">
+    @Localizer["PlaygroundSubtitle"]
+</MudText>
+
+<MudGrid Spacing="4">
+    <!-- Controls Panel -->
+    <MudItem xs="12" md="4">
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["CustomizeComponent"]</MudText>
+
+            <MudSelect T="string" Label="@Localizer["Component"]" @bind-Value="_selectedComponent" Variant="Variant.Outlined" Class="mb-4">
+                <MudSelectItem Value="@("Backpack")">Backpack</MudSelectItem>
+                <MudSelectItem Value="@("Browser")">Browser</MudSelectItem>
+                <MudSelectItem Value="@("Cat")">Cat</MudSelectItem>
+                <MudSelectItem Value="@("Chocolate")">Chocolate</MudSelectItem>
+                <MudSelectItem Value="@("CreditCard")">Credit Card</MudSelectItem>
+                <MudSelectItem Value="@("File")">File</MudSelectItem>
+                <MudSelectItem Value="@("Folder")">Folder</MudSelectItem>
+                <MudSelectItem Value="@("Ghost")">Ghost</MudSelectItem>
+                <MudSelectItem Value="@("IceCream")">Ice Cream</MudSelectItem>
+                <MudSelectItem Value="@("Mug")">Mug</MudSelectItem>
+                <MudSelectItem Value="@("Planet")">Planet</MudSelectItem>
+                <MudSelectItem Value="@("SpeechBubble")">Speech Bubble</MudSelectItem>
+            </MudSelect>
+
+            <MudSelect T="Mood" Label="@Localizer["Mood"]" @bind-Value="_mood" Variant="Variant.Outlined" Class="mb-4">
+                @foreach (Mood mood in Enum.GetValues<Mood>())
+                {
+                    <MudSelectItem Value="@mood">@mood</MudSelectItem>
+                }
+            </MudSelect>
+
+            <MudSlider T="int" @bind-Value="_size" Min="50" Max="400" Step="10" Class="mb-4">
+                @Localizer["SizePx", _size]
+            </MudSlider>
+
+            <MudColorPicker Label="@Localizer["Color"]" @bind-Text="_color" Style="@($"color: {_color};")"
+                            Variant="Variant.Outlined" Class="mb-4" />
+
+            <MudDivider Class="my-4" />
+
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["AnimationEffects"]</MudText>
+
+            <MudSwitch T="bool" @bind-Value="_enableRotation" Label="@Localizer["Rotation"]" Color="Color.Primary" />
+            <MudSwitch T="bool" @bind-Value="_enableBounce" Label="@Localizer["Bounce"]" Color="Color.Primary" />
+            <MudSwitch T="bool" @bind-Value="_enablePulse" Label="@Localizer["Pulse"]" Color="Color.Primary" />
+
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true"
+                       Class="mt-4" OnClick="ResetToDefaults">
+                @Localizer["ResetToDefaults"]
+            </MudButton>
+        </MudPaper>
+    </MudItem>
+
+    <!-- Preview Panel -->
+    <MudItem xs="12" md="8">
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["Preview"]</MudText>
+
+            <div class="playground-preview">
+                <div style="@GetAnimationStyles()">
+                    @GetSelectedComponent()
+                </div>
+            </div>
+
+            <MudDivider Class="my-4" />
+
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["GeneratedCode"]</MudText>
+
+            <div class="code-container">
+                <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
+                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>@GetGeneratedCode()</code></pre>
+                </MudPaper>
+                <MudTooltip Text="@(_codeCopied ? Localizer["Copied"] : Localizer["CopyToClipboard"])">
+                    <MudIconButton Icon="@Icons.Material.Filled.ContentCopy"
+                                   Size="Size.Small"
+                                   Class="copy-button"
+                                   OnClick="CopyCode" />
+                </MudTooltip>
+            </div>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code {
+    private string _selectedComponent = "Cat";
+    private Mood _mood = Mood.Blissful;
+    private int _size = 200;
+    private string _color = "#FFD882";
+    private bool _enableRotation;
+    private bool _enableBounce;
+    private bool _enablePulse;
+    private bool _codeCopied;
+
+    [Inject] private IJSRuntime JSRuntime { get; set; } = null!;
+
+    private RenderFragment GetSelectedComponent() => _selectedComponent switch
+    {
+        "Backpack" => @<Backpack Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Browser" => @<Browser Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Cat" => @<Cat Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Chocolate" => @<Chocolate Mood="@_mood" Size="@_size" Color="@_color" />,
+        "CreditCard" => @<CreditCard Mood="@_mood" Size="@_size" Color="@_color" />,
+        "File" => @<File Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Folder" => @<Folder Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Ghost" => @<Ghost Mood="@_mood" Size="@_size" Color="@_color" />,
+        "IceCream" => @<IceCream Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Mug" => @<Mug Mood="@_mood" Size="@_size" Color="@_color" />,
+        "Planet" => @<Planet Mood="@_mood" Size="@_size" Color="@_color" />,
+        "SpeechBubble" => @<SpeechBubble Mood="@_mood" Size="@_size" Color="@_color" />,
+        _ => @<Cat Mood="@_mood" Size="@_size" Color="@_color" />
+    };
+
+    private string GetAnimationStyles()
+    {
+        var styles = new List<string>();
+
+        if (_enableRotation)
+            styles.Add("animation: rotation 2s linear infinite");
+        else if (_enableBounce)
+            styles.Add("animation: bounce 1s ease-in-out infinite");
+        else if (_enablePulse)
+            styles.Add("animation: pulse 2s ease-in-out infinite");
+
+        return string.Join("; ", styles);
+    }
+
+    private string GetGeneratedCode()
+    {
+        return $@"@using BlazorKawaii.Components.{_selectedComponent}
+@using BlazorKawaii.Common
+
+<{_selectedComponent} Mood=""Mood.{_mood}"" Size=""{_size}"" Color=""{_color}"" />";
+    }
+
+    private void ResetToDefaults()
+    {
+        _selectedComponent = "Cat";
+        _mood = Mood.Blissful;
+        _size = 200;
+        _color = "#FFD882";
+        _enableRotation = false;
+        _enableBounce = false;
+        _enablePulse = false;
+    }
+
+    private async Task CopyCode()
+    {
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", GetGeneratedCode());
+        _codeCopied = true;
+        StateHasChanged();
+
+        await Task.Delay(2000);
+        _codeCopied = false;
+        StateHasChanged();
+    }
+}

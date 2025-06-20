@@ -1,0 +1,34 @@
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+@using System.Globalization
+
+<MudMenu Icon="@Icons.Material.Filled.Language" Color="Color.Inherit" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+    <MudMenuItem OnClick="@(() => ChangeCulture("en"))">
+        <div class="d-flex align-center gap-2">
+            <MudIcon Icon="@(CurrentCulture == "en" ? Icons.Material.Filled.Check : Icons.Material.Filled.Circle)" Size="Size.Small" />
+            English
+        </div>
+    </MudMenuItem>
+    <MudMenuItem OnClick="@(() => ChangeCulture("fr"))">
+        <div class="d-flex align-center gap-2">
+            <MudIcon Icon="@(CurrentCulture == "fr" ? Icons.Material.Filled.Check : Icons.Material.Filled.Circle)" Size="Size.Small" />
+            Français
+        </div>
+    </MudMenuItem>
+    <MudMenuItem OnClick="@(() => ChangeCulture("es"))">
+        <div class="d-flex align-center gap-2">
+            <MudIcon Icon="@(CurrentCulture == "es" ? Icons.Material.Filled.Check : Icons.Material.Filled.Circle)" Size="Size.Small" />
+            Español
+        </div>
+    </MudMenuItem>
+</MudMenu>
+
+@code {
+    private string CurrentCulture => CultureInfo.CurrentUICulture.Name;
+
+    private async Task ChangeCulture(string culture)
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "culture", culture);
+        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+    }
+}

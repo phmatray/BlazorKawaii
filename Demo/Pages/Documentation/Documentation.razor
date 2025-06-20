@@ -1,0 +1,227 @@
+@page "/documentation"
+@inject IJSRuntime JSRuntime
+@inject IStringLocalizer<SharedResource> Localizer
+
+<PageTitle>Blazor Kawaii - @Localizer["Documentation"]</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">@Localizer["DocumentationTitle"]</MudText>
+<MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-6">
+    @Localizer["DocumentationSubtitle"]
+</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="3">
+        <!-- Table of Contents -->
+        <MudPaper Class="pa-4 position-sticky" Style="position: sticky; top: 80px;" Elevation="2">
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["TableOfContents"]</MudText>
+            <MudNavMenu>
+                <MudNavLink OnClick="@(() => ScrollToSection("getting-started"))">@Localizer["GettingStarted"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("installation"))">@Localizer["Installation"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("basic-usage"))">@Localizer["BasicUsage"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("component-props"))">@Localizer["ComponentProperties"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("moods"))">@Localizer["Moods"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("customization"))">@Localizer["Customization"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("examples"))">@Localizer["Examples"]</MudNavLink>
+                <MudNavLink OnClick="@(() => ScrollToSection("api-reference"))">@Localizer["APIReference"]</MudNavLink>
+            </MudNavMenu>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="12" md="9">
+        <!-- Getting Started -->
+        <div id="getting-started" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["GettingStarted"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["GettingStartedDesc"]
+            </MudText>
+            <MudText Typo="Typo.body1">
+                @Localizer["GettingStartedDesc2"]
+            </MudText>
+        </div>
+
+        <!-- Installation -->
+        <div id="installation" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Installation"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["InstallationDesc"]
+            </MudText>
+
+            <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">1. @Localizer["CloneRepository"]</MudText>
+            <CodeBlock Language="bash" CodeFile="code-samples/installation-clone.txt" />
+
+            <MudText Typo="Typo.h6" GutterBottom="true">2. @Localizer["CopyComponents"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["CopyComponentsDesc"]
+            </MudText>
+
+            <MudText Typo="Typo.h6" GutterBottom="true">3. @Localizer["AddImports"]</MudText>
+            <CodeBlock Language="csharp" CodeFile="code-samples/installation-imports.txt" />
+        </div>
+
+        <!-- Basic Usage -->
+        <div id="basic-usage" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["BasicUsage"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["BasicUsageDesc"]
+            </MudText>
+
+            <CodeBlock Language="razor" CodeFile="code-samples/basic-usage.txt" />
+
+            <MudText Typo="Typo.body1">
+                @Localizer["BasicUsageDesc2"]
+            </MudText>
+        </div>
+
+        <!-- Component Properties -->
+        <div id="component-props" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["ComponentProperties"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["ComponentPropertiesDesc"]
+            </MudText>
+
+            <MudSimpleTable Hover="true" Bordered="true" Class="mb-4">
+                <thead>
+                    <tr>
+                        <th>@Localizer["Property"]</th>
+                        <th>@Localizer["Type"]</th>
+                        <th>@Localizer["Default"]</th>
+                        <th>@Localizer["Description"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Size</code></td>
+                        <td><code>int</code></td>
+                        <td>@Localizer["VariesByComponent"]</td>
+                        <td>@Localizer["SizeDesc"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>Mood</code></td>
+                        <td><code>Mood</code></td>
+                        <td><code>Mood.Blissful</code></td>
+                        <td>@Localizer["MoodDesc"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>Color</code></td>
+                        <td><code>string</code></td>
+                        <td>@Localizer["VariesByComponent"]</td>
+                        <td>@Localizer["ColorDesc"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>ClassName</code></td>
+                        <td><code>string?</code></td>
+                        <td><code>null</code></td>
+                        <td>@Localizer["ClassNameDesc"]</td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["ExampleWithAllProperties"]</MudText>
+            <CodeBlock Language="razor" CodeFile="code-samples/example-all-properties.txt" />
+        </div>
+
+        <!-- Moods -->
+        <div id="moods" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Moods"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["MoodsDesc"]
+            </MudText>
+
+            <MudGrid Spacing="2" Class="mt-4">
+                @foreach (Mood mood in Enum.GetValues<Mood>())
+                {
+                    <MudItem xs="6" sm="4" md="3">
+                        <MudPaper Class="pa-3 text-center" Elevation="1">
+                            <ghost Mood="@mood" Size="80" />
+                            <MudText Typo="Typo.subtitle2" Class="mt-2">@mood</MudText>
+                        </MudPaper>
+                    </MudItem>
+                }
+            </MudGrid>
+        </div>
+
+        <!-- Customization -->
+        <div id="customization" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Customization"]</MudText>
+
+            <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">@Localizer["StylingWithCSS"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["StylingWithCSSDesc"]
+            </MudText>
+            <CodeBlock Language="razor" CodeFile="code-samples/styling-with-css.txt" />
+
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["DynamicProperties"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["DynamicPropertiesDesc"]
+            </MudText>
+            <CodeBlock Language="razor" CodeFile="code-samples/dynamic-properties.txt" />
+        </div>
+
+        <!-- Examples -->
+        <div id="examples" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Examples"]</MudText>
+
+            <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">@Localizer["LoadingStates"]</MudText>
+            <CodeBlock Language="razor" CodeFile="code-samples/loading-states.txt" />
+
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["ErrorStates"]</MudText>
+            <CodeBlock Language="razor" CodeFile="code-samples/error-states.txt" />
+
+            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["EmptyStates"]</MudText>
+            <CodeBlock Language="razor" CodeFile="code-samples/empty-states.txt" />
+        </div>
+
+        <!-- API Reference -->
+        <div id="api-reference" class="doc-section">
+            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["APIReference"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                @Localizer["APIReferenceDesc"]
+            </MudText>
+
+            <MudExpansionPanels Class="mt-4">
+                <MudExpansionPanel Text="Backpack">
+                    <MudSimpleTable>
+                        <tbody>
+                            <tr><td>@Localizer["DefaultSize"]</td><td>240</td></tr>
+                            <tr><td>@Localizer["DefaultColor"]</td><td>#FFD882</td></tr>
+                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components.Backpack</td></tr>
+                        </tbody>
+                    </MudSimpleTable>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Browser">
+                    <MudSimpleTable>
+                        <tbody>
+                            <tr><td>@Localizer["DefaultSize"]</td><td>180</td></tr>
+                            <tr><td>@Localizer["DefaultColor"]</td><td>#FDA7DC</td></tr>
+                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components.Browser</td></tr>
+                        </tbody>
+                    </MudSimpleTable>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Cat">
+                    <MudSimpleTable>
+                        <tbody>
+                            <tr><td>@Localizer["DefaultSize"]</td><td>320</td></tr>
+                            <tr><td>@Localizer["DefaultColor"]</td><td>#596881</td></tr>
+                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components.Cat</td></tr>
+                        </tbody>
+                    </MudSimpleTable>
+                </MudExpansionPanel>
+                <!-- Add more components as needed -->
+            </MudExpansionPanels>
+
+            <MudAlert Severity="Severity.Info" Class="mt-4">
+                <MudText>
+                    @Localizer["PlaygroundCTA"]
+                    <MudLink Href="/playground">@Localizer["Playground"]</MudLink> @Localizer["PlaygroundCTA2"]
+                </MudText>
+            </MudAlert>
+        </div>
+    </MudItem>
+</MudGrid>
+
+@code {
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+    }
+}

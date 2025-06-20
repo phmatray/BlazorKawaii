@@ -1,0 +1,41 @@
+@namespace BlazorKawaii.Components
+@using static BlazorKawaii.Components.ChocolatePaths
+@using static BlazorKawaii.Common.SvgFormatHelper
+
+<Wrapper ClassName="@ClassName">
+  <svg
+    width="@FormatSvgNumber(Size * 0.62)"
+    height="@Size"
+    viewBox="0 0 114 210">
+    <g id="kawaii-chocolate">
+      <path
+        id="chocolate__background"
+        fill="@Color"
+        d="@ChocoBackground"/>
+      <g id="chocolate__inner" fill="#111" opacity="0.14">
+        <path d="@ChocoInner1"/>
+        <path d="@ChocoInner2"/>
+        <path d="@ChocoInner3"/>
+        <path d="@ChocoInner4"/>
+        <path d="@ChocoInner5"/>
+        <path d="@ChocoInner6"/>
+      </g>
+      <Face
+        Mood="@Mood"
+        Transform="translate(26 134)"
+        UniqueId="@GetUniqueId()"/>
+      <path
+        id="chocolate__paper"
+        fill="#111"
+        fillRule="nonzero"
+        opacity="0.14"
+        d="@Paper"/>
+      <path
+        id="chocolate__paper-folded"
+        fill="#FFF"
+        fillRule="nonzero"
+        opacity="0.3"
+        d="@PaperFolded"/>
+    </g>
+  </svg>
+</Wrapper>

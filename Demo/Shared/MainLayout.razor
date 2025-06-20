@@ -1,17 +1,90 @@
 ﻿@inherits LayoutComponentBase
+@inject IStringLocalizer<SharedResource> Localizer
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(_ => DrawerToggle())" />
+        <MudText Typo="Typo.h5" Class="ml-3">Blazor Kawaii</MudText>
+        <MudSpacer />
+        <CultureSelector />
+        <MudTooltip Text="@Localizer["ToggleDarkMode"]">
+            <MudIconButton Icon="@(_isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+                           Color="Color.Inherit"
+                           OnClick="@(_ => ToggleDarkMode())" />
+        </MudTooltip>
+        <MudTooltip Text="@Localizer["GitHubRepository"]">
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub"
+                           Color="Color.Inherit"
+                           Href="https://github.com/phmatray/BlazorKawaii"
+                           Target="_blank" />
+        </MudTooltip>
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.False" Class="pa-6">
             @Body
-        </article>
-    </main>
-</div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private MudThemeProvider _mudThemeProvider = null!;
+    private bool _drawerOpen = true;
+    private bool _isDarkMode;
+
+    private MudTheme _theme = new()
+    {
+        PaletteLight = new PaletteLight
+        {
+            Primary = "#FFD882",
+            Secondary = "#FDA7DC",
+            Success = "#A6E191",
+            Info = "#83D1FB",
+            Warning = "#FCCB7E",
+            Error = "#FC105C",
+            AppbarBackground = "#FFD882",
+            AppbarText = "#424242",
+            DrawerBackground = "#FFF8E1",
+            DrawerText = "#424242",
+            Surface = "#FFFFFF"
+        },
+        PaletteDark = new PaletteDark
+        {
+            Primary = "#FFD882",
+            Secondary = "#FDA7DC",
+            Success = "#A6E191",
+            Info = "#83D1FB",
+            Warning = "#FCCB7E",
+            Error = "#FC105C",
+            AppbarBackground = "#1e1e1e",
+            DrawerBackground = "#1e1e1e",
+            Surface = "#1e1e1e"
+        }
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
+            StateHasChanged();
+        }
+    }
+
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    private void ToggleDarkMode()
+    {
+        _isDarkMode = !_isDarkMode;
+    }
+}

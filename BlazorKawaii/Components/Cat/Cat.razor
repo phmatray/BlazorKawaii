@@ -1,0 +1,67 @@
+@namespace BlazorKawaii.Components
+@using static BlazorKawaii.Components.CatPaths
+@using static BlazorKawaii.Common.SvgFormatHelper
+
+<Wrapper ClassName="@ClassName">
+  <svg
+    width="@FormatSvgNumber(Size * 0.97)"
+    height="@Size"
+    viewBox="0 0 185 198">
+    <defs>
+      <path id="@($"cat__ear-right-{_uniqueId}")" d="M27.704 20.285S-4.32-6.668.845.984C6.01 8.636 22.38 32 27.704 20.285z"/>
+      <path id="@($"cat__ear-left-{_uniqueId}")" d="M0 20.285S32.025-6.668 26.86.984C21.695 8.636 5.325 32 0 20.285z"/>
+      <mask id="@($"cat__mask-ear-right-{_uniqueId}")" fill="#fff">
+        <use xlinkHref="@($"#cat__ear-right-{_uniqueId}")"/>
+      </mask>
+      <mask id="@($"cat__mask-ear-left-{_uniqueId}")" fill="#fff">
+        <use xlinkHref="@($"#cat__ear-left-{_uniqueId}")"/>
+      </mask>
+    </defs>
+    <g id="kawaii-cat">
+      <g id="cat__body">
+        <path
+          id="cat__body-shape"
+          fill="@Color"
+          d="@Body"/>
+        <path
+          id="cat__body-shadow"
+          fill="#121212"
+          fillRule="nonzero"
+          opacity="0.1"
+          d="@CatPaths.Shadow"/>
+      </g>
+      <g id="cat__ears" transform="translate(22 12.103)">
+        <g id="cat__ear-right" transform="translate(112.462)">
+          <use fill="@Color" xlinkHref="@($"#cat__ear-right-{_uniqueId}")"/>
+          <path
+            fill="#FFF"
+            fillRule="nonzero"
+            d="M7.026 13.982s16.923-14.41 14.667-12.718c-2.257 1.692-11.897 14.974-14.667 12.718z"
+            mask="url(@($"#cat__mask-ear-right-{_uniqueId}"))"
+            opacity="0.4"/>
+        </g>
+        <use
+          id="cat__ear-left"
+          fill="@Color"
+          transform="matrix(-1 0 0 1 26.86 0)"
+          xlinkHref="@($"#cat__ear-left-{_uniqueId}")"/>
+      </g>
+      <g id="cat__legs" transform="translate(40.718 169.051)">
+        <g id="cat__leg-right" transform="translate(76.154)">
+          <path
+            fill="@Color"
+            d="@Legs"/>
+        </g>
+        <g id="cat__leg-left" transform="matrix(-1 0 0 1 16.051 0)">
+          <path
+            fill="@Color"
+            d="@Legs"/>
+        </g>
+      </g>
+      <Face
+        Mood="@Mood"
+        Transform="translate(73 90)"
+        UniqueId="@GetUniqueId()"/>
+    </g>
+  </svg>
+</Wrapper>

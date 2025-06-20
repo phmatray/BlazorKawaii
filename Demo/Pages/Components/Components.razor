@@ -1,0 +1,212 @@
+@page "/components"
+@inject IStringLocalizer<SharedResource> Localizer
+
+<PageTitle>Blazor Kawaii - @Localizer["Components"]</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">@Localizer["KawaiiComponents"]</MudText>
+<MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-4">
+    @Localizer["ComponentsSubtitle"]
+</MudText>
+
+<!-- Search and Filter -->
+<MudGrid Spacing="2" Class="mb-4">
+    <MudItem xs="12" md="6">
+        <MudTextField T="string" @bind-Value="_searchTerm" Label="@Localizer["SearchComponents"]"
+                      Variant="Variant.Outlined" Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search"
+                      Immediate="true" />
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudSelect T="Mood?" Label="@Localizer["FilterByMood"]" @bind-Value="_filterMood"
+                   Variant="Variant.Outlined" Clearable="true">
+            @foreach (Mood mood in Enum.GetValues<Mood>())
+            {
+                <MudSelectItem Value="@((Mood?)mood)">@mood</MudSelectItem>
+            }
+        </MudSelect>
+    </MudItem>
+</MudGrid>
+
+<!-- Component Grid -->
+<MudGrid Spacing="4">
+    @foreach (var component in GetFilteredComponents())
+    {
+        <MudItem xs="12" md="6" lg="4">
+            <MudCard Class="component-showcase" Elevation="2">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5" GutterBottom="true">@component.Name</MudText>
+
+                    <MudPaper Elevation="0" Class="pa-4 mb-3 text-center"
+                              Style="background-color: var(--mud-palette-background-grey);">
+                        @component.Render(_displayMood ?? Mood.Blissful, 120)
+                    </MudPaper>
+
+                    <MudText Typo="Typo.body2" Color="Color.Secondary" GutterBottom="true">
+                        @component.Description
+                    </MudText>
+
+                    <div class="mb-3">
+                        <MudText Typo="Typo.subtitle2" GutterBottom="true">@Localizer["DefaultValues"]</MudText>
+                        <MudChip T="string" Size="Size.Small" Color="Color.Info">@Localizer["Size"]: @component.DefaultSize px</MudChip>
+                        <MudChip T="string" Size="Size.Small" Color="Color.Primary">@Localizer["Color"]: @component.DefaultColor</MudChip>
+                    </div>
+
+                    <MudText Typo="Typo.subtitle2" GutterBottom="true">@Localizer["AvailableMoods"]</MudText>
+                    <div>
+                        @foreach (Mood mood in Enum.GetValues<Mood>())
+                        {
+                            <MudChip T="string" Size="Size.Small" Class="mood-chip"
+                                     Color="@(_displayMood == mood ? Color.Primary : Color.Default)"
+                                     OnClick="@(() => _displayMood = mood)">
+                                @mood
+                            </MudChip>
+                        }
+                    </div>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.Code"
+                               OnClick="@(() => ShowCode(component))">
+                        @Localizer["ViewCode"]
+                    </MudButton>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.Brush"
+                               Href="/playground">
+                        @Localizer["TryInPlayground"]
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
+
+<!-- Code Dialog -->
+<MudOverlay Visible="_showCodeDialog" OnClick="@(() => _showCodeDialog = false)" DarkBackground="true">
+    <MudPaper Class="pa-6" Style="max-width: 800px; width: 90vw;" @onclick:stopPropagation="true">
+        <MudText Typo="Typo.h5" Class="mb-4">@_selectedComponentForCode?.Name @Localizer["CodeExample"]</MudText>
+        <MudPaper Outlined="true" Class="pa-3 mb-4" Style="background-color: var(--mud-palette-background-grey);">
+            <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; overflow-x: auto;"><code>@GetCodeExample()</code></pre>
+        </MudPaper>
+        <div class="d-flex justify-end gap-2">
+            <MudButton OnClick="@(() => _showCodeDialog = false)">@Localizer["Close"]</MudButton>
+            <MudButton Color="Color.Primary" OnClick="CopyCodeExample"
+                       StartIcon="@Icons.Material.Filled.ContentCopy"
+                       Variant="Variant.Filled">
+                @Localizer["CopyCode"]
+            </MudButton>
+        </div>
+    </MudPaper>
+</MudOverlay>
+
+
+@code {
+    private string _searchTerm = "";
+    private Mood? _filterMood;
+    private Mood? _displayMood = Mood.Blissful;
+    private bool _showCodeDialog;
+    private ComponentInfo? _selectedComponentForCode;
+    [Inject] private ISnackbar Snackbar { get; set; } = null!;
+
+    [Inject] private IJSRuntime JSRuntime { get; set; } = null!;
+
+    private record ComponentInfo(
+        string Name,
+        string Description,
+        int DefaultSize,
+        string DefaultColor,
+        Func<Mood, int, RenderFragment> Render
+    );
+
+    private List<ComponentInfo> _components = [];
+
+    protected override void OnInitialized()
+    {
+        _components =
+        [
+            new("Backpack", Localizer["BackpackDesc"].Value, 240, "#FFD882",
+                (mood, size) => @<Backpack Mood="@mood" Size="@size" />),
+            new("Browser", Localizer["BrowserDesc"].Value, 180, "#FDA7DC",
+                (mood, size) => @<Browser Mood="@mood" Size="@size" />),
+            new("Cat", Localizer["CatDesc"].Value, 320, "#596881",
+                (mood, size) => @<Cat Mood="@mood" Size="@size" />),
+            new("Chocolate", Localizer["ChocolateDesc"].Value, 300, "#FC105C",
+                (mood, size) => @<Chocolate Mood="@mood" Size="@size" />),
+            new("CreditCard", Localizer["CreditCardDesc"].Value, 240, "#FFD882",
+                (mood, size) => @<CreditCard Mood="@mood" Size="@size" />),
+            new("File", Localizer["FileDesc"].Value, 200, "#83D1FB",
+                (mood, size) => @<File Mood="@mood" Size="@size" />),
+            new("Folder", Localizer["FolderDesc"].Value, 200, "#FFD882",
+                (mood, size) => @<Folder Mood="@mood" Size="@size" />),
+            new("Ghost", Localizer["GhostDesc"].Value, 240, "#E0E4E8",
+                (mood, size) => @<Ghost Mood="@mood" Size="@size" />),
+            new("IceCream", Localizer["IceCreamDesc"].Value, 300, "#FCCB7E",
+                (mood, size) => @<IceCream Mood="@mood" Size="@size" />),
+            new("Mug", Localizer["MugDesc"].Value, 200, "#A6E191",
+                (mood, size) => @<Mug Mood="@mood" Size="@size" />),
+            new("Planet", Localizer["PlanetDesc"].Value, 190, "#FCCB7E",
+                (mood, size) => @<Planet Mood="@mood" Size="@size" />),
+            new("SpeechBubble", Localizer["SpeechBubbleDesc"].Value, 170, "#83D1FB",
+                (mood, size) => @<SpeechBubble Mood="@mood" Size="@size" />)
+        ];
+    }
+
+    private IEnumerable<ComponentInfo> GetFilteredComponents()
+    {
+        var filtered = _components.AsEnumerable();
+
+        if (!string.IsNullOrWhiteSpace(_searchTerm))
+        {
+            filtered = filtered.Where(c =>
+                c.Name.Contains(_searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                c.Description.Contains(_searchTerm, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (_filterMood.HasValue)
+        {
+            // For now, all components support all moods, so this filter
+            // could be extended in the future if some components have limited mood support
+            // Currently, this serves as a placeholder for future functionality
+        }
+
+        return filtered;
+    }
+
+    private void ShowCode(ComponentInfo component)
+    {
+        _selectedComponentForCode = component;
+        _showCodeDialog = true;
+    }
+
+    private string GetCodeExample()
+    {
+        if (_selectedComponentForCode == null) return "";
+
+        var basicUsage = Localizer["BasicUsageComment"].Value;
+        var withProps = Localizer["WithCustomPropertiesComment"].Value;
+        var allMoods = Localizer["AllMoodsExampleComment"].Value;
+        
+        return $@"@using BlazorKawaii.Components.{_selectedComponentForCode.Name}
+@using BlazorKawaii.Common
+
+{{* {basicUsage} *}}
+<{_selectedComponentForCode.Name} />
+
+{{* {withProps} *}}
+<{_selectedComponentForCode.Name}
+    Mood=""Mood.{_displayMood ?? Mood.Blissful}""
+    Size=""{_selectedComponentForCode.DefaultSize}""
+    Color=""{_selectedComponentForCode.DefaultColor}"" />
+
+{{* {allMoods} *}}
+@foreach (Mood mood in Enum.GetValues<Mood>())
+{{
+    <{_selectedComponentForCode.Name} Mood=""@mood"" Size=""100"" />
+}}";
+    }
+
+    private async Task CopyCodeExample()
+    {
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", GetCodeExample());
+        Snackbar.Add(Localizer["CodeCopiedToClipboard"], Severity.Success);
+    }
+}

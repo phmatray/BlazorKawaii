@@ -1,0 +1,5 @@
+<Ghost
+    Size="300"
+    Mood="Mood.Excited"
+    Color="#B19CD9"
+    ClassName="my-custom-ghost" />

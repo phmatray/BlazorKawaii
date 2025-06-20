@@ -1,0 +1,65 @@
+@inject IJSRuntime JSRuntime
+@inject HttpClient HttpClient
+
+<div class="code-container">
+    <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey); overflow-x: auto;">
+        <pre style="margin: 0;"><code class="@($"language-{Language}")">@_displayCode</code></pre>
+    </MudPaper>
+    @if (ShowCopyButton)
+    {
+        <MudTooltip Text="@(_codeCopied ? "Copied!" : "Copy to clipboard")">
+            <MudIconButton Icon="@Icons.Material.Filled.ContentCopy" 
+                           Size="Size.Small" 
+                           Class="copy-button"
+                           OnClick="CopyCode" />
+        </MudTooltip>
+    }
+</div>
+
+@code {
+    [Parameter] public string? Code { get; set; }
+    [Parameter] public string? CodeFile { get; set; }
+    [Parameter] public string Language { get; set; } = "csharp";
+    [Parameter] public bool ShowCopyButton { get; set; } = true;
+    
+    private bool _codeCopied = false;
+    private string _displayCode = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(CodeFile))
+        {
+            try
+            {
+                _displayCode = await HttpClient.GetStringAsync(CodeFile);
+            }
+            catch
+            {
+                _displayCode = $"// Error loading code from {CodeFile}";
+            }
+        }
+        else if (!string.IsNullOrEmpty(Code))
+        {
+            _displayCode = Code;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender || !string.IsNullOrEmpty(_displayCode))
+        {
+            await JSRuntime.InvokeVoidAsync("highlightCode");
+        }
+    }
+
+    private async Task CopyCode()
+    {
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", _displayCode);
+        _codeCopied = true;
+        StateHasChanged();
+        
+        await Task.Delay(2000);
+        _codeCopied = false;
+        StateHasChanged();
+    }
+}
