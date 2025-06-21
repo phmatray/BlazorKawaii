@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the CreditCard component.
+/// </summary>
 public static class CreditCardPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the CreditCard body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

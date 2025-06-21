@@ -1,9 +1,15 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Chocolate component.
+/// </summary>
 public static class ChocolatePaths
 {
     public const string ChocolateFillColor = "#8C6A57";
     
+    /// <summary>
+    /// Gets the SVG path data for the Chocolate body.
+    /// </summary>
     public const string Body = @"
         <path
             d=""M166.389 201.19a4 4 0 0 1-4 4H78a4 4 0 0 1-4-4V39a4 4 0 0 1 4-4h84.389a4 4 0 0 1 4 4v162.19Z""

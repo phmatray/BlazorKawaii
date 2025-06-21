@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the IceCream component.
+/// </summary>
 public static class IceCreamPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the IceCream body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""#FCCB7E""

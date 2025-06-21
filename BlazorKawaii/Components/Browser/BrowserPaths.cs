@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Browser component.
+/// </summary>
 public static class BrowserPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Browser body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

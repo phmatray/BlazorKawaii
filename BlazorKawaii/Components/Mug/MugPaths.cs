@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Mug component.
+/// </summary>
 public static class MugPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Mug body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

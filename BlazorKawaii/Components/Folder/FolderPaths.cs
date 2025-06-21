@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Folder component.
+/// </summary>
 public static class FolderPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Folder body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

@@ -1,7 +1,13 @@
 namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the HumanCat component.
+/// </summary>
 public static class HumanCatPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the HumanCat body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

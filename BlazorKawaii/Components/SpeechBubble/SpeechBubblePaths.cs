@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the SpeechBubble component.
+/// </summary>
 public static class SpeechBubblePaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the SpeechBubble body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

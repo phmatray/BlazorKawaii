@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Backpack component.
+/// </summary>
 public static class BackpackPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Backpack body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""
