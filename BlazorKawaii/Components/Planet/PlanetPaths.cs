@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Planet component.
+/// </summary>
 public static class PlanetPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Planet body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

@@ -1,7 +1,13 @@
 namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Astronaut component.
+/// </summary>
 public static class AstronautPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Astronaut body.
+    /// </summary>
     public const string Body = @"
         <path
             fill-rule=""evenodd""

@@ -1,7 +1,13 @@
 ﻿namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Ghost component.
+/// </summary>
 public static class GhostPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Ghost body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

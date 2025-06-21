@@ -1,7 +1,13 @@
 namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the HumanDinosaur component.
+/// </summary>
 public static class HumanDinosaurPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the HumanDinosaur body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""

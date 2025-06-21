@@ -1,7 +1,13 @@
 namespace BlazorKawaii.Components;
 
+/// <summary>
+/// Provides SVG path data for the Cyborg component.
+/// </summary>
 public static class CyborgPaths
 {
+    /// <summary>
+    /// Gets the SVG path data for the Cyborg body.
+    /// </summary>
     public const string Body = @"
         <path
             fill=""currentColor""
