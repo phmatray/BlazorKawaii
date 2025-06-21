@@ -236,7 +236,6 @@ jobs:
         body: ${{ steps.changelog.outputs.clean_changelog }}
         files: |
           ./artifacts/*.nupkg
-          ./artifacts/*.snupkg
         draft: false
         prerelease: false
       env:

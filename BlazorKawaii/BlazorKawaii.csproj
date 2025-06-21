@@ -26,10 +26,11 @@
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     
     <!-- Symbol/Debug Information -->
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- Using embedded symbols instead of separate symbol package -->
+    <IncludeSymbols>false</IncludeSymbols>
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <EmbedAllSources>true</EmbedAllSources>
   </PropertyGroup>
 
   <ItemGroup>
