@@ -1,6 +1,5 @@
 @inject IJSRuntime JSRuntime
 @inject HttpClient HttpClient
-@using System.Net
 @implements IAsyncDisposable
 
 <MudPaper Class="code-block-container" Outlined="true" Elevation="0">
@@ -9,7 +8,7 @@
         <MudSpacer />
         @if (ShowCopyButton)
         {
-            <MudButton Variant="Variant.Text" 
+            <MudButton Variant="Variant.Text"
                        Size="Size.Small"
                        StartIcon="@(_codeCopied ? Icons.Material.Filled.Done : Icons.Material.Filled.ContentCopy)"
                        Color="@(_codeCopied ? Color.Success : Color.Default)"

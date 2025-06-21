@@ -16,6 +16,9 @@ public static class ServiceCollectionExtensions
         // Add language service
         services.AddScoped<LanguageService>();
         
+        // Add NuGet version service
+        services.AddScoped<INuGetVersionService, NuGetVersionService>();
+        
         return services;
     }
 }

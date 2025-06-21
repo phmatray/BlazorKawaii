@@ -1,5 +1,6 @@
 @inject IStringLocalizer<SharedResource> Localizer
 @inject NavigationManager Navigation
+@inject INuGetVersionService NuGetVersionService
 
 <MudNavMenu Margin="Margin.Normal" Color="Color.Primary">
 
@@ -7,7 +8,14 @@
         <MudStack AlignItems="AlignItems.Center" Spacing="2">
             <Ghost Size="80" Mood="Mood.Blissful" Color="#A6E191" SvgStyle="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
             <MudText Typo="Typo.h6" Color="Color.Primary">Blazor Kawaii</MudText>
-            <MudChip T="string" Size="Size.Small" Color="Color.Success" Icon="@Icons.Material.Filled.NewReleases">v1.0.0</MudChip>
+            @if (!string.IsNullOrEmpty(_version))
+            {
+                <MudChip T="string" Size="Size.Small" Color="Color.Success" Icon="@Icons.Material.Filled.NewReleases">v@_version</MudChip>
+            }
+            else
+            {
+                <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="60px" Height="24px" />
+            }
         </MudStack>
     </div>
 
@@ -50,8 +58,15 @@
 
 
 @code {
+    private string? _version;
+
     protected override void OnInitialized()
     {
         Navigation.LocationChanged += (_, _) => StateHasChanged();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _version = await NuGetVersionService.GetLatestVersionAsync();
     }
 }
