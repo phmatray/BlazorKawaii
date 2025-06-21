@@ -15,24 +15,43 @@ public static class WebAssemblyHostExtensions
         var navigationManager = host.Services.GetRequiredService<NavigationManager>();
         
         // Try to get culture from URL first
-        var culture = GetCultureFromUrl(navigationManager.Uri);
+        var urlCulture = GetCultureFromUrl(navigationManager.Uri);
+        var culture = urlCulture;
         
         // If not in URL, try localStorage
         if (string.IsNullOrEmpty(culture))
         {
             culture = await GetStoredCultureAsync(jsInterop);
         }
-        else
+        
+        // Validate culture
+        var validatedCulture = ValidateCulture(culture);
+        
+        // If URL had an invalid culture OR no culture at all, redirect with valid culture
+        if (string.IsNullOrEmpty(urlCulture) || urlCulture != validatedCulture)
         {
-            // If found in URL, also save to localStorage for consistency
-            await jsInterop.InvokeVoidAsync("localStorage.setItem", "culture", culture);
+            // Rewrite URL with valid culture
+            var uri = new Uri(navigationManager.Uri);
+            var queryParams = QueryHelpers.ParseQuery(uri.Query);
+            queryParams["lang"] = validatedCulture;
+            
+            var queryDict = queryParams.ToDictionary(
+                kvp => kvp.Key, 
+                kvp => kvp.Value.ToString() ?? string.Empty
+            );
+            var newUrl = QueryHelpers.AddQueryString(uri.GetLeftPart(UriPartial.Path), queryDict!);
+            navigationManager.NavigateTo(newUrl, forceLoad: true);
+            return;
         }
         
-        // Validate and set default if needed
-        culture = ValidateCulture(culture);
+        // If found in URL, also save to localStorage for consistency
+        if (!string.IsNullOrEmpty(urlCulture))
+        {
+            await jsInterop.InvokeVoidAsync("localStorage.setItem", "culture", validatedCulture);
+        }
         
         // Apply the culture
-        SetCulture(culture);
+        SetCulture(validatedCulture);
     }
     
     private static string? GetCultureFromUrl(string uri)
