@@ -1,11 +1,22 @@
 # 🌸 BlazorKawaii
 
-A collection of cute, customizable SVG components for Blazor WebAssembly applications. Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library by [Miuki Miu](https://github.com/miukimiu), BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.
+<div align="center">
+  <img src="logo.png" alt="BlazorKawaii Logo" width="200" />
+</div>
 
-![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
-![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
-[![NuGet](https://img.shields.io/nuget/v/BlazorKawaii.svg?style=for-the-badge)](https://www.nuget.org/packages/BlazorKawaii/)
+<div align="center">
+  <p>A collection of cute, customizable SVG components for Blazor WebAssembly applications.</p>
+  <p>Based on the wonderful <a href="https://react-kawaii.vercel.app/">React Kawaii</a> library by <a href="https://github.com/miukimiu">Miuki Miu</a>, BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.</p>
+</div>
+
+<div align="center">
+  
+  ![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
+  ![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
+  ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+  [![NuGet](https://img.shields.io/nuget/v/BlazorKawaii.svg?style=for-the-badge)](https://www.nuget.org/packages/BlazorKawaii/)
+  
+</div>
 
 ## ✨ Features
 
@@ -81,24 +92,24 @@ All components share the same parameter structure:
 
 #### Component List
 
-| Component | Default Size | Default Color |
-|-----------|--------------|---------------|
-| Astronaut | 240 | #A6E191 |
-| Backpack | 240 | #A6E191 |
-| Browser | 180 | #A6E191 |
-| Cat | 320 | #A6E191 |
-| Chocolate | 300 | #A6E191 |
-| CreditCard | 240 | #A6E191 |
-| Cyborg | 240 | #A6E191 |
-| File | 200 | #A6E191 |
-| Folder | 200 | #A6E191 |
-| Ghost | 240 | #A6E191 |
-| HumanCat | 240 | #A6E191 |
-| HumanDinosaur | 240 | #A6E191 |
-| IceCream | 300 | #A6E191 |
-| Mug | 200 | #A6E191 |
-| Planet | 190 | #A6E191 |
-| SpeechBubble | 170 | #A6E191 |
+| Component     | Default Size | Default Color |
+|---------------|--------------|---------------|
+| Astronaut     | 240          | #A6E191       |
+| Backpack      | 240          | #A6E191       |
+| Browser       | 180          | #A6E191       |
+| Cat           | 320          | #A6E191       |
+| Chocolate     | 300          | #A6E191       |
+| CreditCard    | 240          | #A6E191       |
+| Cyborg        | 240          | #A6E191       |
+| File          | 200          | #A6E191       |
+| Folder        | 200          | #A6E191       |
+| Ghost         | 240          | #A6E191       |
+| HumanCat      | 240          | #A6E191       |
+| HumanDinosaur | 240          | #A6E191       |
+| IceCream      | 300          | #A6E191       |
+| Mug           | 200          | #A6E191       |
+| Planet        | 190          | #A6E191       |
+| SpeechBubble  | 170          | #A6E191       |
 
 ### Mood Expressions
 

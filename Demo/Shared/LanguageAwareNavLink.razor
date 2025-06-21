@@ -9,7 +9,7 @@
     [Parameter] public string? Icon { get; set; }
     [Parameter] public Color IconColor { get; set; } = Color.Default;
     [Parameter] public RenderFragment? ChildContent { get; set; }
-    
+
     private string GetUrlWithLanguage()
     {
         return LanguageService.GetUrlWithLanguage(Href);

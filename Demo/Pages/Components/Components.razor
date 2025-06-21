@@ -106,8 +106,7 @@
         string Name,
         string Description,
         int DefaultSize,
-        string DefaultColor,
-        Func<Mood, int, RenderFragment> Render)
+        string DefaultColor)
     {
         public RenderFragment RenderWithColor(Mood mood, int size, string color) =>
             builder =>
@@ -126,38 +125,22 @@
     {
         _components =
         [
-            new("Backpack", Localizer["BackpackDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<Backpack Mood="@mood" Size="@size" />),
-            new("Browser", Localizer["BrowserDesc"].Value, 180, "#A6E191",
-                (mood, size) => @<Browser Mood="@mood" Size="@size" />),
-            new("Cat", Localizer["CatDesc"].Value, 320, "#A6E191",
-                (mood, size) => @<Cat Mood="@mood" Size="@size" />),
-            new("Chocolate", Localizer["ChocolateDesc"].Value, 300, "#A6E191",
-                (mood, size) => @<Chocolate Mood="@mood" Size="@size" />),
-            new("CreditCard", Localizer["CreditCardDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<CreditCard Mood="@mood" Size="@size" />),
-            new("File", Localizer["FileDesc"].Value, 200, "#A6E191",
-                (mood, size) => @<File Mood="@mood" Size="@size" />),
-            new("Folder", Localizer["FolderDesc"].Value, 200, "#A6E191",
-                (mood, size) => @<Folder Mood="@mood" Size="@size" />),
-            new("Ghost", Localizer["GhostDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<Ghost Mood="@mood" Size="@size" />),
-            new("IceCream", Localizer["IceCreamDesc"].Value, 300, "#A6E191",
-                (mood, size) => @<IceCream Mood="@mood" Size="@size" />),
-            new("Mug", Localizer["MugDesc"].Value, 200, "#A6E191",
-                (mood, size) => @<Mug Mood="@mood" Size="@size" />),
-            new("Planet", Localizer["PlanetDesc"].Value, 190, "#A6E191",
-                (mood, size) => @<Planet Mood="@mood" Size="@size" />),
-            new("SpeechBubble", Localizer["SpeechBubbleDesc"].Value, 170, "#A6E191",
-                (mood, size) => @<SpeechBubble Mood="@mood" Size="@size" />),
-            new("Astronaut", Localizer["AstronautDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<Astronaut Mood="@mood" Size="@size" />),
-            new("Cyborg", Localizer["CyborgDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<Cyborg Mood="@mood" Size="@size" />),
-            new("HumanCat", Localizer["HumanCatDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<HumanCat Mood="@mood" Size="@size" />),
-            new("HumanDinosaur", Localizer["HumanDinosaurDesc"].Value, 240, "#A6E191",
-                (mood, size) => @<HumanDinosaur Mood="@mood" Size="@size" />)
+            new("Backpack", Localizer["BackpackDesc"].Value, 240, "#A6E191"),
+            new("Browser", Localizer["BrowserDesc"].Value, 180, "#A6E191"),
+            new("Cat", Localizer["CatDesc"].Value, 320, "#A6E191"),
+            new("Chocolate", Localizer["ChocolateDesc"].Value, 300, "#A6E191"),
+            new("CreditCard", Localizer["CreditCardDesc"].Value, 240, "#A6E191"),
+            new("File", Localizer["FileDesc"].Value, 200, "#A6E191"),
+            new("Folder", Localizer["FolderDesc"].Value, 200, "#A6E191"),
+            new("Ghost", Localizer["GhostDesc"].Value, 240, "#A6E191"),
+            new("IceCream", Localizer["IceCreamDesc"].Value, 300, "#A6E191"),
+            new("Mug", Localizer["MugDesc"].Value, 200, "#A6E191"),
+            new("Planet", Localizer["PlanetDesc"].Value, 190, "#A6E191"),
+            new("SpeechBubble", Localizer["SpeechBubbleDesc"].Value, 170, "#A6E191"),
+            new("Astronaut", Localizer["AstronautDesc"].Value, 240, "#A6E191"),
+            new("Cyborg", Localizer["CyborgDesc"].Value, 240, "#A6E191"),
+            new("HumanCat", Localizer["HumanCatDesc"].Value, 240, "#A6E191"),
+            new("HumanDinosaur", Localizer["HumanDinosaurDesc"].Value, 240, "#A6E191")
         ];
     }
 
