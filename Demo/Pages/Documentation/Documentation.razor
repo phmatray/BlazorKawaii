@@ -420,6 +420,14 @@
 @code {
     private async Task ScrollToSection(string sectionId)
     {
-        await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+        }
+        catch (Exception ex)
+        {
+            // Log the error but don't crash the application
+            Console.WriteLine($"Error scrolling to section {sectionId}: {ex.Message}");
+        }
     }
 }

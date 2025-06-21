@@ -155,17 +155,16 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="prism/prism.js"></script>
+    <script src="js/prism-wrapper.js"></script>
     <script>
         window.scrollToElement = (elementId) => {
-            const element = document.getElementById(elementId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        };
-        
-        window.highlightCode = () => {
-            if (typeof Prism !== 'undefined') {
-                Prism.highlightAll();
+            try {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } catch (error) {
+                console.warn('Scroll error:', error);
             }
         };
     </script>
