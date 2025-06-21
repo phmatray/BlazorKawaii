@@ -1,0 +1,282 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+env:
+  DOTNET_VERSION: '9.0.x'
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        dotnet-version: ['9.0.x']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for versioning
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build solution
+      run: dotnet build --no-restore --configuration Release
+    
+    - name: Run tests
+      run: dotnet test --no-build --configuration Release --verbosity normal --logger "trx;LogFileName=test-results.trx"
+      continue-on-error: true  # No tests yet, but prepared for future
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-${{ matrix.os }}
+        path: '**/test-results.trx'
+
+  analyze:
+    name: Code Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: csharp
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Build
+      run: dotnet build --configuration Release
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: [build-and-test, analyze]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Check for existing tags
+      id: check_tags
+      run: |
+        if git describe --tags --abbrev=0 2>/dev/null; then
+          echo "has_tags=true" >> $GITHUB_OUTPUT
+          echo "Found existing tags"
+        else
+          echo "has_tags=false" >> $GITHUB_OUTPUT
+          echo "No tags found - will create initial release"
+        fi
+    
+    - name: Get next version
+      id: get_version
+      uses: mathieudutour/github-tag-action@v6.2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        release_branches: main
+        pre_release_branches: develop
+        dry_run: true
+        default_bump: ${{ steps.check_tags.outputs.has_tags == 'false' && 'major' || 'false' }}
+        custom_release_rules: |
+          breaking:major,
+          feat:minor,
+          fix:patch,
+          perf:patch,
+          revert:patch,
+          docs:patch:README,
+          refactor:patch,
+          test:false,
+          style:false,
+          chore:false,
+          ci:false
+    
+    - name: Check if should release
+      id: should_release
+      run: |
+        if [[ "${{ steps.get_version.outputs.new_version }}" != "" ]]; then
+          echo "new_release=true" >> $GITHUB_OUTPUT
+          echo "New version will be: ${{ steps.get_version.outputs.new_version }}"
+        else
+          echo "new_release=false" >> $GITHUB_OUTPUT
+          echo "No new version to release"
+        fi
+    
+    - name: Setup .NET
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Update version in csproj files
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        VERSION=${{ steps.get_version.outputs.new_version }}
+        # Update BlazorKawaii library version
+        if [ -f "BlazorKawaii/BlazorKawaii.csproj" ]; then
+          sed -i "s|<Version>.*</Version>|<Version>${VERSION}</Version>|g" "BlazorKawaii/BlazorKawaii.csproj"
+        fi
+    
+    - name: Restore dependencies
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet restore
+    
+    - name: Build
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Test
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet test --configuration Release --no-build --verbosity normal
+      continue-on-error: true  # No tests yet
+    
+    - name: Pack NuGet package
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        dotnet pack BlazorKawaii/BlazorKawaii.csproj --configuration Release --no-build --output ./artifacts
+    
+    - name: Install NuGet validator
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+    
+    - name: Validate NuGet packages
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        for file in ./artifacts/*.nupkg; do
+          echo "Validating $file"
+          meziantou.validate-nuget-package "$file"
+        done
+    
+    - name: Install .NET WebAssembly Tools
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet workload install wasm-tools
+    
+    - name: Build Blazor Demo
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        dotnet build Demo/Demo.csproj --configuration Release
+        dotnet publish Demo/Demo.csproj --configuration Release --output ./dist -p:GHPages=true
+    
+    - name: Generate changelog
+      if: steps.should_release.outputs.new_release == 'true'
+      id: changelog
+      uses: TriPSs/conventional-changelog-action@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        skip-commit: true
+        output-file: false
+    
+    - name: Create tag
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: mathieudutour/github-tag-action@v6.2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        custom_tag: ${{ steps.get_version.outputs.new_version }}
+    
+    - name: Push to NuGet
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        dotnet nuget push "./artifacts/*.nupkg" \
+          --api-key "${{ secrets.NUGET_API_KEY }}" \
+          --source "https://api.nuget.org/v3/index.json" \
+          --skip-duplicate
+    
+    - name: Create GitHub Release
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v${{ steps.get_version.outputs.new_version }}
+        name: Release v${{ steps.get_version.outputs.new_version }}
+        body: ${{ steps.changelog.outputs.clean_changelog }}
+        files: |
+          ./artifacts/*.nupkg
+          ./artifacts/*.snupkg
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Deploy Demo to GitHub Pages
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/wwwroot
+        force_orphan: true
+
+  deploy-demo:
+    name: Deploy Demo to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [build-and-test]
+    if: |
+      github.event_name == 'push' && github.ref == 'refs/heads/main' ||
+      github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Install .NET WebAssembly Tools
+      run: dotnet workload install wasm-tools
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build -c Release --no-restore
+    
+    - name: Publish Demo
+      run: dotnet publish Demo/Demo.csproj -c Release -o publish -p:GHPages=true
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: publish/wwwroot
+        force_orphan: true
+        # cname: blazorkawaii.example.com # Uncomment and set if you have a custom domain

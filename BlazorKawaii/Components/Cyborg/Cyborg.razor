@@ -1,0 +1,11 @@
+@namespace BlazorKawaii.Components
+@using static BlazorKawaii.Components.CyborgPaths
+@inherits KawaiiComponentBase
+
+<svg class="@SvgClass" style="@SvgStyle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none">
+    <g style="color: @GetColor()">
+        @((MarkupString)Body)
+    </g>
+    
+    <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" />
+</svg>

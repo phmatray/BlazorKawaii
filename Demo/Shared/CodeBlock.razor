@@ -1,0 +1,90 @@
+@inject IJSRuntime JSRuntime
+@inject HttpClient HttpClient
+@using System.Net
+
+<MudPaper Class="code-block-container" Outlined="true" Elevation="0">
+    <div class="code-block-header">
+        <MudText Typo="Typo.caption" Class="code-language-label">@GetLanguageLabel()</MudText>
+        <MudSpacer />
+        @if (ShowCopyButton)
+        {
+            <MudButton Variant="Variant.Text" 
+                       Size="Size.Small"
+                       StartIcon="@(_codeCopied ? Icons.Material.Filled.Done : Icons.Material.Filled.ContentCopy)"
+                       Color="@(_codeCopied ? Color.Success : Color.Default)"
+                       OnClick="CopyCode"
+                       Class="code-copy-btn">
+                @(_codeCopied ? "Copied!" : "Copy")
+            </MudButton>
+        }
+    </div>
+    <div class="code-block-content">
+        <pre><code class="@($"language-{Language}")">@((MarkupString)WebUtility.HtmlEncode(_displayCode))</code></pre>
+    </div>
+</MudPaper>
+
+@code {
+    [Parameter] public string? Code { get; set; }
+    [Parameter] public string? CodeFile { get; set; }
+    [Parameter] public string Language { get; set; } = "csharp";
+    [Parameter] public bool ShowCopyButton { get; set; } = true;
+
+    private bool _codeCopied;
+    private string _displayCode = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(CodeFile))
+        {
+            try
+            {
+                _displayCode = await HttpClient.GetStringAsync(CodeFile);
+            }
+            catch
+            {
+                _displayCode = $"// Error loading code from {CodeFile}";
+            }
+        }
+        else if (!string.IsNullOrEmpty(Code))
+        {
+            _displayCode = Code;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!string.IsNullOrEmpty(_displayCode))
+        {
+            // Small delay to ensure DOM is updated
+            await Task.Delay(50);
+            await JSRuntime.InvokeVoidAsync("highlightCode");
+        }
+    }
+
+    private async Task CopyCode()
+    {
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", _displayCode);
+        _codeCopied = true;
+        StateHasChanged();
+
+        await Task.Delay(2000);
+        _codeCopied = false;
+        StateHasChanged();
+    }
+
+    private string GetLanguageLabel()
+    {
+        return Language switch
+        {
+            "csharp" => "C#",
+            "razor" => "Razor",
+            "html" => "HTML",
+            "css" => "CSS",
+            "javascript" or "js" => "JavaScript",
+            "json" => "JSON",
+            "xml" => "XML",
+            "bash" => "Bash",
+            _ => Language.ToUpper()
+        };
+    }
+}

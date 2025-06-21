@@ -1,42 +1,57 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Demo</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+@inject IStringLocalizer<SharedResource> Localizer
+@inject NavigationManager Navigation
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
+<MudNavMenu Margin="Margin.Normal" Color="Color.Primary">
+
+    <div class="pa-4">
+        <MudStack AlignItems="AlignItems.Center" Spacing="2">
+            <Ghost Size="80" Mood="Mood.Blissful" Color="#A6E191" SvgStyle="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+            <MudText Typo="Typo.h6" Color="Color.Primary">Blazor Kawaii</MudText>
+            <MudChip T="string" Size="Size.Small" Color="Color.Success" Icon="@Icons.Material.Filled.NewReleases">v1.0.0</MudChip>
+        </MudStack>
+    </div>
+
+    <MudDivider Class="mb-4" />
+
+    <LanguageAwareNavLink Href="" Icon="@Icons.Material.Filled.Home">
+        @Localizer["Home"]
+    </LanguageAwareNavLink>
+
+    <LanguageAwareNavLink Href="playground" Icon="@Icons.Material.Filled.Brush">
+        @Localizer["Playground"]
+    </LanguageAwareNavLink>
+
+    <LanguageAwareNavLink Href="components" Icon="@Icons.Material.Filled.Apps">
+        @Localizer["Components"]
+        <MudChip T="string" Size="Size.Small" Style="margin-left: auto;">16</MudChip>
+    </LanguageAwareNavLink>
+
+    <LanguageAwareNavLink Href="documentation" Icon="@Icons.Material.Filled.MenuBook">
+        @Localizer["Documentation"]
+    </LanguageAwareNavLink>
+
+    <MudNavGroup Title="@Localizer["Resources"]" Icon="@Icons.Material.Filled.FolderOpen" Expanded="true">
+        <MudNavLink Href="https://github.com/phmatray/BlazorKawaii" Target="_blank" Icon="@Icons.Custom.Brands.GitHub">
+            GitHub
+            <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Style="margin-left: auto; opacity: 0.6;" />
+        </MudNavLink>
+
+        <MudNavLink Href="https://www.nuget.org/packages/BlazorKawaii" Target="_blank" Icon="@Icons.Material.Filled.Download">
+            NuGet Package
+            <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Style="margin-left: auto; opacity: 0.6;" />
+        </MudNavLink>
+
+        <MudNavLink Href="https://react-kawaii.vercel.app/" Target="_blank" Icon="@Icons.Material.Filled.Favorite">
+            React Kawaii
+            <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Style="margin-left: auto; opacity: 0.6;" />
+        </MudNavLink>
+    </MudNavGroup>
+</MudNavMenu>
+
 
 @code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu
-        ? "collapse"
-        : null;
-
-    private void ToggleNavMenu()
+    protected override void OnInitialized()
     {
-        collapseNavMenu = !collapseNavMenu;
+        Navigation.LocationChanged += (_, _) => StateHasChanged();
     }
-
 }
