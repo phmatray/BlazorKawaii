@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorKawaii", "BlazorKawaii\BlazorKawaii.csproj", "{76EF066E-D4BC-429D-82B2-8FA330D533A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5E1B9A5-7F5C-4E5B-8B5C-7C5D5E5F5A5B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution_items", "_solution_items", "{B5E1B9A5-7F5C-4E5B-8B5C-7C5D5E5F5A5B}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore

@@ -1,6 +1,7 @@
 @inject IJSRuntime JSRuntime
 @inject HttpClient HttpClient
 @using System.Net
+@implements IAsyncDisposable
 
 <MudPaper Class="code-block-container" Outlined="true" Elevation="0">
     <div class="code-block-header">
@@ -19,7 +20,7 @@
         }
     </div>
     <div class="code-block-content">
-        <pre><code class="@($"language-{Language}")">@((MarkupString)WebUtility.HtmlEncode(_displayCode))</code></pre>
+        <pre class="@($"language-{Language}")"><code>@_displayCode</code></pre>
     </div>
 </MudPaper>
 
@@ -53,11 +54,18 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!string.IsNullOrEmpty(_displayCode))
+        if (firstRender && !string.IsNullOrEmpty(_displayCode))
         {
-            // Small delay to ensure DOM is updated
-            await Task.Delay(50);
-            await JSRuntime.InvokeVoidAsync("highlightCode");
+            try
+            {
+                // Small delay to ensure DOM is updated
+                await Task.Delay(100);
+                await JSRuntime.InvokeVoidAsync("highlightCode");
+            }
+            catch
+            {
+                // Ignore errors from Prism.js highlighting
+            }
         }
     }
 
@@ -86,5 +94,18 @@
             "bash" => "Bash",
             _ => Language.ToUpper()
         };
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            // Reset Prism highlighting markers if needed
+            await JSRuntime.InvokeVoidAsync("PrismWrapper.reset");
+        }
+        catch
+        {
+            // Ignore errors during disposal
+        }
     }
 }

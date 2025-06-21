@@ -372,17 +372,17 @@
                 @Localizer["BestPracticesDesc"]
             </MudText>
 
-            <MudList T="string">
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
+            <MudList>
+                <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
                     <MudText Typo="Typo.body2">@Localizer["BestPractice1"]</MudText>
                 </MudListItem>
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
+                <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
                     <MudText Typo="Typo.body2">@Localizer["BestPractice2"]</MudText>
                 </MudListItem>
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
+                <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
                     <MudText Typo="Typo.body2">@Localizer["BestPractice3"]</MudText>
                 </MudListItem>
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
+                <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
                     <MudText Typo="Typo.body2">@Localizer["BestPractice4"]</MudText>
                 </MudListItem>
             </MudList>
@@ -420,6 +420,14 @@
 @code {
     private async Task ScrollToSection(string sectionId)
     {
-        await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+        }
+        catch (Exception ex)
+        {
+            // Log the error but don't crash the application
+            Console.WriteLine($"Error scrolling to section {sectionId}: {ex.Message}");
+        }
     }
 }
