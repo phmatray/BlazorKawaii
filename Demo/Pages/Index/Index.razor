@@ -1,5 +1,6 @@
 @page "/"
 @inject IStringLocalizer<SharedResource> Localizer
+@inject LanguageService LanguageService
 @implements IDisposable
 @using System.Globalization
 
@@ -56,13 +57,13 @@
                        Color="Color.Primary"
                        Size="Size.Large"
                        StartIcon="@Icons.Material.Filled.Brush"
-                       Href="/playground">
+                       Href="@LanguageService.GetUrlWithLanguage("/playground")">
                 @Localizer["TryPlayground"]
             </MudButton>
             <MudButton Variant="Variant.Outlined"
                        Size="Size.Large"
                        StartIcon="@Icons.Material.Filled.Code"
-                       Href="/documentation"
+                       Href="@LanguageService.GetUrlWithLanguage("/documentation")"
                        Style="color: white; border-color: rgba(255, 255, 255, 0.8); background-color: rgba(255, 255, 255, 0.1);">
                 @Localizer["ViewDocs"]
             </MudButton>
@@ -217,7 +218,7 @@
                    Color="Color.Primary"
                    Size="Size.Large"
                    StartIcon="@Icons.Material.Filled.Apps"
-                   Href="/components"
+                   Href="@LanguageService.GetUrlWithLanguage("/components")"
                    Style="background-color: white; color: #667eea;">
             @Localizer["BrowseComponents"]
         </MudButton>

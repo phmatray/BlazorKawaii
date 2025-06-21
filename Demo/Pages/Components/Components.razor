@@ -1,5 +1,6 @@
 @page "/components"
 @inject IStringLocalizer<SharedResource> Localizer
+@inject LanguageService LanguageService
 
 <PageTitle>Blazor Kawaii - @Localizer["Components"]</PageTitle>
 
@@ -60,7 +61,7 @@
                         <MudTooltip Text="@Localizer["TryInPlayground"]">
                             <MudIconButton Icon="@Icons.Material.Filled.Brush"
                                          Size="Size.Small"
-                                         Href="/playground" />
+                                         Href="@LanguageService.GetUrlWithLanguage("/playground")" />
                         </MudTooltip>
                         <MudSpacer />
                         <MudText Typo="Typo.caption" Color="Color.Secondary" Class="mood-text">

@@ -1,0 +1,17 @@
+@inject LanguageService LanguageService
+
+<MudNavLink Href="@GetUrlWithLanguage()" Icon="@Icon" IconColor="@IconColor">
+    @ChildContent
+</MudNavLink>
+
+@code {
+    [Parameter] public string Href { get; set; } = "";
+    [Parameter] public string? Icon { get; set; }
+    [Parameter] public Color IconColor { get; set; } = Color.Default;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    
+    private string GetUrlWithLanguage()
+    {
+        return LanguageService.GetUrlWithLanguage(Href);
+    }
+}

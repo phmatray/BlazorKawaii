@@ -1,5 +1,6 @@
 @inject IStringLocalizer<SharedResource> Localizer
 @inject NavigationManager Navigation
+@inject LanguageService LanguageService
 
 <MudNavMenu Margin="Margin.Normal" Color="Color.Primary">
 
@@ -13,22 +14,22 @@
 
     <MudDivider Class="mb-4" />
 
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">
+    <LanguageAwareNavLink Href="" Icon="@Icons.Material.Filled.Home">
         @Localizer["Home"]
-    </MudNavLink>
+    </LanguageAwareNavLink>
 
-    <MudNavLink Href="playground" Icon="@Icons.Material.Filled.Brush">
+    <LanguageAwareNavLink Href="playground" Icon="@Icons.Material.Filled.Brush">
         @Localizer["Playground"]
-    </MudNavLink>
+    </LanguageAwareNavLink>
 
-    <MudNavLink Href="components" Icon="@Icons.Material.Filled.Apps">
+    <LanguageAwareNavLink Href="components" Icon="@Icons.Material.Filled.Apps">
         @Localizer["Components"]
         <MudChip T="string" Size="Size.Small" Style="margin-left: auto;">16</MudChip>
-    </MudNavLink>
+    </LanguageAwareNavLink>
 
-    <MudNavLink Href="documentation" Icon="@Icons.Material.Filled.MenuBook">
+    <LanguageAwareNavLink Href="documentation" Icon="@Icons.Material.Filled.MenuBook">
         @Localizer["Documentation"]
-    </MudNavLink>
+    </LanguageAwareNavLink>
 
     <MudNavGroup Title="@Localizer["Resources"]" Icon="@Icons.Material.Filled.FolderOpen" Expanded="true">
         <MudNavLink Href="https://github.com/phmatray/BlazorKawaii" Target="_blank" Icon="@Icons.Custom.Brands.GitHub">

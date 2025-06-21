@@ -1,6 +1,7 @@
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
 @using System.Globalization
+@using Microsoft.AspNetCore.WebUtilities
 
 <MudMenu Icon="@Icons.Material.Filled.Language" Color="Color.Inherit" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
     <MudMenuItem OnClick="@(() => ChangeCulture("en"))">
@@ -34,7 +35,12 @@
 
     private async Task ChangeCulture(string culture)
     {
+        // Save to localStorage for persistence
         await JSRuntime.InvokeVoidAsync("localStorage.setItem", "culture", culture);
-        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+        
+        // Navigate with the new culture in the URL
+        var uri = new Uri(Navigation.Uri);
+        var newUri = QueryHelpers.AddQueryString(uri.GetLeftPart(UriPartial.Path), "lang", culture);
+        Navigation.NavigateTo(newUri, forceLoad: true);
     }
 }

@@ -1,3 +1,4 @@
+using Demo.Services;
 using MudBlazor.Services;
 
 namespace Demo.Extensions;
@@ -11,6 +12,9 @@ public static class ServiceCollectionExtensions
         
         // Add localization services
         services.AddLocalization();
+        
+        // Add language service
+        services.AddScoped<LanguageService>();
         
         return services;
     }
