@@ -51,7 +51,7 @@
 
         <h1 class="hero-title">@Localizer["WelcomeToBlazorKawaii"]</h1>
         <p class="hero-subtitle">@Localizer["CuteCustomizableSVGComponents"]</p>
-        
+
         <MudStack Row="true" Justify="Justify.Center" Spacing="4" Class="mt-6">
             <MudButton Variant="Variant.Filled"
                        Color="Color.Primary"
@@ -81,9 +81,9 @@
         <div class="demo-kawaii-container">
             @{
                 var components = _demoComponents.ToList();
-                var spacing = 120; // Horizontal spacing between items
-                var waveAmplitude = 20; // Vertical wave amplitude
-                var waveSpeed = 0.02; // Speed of the wave
+                const int spacing = 120; // Horizontal spacing between items
+                const int waveAmplitude = 20; // Vertical wave amplitude
+                const double waveSpeed = 0.02; // Speed of the wave
             }
             @foreach (var (component, index) in components.Select((c, i) => (c, i)))
             {

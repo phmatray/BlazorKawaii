@@ -215,9 +215,15 @@ jobs:
     
     - name: Push to NuGet
       if: steps.should_release.outputs.new_release == 'true'
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       run: |
+        if [ -z "$NUGET_API_KEY" ]; then
+          echo "Error: NUGET_API_KEY is not set. Please add it to your repository secrets."
+          exit 1
+        fi
         dotnet nuget push "./artifacts/*.nupkg" \
-          --api-key "${{ secrets.NUGET_API_KEY }}" \
+          --api-key "$NUGET_API_KEY" \
           --source "https://api.nuget.org/v3/index.json" \
           --skip-duplicate
     
