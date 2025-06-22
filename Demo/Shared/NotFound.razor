@@ -1,4 +1,5 @@
 @inject IStringLocalizer<SharedResource> Localizer
+@inject LanguageService LanguageService
 
 <PageTitle>@Localizer["NotFound"]</PageTitle>
 <LayoutView Layout="@typeof(MainLayout)">
@@ -9,7 +10,7 @@
                 <MudText Typo="Typo.h3" Class="mt-4">@Localizer["NotFound"]</MudText>
                 <MudText Typo="Typo.body1" Class="mt-2">@Localizer["NotFoundMessage"]</MudText>
                 <MudButton Variant="Variant.Filled" Color="Color.Primary"
-                           Href="/" Class="mt-4"
+                           Href="@LanguageService.GetUrlWithLanguage("")" Class="mt-4"
                            StartIcon="@Icons.Material.Filled.Home">
                     @Localizer["Home"]
                 </MudButton>

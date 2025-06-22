@@ -1,6 +1,7 @@
 @page "/documentation"
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<SharedResource> Localizer
+@inject LanguageService LanguageService
 
 <PageTitle>Blazor Kawaii - @Localizer["Documentation"]</PageTitle>
 
@@ -360,7 +361,7 @@
             <MudAlert Severity="Severity.Info" Class="mt-4">
                 <MudText>
                     @Localizer["PlaygroundCTA"]
-                    <MudLink Href="/playground">@Localizer["Playground"]</MudLink> @Localizer["PlaygroundCTA2"]
+                    <MudLink Href="@LanguageService.GetUrlWithLanguage("playground")">@Localizer["Playground"]</MudLink> @Localizer["PlaygroundCTA2"]
                 </MudText>
             </MudAlert>
         </div>

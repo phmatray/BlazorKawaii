@@ -20,18 +20,4 @@
     <ProjectReference Include="..\BlazorKawaii\BlazorKawaii.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="test-publish\web.config" />
-    <_ContentIncludedByDefault Remove="test-publish\Demo.staticwebassets.endpoints.json" />
-    <_ContentIncludedByDefault Remove="test-publish\wwwroot\sample-data\weather.json" />
-    <_ContentIncludedByDefault Remove="test-publish\wwwroot\_framework\blazor.boot.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\kawaiiList\kawaiiListGrid.css" />
-    <Content Remove="wwwroot\kawaiiList\kawaiiListDialog.css" />
-    <Content Remove="wwwroot\kawaiiList\KawaiiListGrid.tsx" />
-    <Content Remove="wwwroot\kawaiiList\KawaiiListDialog.tsx" />
-  </ItemGroup>
-
 </Project>
