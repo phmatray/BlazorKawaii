@@ -1,22 +1,15 @@
 # 🌸 BlazorKawaii
 
-<div align="center">
-  <img src="logo.png" alt="BlazorKawaii Logo" width="200" />
-</div>
+![BlazorKawaii Logo](https://raw.githubusercontent.com/phmatray/BlazorKawaii/main/logo.png)
 
-<div align="center">
-  <p>A collection of cute, customizable SVG components for Blazor WebAssembly applications.</p>
-  <p>Based on the wonderful <a href="https://react-kawaii.vercel.app/">React Kawaii</a> library by <a href="https://github.com/miukimiu">Miuki Miu</a>, BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.</p>
-</div>
+A collection of cute, customizable SVG components for Blazor WebAssembly applications.
 
-<div align="center">
-  
-  ![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
-  ![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
-  ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
-  [![NuGet](https://img.shields.io/nuget/v/BlazorKawaii.svg?style=for-the-badge)](https://www.nuget.org/packages/BlazorKawaii/)
-  
-</div>
+Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library by [Miuki Miu](https://github.com/miukimiu), BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.
+
+![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
+![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+[![NuGet](https://img.shields.io/nuget/v/BlazorKawaii.svg?style=for-the-badge)](https://www.nuget.org/packages/BlazorKawaii/)
 
 ## ✨ Features
 
@@ -133,36 +126,15 @@ public enum Mood
 @using BlazorKawaii.Components
 @using BlazorKawaii.Common
 
-<style>
-    .kawaii-container {
-        display: flex;
-        gap: 2rem;
-        padding: 2rem;
-    }
-    
-    .custom-ghost {
-        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-        transition: transform 0.2s ease;
-    }
-    
-    .custom-ghost:hover {
-        transform: translateY(-4px);
-    }
-</style>
-
-<div class="kawaii-container">
-    @foreach (var mood in Enum.GetValues<Mood>())
-    {
-        <div>
-            <Ghost 
-                Mood="@mood" 
-                Size="150" 
-                Color="@GetColorForMood(mood)" 
-                SvgClass="custom-ghost" />
-            <p>@mood</p>
-        </div>
-    }
-</div>
+@* Style your components with CSS classes *@
+@foreach (var mood in Enum.GetValues<Mood>())
+{
+    <Ghost 
+        Mood="@mood" 
+        Size="150" 
+        Color="@GetColorForMood(mood)" 
+        SvgClass="custom-ghost" />
+}
 
 @code {
     private string GetColorForMood(Mood mood) => mood switch

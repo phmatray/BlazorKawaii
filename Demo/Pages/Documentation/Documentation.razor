@@ -56,7 +56,7 @@
             </MudAlert>
 
             <MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">@Localizer["InstallViaNuGet"]</MudText>
-            
+
             <MudTabs Elevation="0" ApplyEffectsToContainer="true" Class="mb-4">
                 <MudTabPanel Text=".NET CLI">
                     <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
@@ -409,7 +409,7 @@
 
             <MudAlert Severity="Severity.Info" Class="mt-4">
                 <MudText>
-                    @Localizer["NeedMoreHelp"] 
+                    @Localizer["NeedMoreHelp"]
                     <MudLink Href="https://github.com/phmatray/BlazorKawaii/issues" Target="_blank">GitHub Issues</MudLink>
                 </MudText>
             </MudAlert>
@@ -427,7 +427,7 @@
         catch (Exception ex)
         {
             // Log the error but don't crash the application
-            Console.WriteLine($"Error scrolling to section {sectionId}: {ex.Message}");
+            Console.WriteLine($@"Error scrolling to section {sectionId}: {ex.Message}");
         }
     }
 }
