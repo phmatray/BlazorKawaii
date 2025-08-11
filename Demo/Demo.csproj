@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" />
     <ProjectReference Include="..\BlazorKawaii\BlazorKawaii.csproj" />
   </ItemGroup>
 
