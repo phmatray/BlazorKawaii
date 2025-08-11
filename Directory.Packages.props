@@ -17,7 +17,7 @@
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
     
     <!-- Localization -->
-    <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.6" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.8" />
     
     <!-- SourceLink for deterministic builds -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
