@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" />
     <ProjectReference Include="..\BlazorKawaii\BlazorKawaii.csproj" />
   </ItemGroup>
 
