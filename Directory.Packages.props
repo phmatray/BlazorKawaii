@@ -9,6 +9,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="9.0.6" />
+    <PackageVersion Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.9" />
     
     <!-- MudBlazor -->
     <PackageVersion Include="MudBlazor" Version="8.8.0" />
