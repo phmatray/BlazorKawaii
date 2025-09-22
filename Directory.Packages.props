@@ -14,7 +14,7 @@
     <PackageVersion Include="MudBlazor" Version="8.8.0" />
     
     <!-- GitHub Pages -->
-    <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
+    <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
     
     <!-- Localization -->
     <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.6" />
