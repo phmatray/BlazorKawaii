@@ -1,0 +1,8 @@
+@if (!items.Any())
+{
+    <div class="empty-state">
+        <Folder Mood="Mood.Sad" Size="150" />
+        <p>No files found</p>
+        <button @onclick="AddNewFile">Add your first file</button>
+    </div>
+}
