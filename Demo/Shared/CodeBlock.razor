@@ -19,7 +19,7 @@
         }
     </div>
     <div class="code-block-content">
-        <pre class="@($"language-{Language}")"><code>@_displayCode</code></pre>
+        <pre class="@($"language-{Language}")"><code>@GetDisplayCode()</code></pre>
     </div>
 </MudPaper>
 
@@ -31,6 +31,8 @@
 
     private bool _codeCopied;
     private string _displayCode = "";
+    private string _previousCode = "";
+    private bool _needsHighlighting;
 
     protected override async Task OnInitializedAsync()
     {
@@ -39,22 +41,37 @@
             try
             {
                 _displayCode = await HttpClient.GetStringAsync(CodeFile);
+                _previousCode = _displayCode;
             }
             catch
             {
                 _displayCode = $"// Error loading code from {CodeFile}";
+                _previousCode = _displayCode;
             }
         }
         else if (!string.IsNullOrEmpty(Code))
         {
             _displayCode = Code;
+            _previousCode = Code;
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Only update if Code parameter is being used (not CodeFile)
+        if (string.IsNullOrEmpty(CodeFile) && !string.IsNullOrEmpty(Code) && Code != _previousCode)
+        {
+            _previousCode = Code;
+            _needsHighlighting = true;
         }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && !string.IsNullOrEmpty(_displayCode))
+        var currentCode = GetDisplayCode();
+        if ((firstRender || _needsHighlighting) && !string.IsNullOrEmpty(currentCode))
         {
+            _needsHighlighting = false;
             try
             {
                 // Small delay to ensure DOM is updated
@@ -70,13 +87,26 @@
 
     private async Task CopyCode()
     {
-        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", _displayCode);
+        var codeToCopy = GetDisplayCode();
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", codeToCopy);
         _codeCopied = true;
         StateHasChanged();
 
         await Task.Delay(2000);
         _codeCopied = false;
         StateHasChanged();
+    }
+
+    private string GetDisplayCode()
+    {
+        // For file-based code, use cached version
+        if (!string.IsNullOrEmpty(CodeFile))
+        {
+            return _displayCode;
+        }
+
+        // For parameter-based code, always use the current parameter
+        return Code ?? "";
     }
 
     private string GetLanguageLabel()

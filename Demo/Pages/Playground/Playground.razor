@@ -14,7 +14,7 @@
         <MudPaper Class="pa-4" Elevation="2">
             <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["CustomizeComponent"]</MudText>
 
-            <MudSelect T="string" Label="@Localizer["Component"]" @bind-Value="_selectedComponent" Variant="Variant.Outlined" Class="mb-4">
+            <MudSelect T="string" Label="@Localizer["Component"]" Value="_selectedComponent" ValueChanged="OnComponentChanged" Variant="Variant.Outlined" Class="mb-4">
                 <MudSelectItem Value="@("Backpack")">Backpack</MudSelectItem>
                 <MudSelectItem Value="@("Browser")">Browser</MudSelectItem>
                 <MudSelectItem Value="@("Cat")">Cat</MudSelectItem>
@@ -33,27 +33,27 @@
                 <MudSelectItem Value="@("HumanDinosaur")">Human Dinosaur</MudSelectItem>
             </MudSelect>
 
-            <MudSelect T="Mood" Label="@Localizer["Mood"]" @bind-Value="_mood" Variant="Variant.Outlined" Class="mb-4">
+            <MudSelect T="Mood" Label="@Localizer["Mood"]" Value="_mood" ValueChanged="OnMoodChanged" Variant="Variant.Outlined" Class="mb-4">
                 @foreach (Mood mood in Enum.GetValues<Mood>())
                 {
                     <MudSelectItem Value="@mood">@mood</MudSelectItem>
                 }
             </MudSelect>
 
-            <MudSlider T="int" @bind-Value="_size" Min="50" Max="400" Step="10" Class="mb-4">
+            <MudSlider T="int" Value="_size" ValueChanged="OnSizeChanged" Min="50" Max="400" Step="10" Class="mb-4">
                 @Localizer["SizePx", _size]
             </MudSlider>
 
-            <MudColorPicker Label="@Localizer["Color"]" @bind-Text="_color" Style="@($"color: {_color};")"
+            <MudColorPicker Label="@Localizer["Color"]" Text="@_color" TextChanged="OnColorChanged" Style="@($"color: {_color};")"
                             Variant="Variant.Outlined" Class="mb-4" />
 
             <MudDivider Class="my-4" />
 
             <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["AnimationEffects"]</MudText>
 
-            <MudSwitch T="bool" @bind-Value="_enableRotation" Label="@Localizer["Rotation"]" Color="Color.Primary" />
-            <MudSwitch T="bool" @bind-Value="_enableBounce" Label="@Localizer["Bounce"]" Color="Color.Primary" />
-            <MudSwitch T="bool" @bind-Value="_enablePulse" Label="@Localizer["Pulse"]" Color="Color.Primary" />
+            <MudSwitch T="bool" Value="_enableRotation" ValueChanged="OnRotationChanged" Label="@Localizer["Rotation"]" Color="Color.Primary" />
+            <MudSwitch T="bool" Value="_enableBounce" ValueChanged="OnBounceChanged" Label="@Localizer["Bounce"]" Color="Color.Primary" />
+            <MudSwitch T="bool" Value="_enablePulse" ValueChanged="OnPulseChanged" Label="@Localizer["Pulse"]" Color="Color.Primary" />
 
             <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true"
                        Class="mt-4" OnClick="ResetToDefaults">
@@ -77,7 +77,7 @@
 
             <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["GeneratedCode"]</MudText>
 
-            <CodeBlock Code="@GetGeneratedCode()" Language="razor" />
+            <CodeBlock @key="@_generatedCode" Code="@_generatedCode" Language="razor" />
         </MudPaper>
     </MudItem>
 </MudGrid>
@@ -90,6 +90,12 @@
     private bool _enableRotation;
     private bool _enableBounce;
     private bool _enablePulse;
+    private string _generatedCode = "";
+
+    protected override void OnInitialized()
+    {
+        UpdateGeneratedCode();
+    }
 
     private RenderFragment GetSelectedComponent() => _selectedComponent switch
     {
@@ -128,10 +134,92 @@
 
     private string GetGeneratedCode()
     {
+        var componentTag = $@"<{_selectedComponent} Mood=""Mood.{_mood}"" Size=""{_size}"" Color=""{_color}"" />";
+
+        var animationStyle = GetAnimationStyles();
+        if (!string.IsNullOrEmpty(animationStyle))
+        {
+            return $@"@using BlazorKawaii.Components.{_selectedComponent}
+@using BlazorKawaii.Common
+
+<div style=""{animationStyle}"">
+    {componentTag}
+</div>";
+        }
+
         return $@"@using BlazorKawaii.Components.{_selectedComponent}
 @using BlazorKawaii.Common
 
-<{_selectedComponent} Mood=""Mood.{_mood}"" Size=""{_size}"" Color=""{_color}"" />";
+{componentTag}";
+    }
+
+    private void UpdateGeneratedCode()
+    {
+        _generatedCode = GetGeneratedCode();
+    }
+
+    private void OnComponentChanged(string value)
+    {
+        _selectedComponent = value;
+        UpdateGeneratedCode();
+        StateHasChanged();
+    }
+
+    private void OnMoodChanged(Mood value)
+    {
+        _mood = value;
+        UpdateGeneratedCode();
+        StateHasChanged();
+    }
+
+    private void OnSizeChanged(int value)
+    {
+        _size = value;
+        UpdateGeneratedCode();
+        StateHasChanged();
+    }
+
+    private void OnColorChanged(string value)
+    {
+        _color = value;
+        UpdateGeneratedCode();
+        StateHasChanged();
+    }
+
+    private void OnRotationChanged(bool value)
+    {
+        _enableRotation = value;
+        if (value)
+        {
+            _enableBounce = false;
+            _enablePulse = false;
+        }
+        UpdateGeneratedCode();
+        StateHasChanged();
+    }
+
+    private void OnBounceChanged(bool value)
+    {
+        _enableBounce = value;
+        if (value)
+        {
+            _enableRotation = false;
+            _enablePulse = false;
+        }
+        UpdateGeneratedCode();
+        StateHasChanged();
+    }
+
+    private void OnPulseChanged(bool value)
+    {
+        _enablePulse = value;
+        if (value)
+        {
+            _enableRotation = false;
+            _enableBounce = false;
+        }
+        UpdateGeneratedCode();
+        StateHasChanged();
     }
 
     private void ResetToDefaults()
@@ -143,6 +231,7 @@
         _enableRotation = false;
         _enableBounce = false;
         _enablePulse = false;
+        UpdateGeneratedCode();
     }
 
 }

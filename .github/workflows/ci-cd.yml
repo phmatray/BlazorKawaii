@@ -31,12 +31,12 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0  # Full history for versioning
-    
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     
@@ -67,15 +67,15 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
-    
+      uses: actions/checkout@v5
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: csharp
-    
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
@@ -93,7 +93,7 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -144,7 +144,7 @@ jobs:
     
     - name: Setup .NET
       if: steps.should_release.outputs.new_release == 'true'
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
@@ -259,10 +259,10 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
-    
+      uses: actions/checkout@v5
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
