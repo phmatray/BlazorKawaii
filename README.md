@@ -7,7 +7,7 @@ A collection of cute, customizable SVG components for Blazor WebAssembly applica
 Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library by [Miuki Miu](https://github.com/miukimiu), BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.
 
 ![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
-![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
+![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=.net)
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 [![NuGet](https://img.shields.io/nuget/v/BlazorKawaii.svg?style=for-the-badge)](https://www.nuget.org/packages/BlazorKawaii/)
 
