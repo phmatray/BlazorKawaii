@@ -9,7 +9,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.10" />
     <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="9.0.10" />
     <!-- MudBlazor -->
-    <PackageVersion Include="MudBlazor" Version="8.13.0" />
+    <PackageVersion Include="MudBlazor" Version="8.15.0" />
     <!-- GitHub Pages -->
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
     <!-- Localization -->
