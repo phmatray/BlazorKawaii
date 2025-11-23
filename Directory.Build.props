@@ -11,21 +11,21 @@
   <PropertyGroup>
     <Authors>phmatray</Authors>
     <Company>BlazorKawaii</Company>
-    <Copyright>Copyright © BlazorKawaii 2024</Copyright>
+    <Copyright>Copyright © BlazorKawaii 2025</Copyright>
     <RepositoryUrl>https://github.com/phmatray/BlazorKawaii</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <!-- Enable deterministic builds -->
     <Deterministic>true</Deterministic>
-    
+
     <!-- Set ContinuousIntegrationBuild to true when running in CI -->
     <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">true</ContinuousIntegrationBuild>
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
-    
+
     <!-- SourceLink settings -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>

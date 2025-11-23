@@ -4,16 +4,16 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Blazor -->
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="9.0.10" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.0" />
     <!-- MudBlazor -->
-    <PackageVersion Include="MudBlazor" Version="8.13.0" />
+    <PackageVersion Include="MudBlazor" Version="8.15.0" />
     <!-- GitHub Pages -->
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
     <!-- Localization -->
-    <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.0" />
     <!-- SourceLink for deterministic builds -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>

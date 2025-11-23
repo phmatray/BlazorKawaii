@@ -27,8 +27,8 @@ Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library 
 
 ### Prerequisites
 
-- .NET 9.0 SDK or later
-- Visual Studio 2022, Visual Studio Code, or JetBrains Rider
+- .NET 10.0 SDK or later
+- Visual Studio 2026, Visual Studio Code, or JetBrains Rider
 
 ### Installation
 
