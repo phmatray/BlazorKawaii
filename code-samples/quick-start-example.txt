@@ -1,0 +1,1 @@
+<Cat Mood="Mood.Blissful" Size="200" Color="#596881" />
