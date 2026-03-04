@@ -1,0 +1,403 @@
+﻿html, body {
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1:focus {
+    outline: none;
+}
+
+#blazor-error-ui {
+    background: #FC105C;
+    color: white;
+    bottom: 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    font-family: 'Roboto', sans-serif;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+#blazor-error-ui::before {
+    content: "⚠️";
+    font-size: 2rem;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+
+#blazor-error-ui a {
+    color: white;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 1rem;
+}
+
+#blazor-error-ui a:hover {
+    text-decoration: none;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+#blazor-error-ui .dismiss:hover {
+    opacity: 1;
+}
+
+.blazor-error-boundary {
+    background: #FC105C;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    margin: 2rem;
+}
+
+.blazor-error-boundary::before {
+    content: "😵";
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.blazor-error-boundary::after {
+    content: "Oops! Something went wrong.";
+    font-size: 1.2rem;
+    display: block;
+}
+
+/* Documentation Page Styles */
+.doc-section {
+    margin-bottom: 3rem;
+}
+
+.code-inline {
+    background-color: var(--mud-palette-background-grey);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+}
+
+.dark .code-inline {
+    background-color: #2a2a2a;
+}
+
+/* Components Page Styles */
+.component-showcase {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.component-showcase:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.component-preview {
+    position: relative;
+    padding: 3rem 2rem 5rem;
+    background: var(--mud-palette-background-grey);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-height: 200px;
+}
+
+.component-preview:hover {
+    background: var(--mud-palette-background);
+}
+
+.component-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    margin-bottom: 1rem;
+}
+
+.component-info {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+}
+
+.component-name {
+    font-weight: 500;
+    color: var(--mud-palette-text-primary);
+}
+
+.component-description {
+    color: var(--mud-palette-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    opacity: 0.7;
+    margin-top: 0.25rem;
+    transition: opacity 0.3s ease;
+}
+
+.component-preview:hover .component-description {
+    opacity: 1;
+}
+
+.mood-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+}
+
+.component-preview:hover .mood-indicator {
+    opacity: 0.8;
+}
+
+.component-actions {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--mud-palette-background);
+    border-top: 1px solid var(--mud-palette-divider);
+}
+
+.dark .component-actions {
+    background: var(--mud-palette-background-grey);
+}
+
+.mood-text {
+    font-style: italic;
+}
+
+/* Index/Home Page Styles */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 6rem 0 4rem 0;
+    margin: -24px -24px 48px -24px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating-kawaii {
+    position: absolute;
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.floating-kawaii-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.floating-kawaii-2 { top: 60%; left: 85%; animation-delay: 1s; }
+.floating-kawaii-3 { bottom: 10%; left: 15%; animation-delay: 2s; }
+.floating-kawaii-4 { top: 30%; right: 10%; animation-delay: 3s; }
+.floating-kawaii-5 { bottom: 30%; right: 20%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.feature-card {
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+}
+
+.demo-kawaii-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-kawaii-item {
+    position: absolute;
+    transition: all 0.5s ease;
+}
+
+.stats-number {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Playground Page Styles */
+.playground-preview {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:
+        linear-gradient(45deg, var(--mud-palette-background-grey) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--mud-palette-background-grey) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--mud-palette-background-grey) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--mud-palette-background-grey) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: var(--mud-palette-background);
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid var(--mud-palette-divider);
+}
+
+.code-container {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+/* Animation Keyframes */
+@keyframes rotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Badge Styles */
+.hero-section .mud-chip {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hero-section .mud-chip:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* CodeBlock Component Styles */
+.code-block-container {
+    overflow: hidden;
+    background-color: var(--mud-palette-background-grey);
+}
+
+.code-block-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--mud-palette-background);
+    border-bottom: 1px solid var(--mud-palette-divider);
+}
+
+.code-language-label {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--mud-palette-text-secondary);
+}
+
+.code-copy-btn {
+    margin: -0.25rem -0.5rem -0.25rem 0;
+}
+
+.code-block-content {
+    overflow-x: auto;
+}
+
+.code-block-content pre {
+    margin: 0;
+    padding: 1rem;
+}
+
+.code-block-content code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Dark mode code block styles */
+.dark .code-block-container {
+    background-color: #1e1e1e;
+}
+
+.dark .code-block-header {
+    background-color: #2d2d30;
+    border-bottom-color: #3e3e42;
+}
+
+.dark .code-language-label {
+    color: #969696;
+}
+
+/* Override Prism styles for dark mode */
+.dark pre[class*="language-"] {
+    background: transparent;
+}
+
+.dark code[class*="language-"] {
+    background: transparent;
+}

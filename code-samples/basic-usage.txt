@@ -1,0 +1,4 @@
+@using BlazorKawaii.Common
+@using BlazorKawaii.Components
+
+<Cat />
