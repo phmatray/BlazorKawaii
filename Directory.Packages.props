@@ -5,10 +5,10 @@
   
   <ItemGroup>
     <!-- Blazor -->
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.3" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.3" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.3" />
-    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.4" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.4" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.4" />
+    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.4" />
     
     <!-- MudBlazor -->
     <PackageVersion Include="MudBlazor" Version="9.1.0" />
@@ -17,9 +17,9 @@
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
     
     <!-- Localization -->
-    <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.4" />
     
     <!-- SourceLink for deterministic builds -->
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.103" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.200" />
   </ItemGroup>
 </Project>
