@@ -5,7 +5,7 @@
   
   <ItemGroup>
     <!-- Blazor -->
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.4" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.4" />
