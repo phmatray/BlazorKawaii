@@ -20,6 +20,6 @@
     <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.6" />
     
     <!-- SourceLink for deterministic builds -->
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.202" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.203" />
   </ItemGroup>
 </Project>
