@@ -1,3 +1,5 @@
+![BlazorKawaii banner](.github/banner.png)
+
 # 🌸 BlazorKawaii
 
 ![BlazorKawaii Logo](https://raw.githubusercontent.com/phmatray/BlazorKawaii/main/logo.png)
