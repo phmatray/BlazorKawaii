@@ -221,6 +221,16 @@ public partial class NewComponent
 
 <!-- portfolio-techstack:end -->
 
+## 🗺️ Roadmap
+
+- [ ] Track new components and moods as they're added to the upstream [React Kawaii](https://react-kawaii.vercel.app/) library
+- [ ] Add a bUnit test project to cover component rendering and parameter binding
+- [ ] Add more locales beyond the current English, French, Spanish, and Dutch
+- [ ] Publish an interactive component gallery/playground alongside the existing demo
+- [ ] Support custom theming (palettes) beyond the single `Color` parameter
+
+See the [open issues](https://github.com/phmatray/BlazorKawaii/issues) for what's currently planned.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
