@@ -2,6 +2,26 @@
 
 # 🌸 BlazorKawaii
 
+<!-- portfolio-toc:start -->
+
+## Table of Contents
+
+- [✨ Features](#-features)
+- [🚀 Getting Started](#-getting-started)
+- [📖 Usage](#-usage)
+- [🏗️ Architecture](#-architecture)
+- [🛠️ Development](#-development)
+- [Tech Stack](#tech-stack)
+- [🗺️ Roadmap](#-roadmap)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [🙏 Acknowledgments](#-acknowledgments)
+- [🚀 GitHub Pages Deployment](#-github-pages-deployment)
+- [📞 Support](#-support)
+
+<!-- portfolio-toc:end -->
+
+
 ![BlazorKawaii Logo](https://raw.githubusercontent.com/phmatray/BlazorKawaii/main/logo.png)
 
 A collection of cute, customizable SVG components for Blazor WebAssembly applications.
