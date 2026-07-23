@@ -206,6 +206,21 @@ public partial class NewComponent
 }
 ```
 
+<!-- portfolio-techstack:start -->
+
+## Tech Stack
+
+- **.NET 10**
+- Microsoft.AspNetCore.Components.Web
+- Microsoft.AspNetCore.Components.WebAssembly
+- Microsoft.AspNetCore.Components.WebAssembly.DevServer
+- Microsoft.AspNetCore.WebUtilities
+- MudBlazor
+- PublishSPAforGitHubPages.Build
+- Microsoft.Extensions.Localization
+
+<!-- portfolio-techstack:end -->
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
