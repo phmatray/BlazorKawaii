@@ -213,17 +213,31 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         custom_tag: ${{ steps.get_version.outputs.new_version }}
     
-    - name: Push to NuGet
+    # Trusted Publishing: no long-lived API key. The login step exchanges this workflow's OIDC
+    # token (permissions.id-token: write, declared at workflow level and inherited by this job) for
+    # a NuGet key valid ~1 hour, so it must stay adjacent to the push below.
+    - name: Check NuGet publishing is configured
       if: steps.should_release.outputs.new_release == 'true'
       env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        NUGET_USER: ${{ secrets.NUGET_USER }}
       run: |
-        if [ -z "$NUGET_API_KEY" ]; then
-          echo "Error: NUGET_API_KEY is not set. Please add it to your repository secrets."
+        if [ -z "$NUGET_USER" ]; then
+          echo "Error: NUGET_USER is not set. Add it to your repository secrets (it is your nuget.org profile name, not an API key), and register a Trusted Publishing policy on nuget.org for the BlazorKawaii package naming this repository and ci-cd.yml."
           exit 1
         fi
+
+    - name: NuGet login (OIDC -> short-lived key)
+      id: nuget-login
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+      with:
+        user: ${{ secrets.NUGET_USER }}
+
+    - name: Push to NuGet
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
         dotnet nuget push "./artifacts/*.nupkg" \
-          --api-key "$NUGET_API_KEY" \
+          --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" \
           --source "https://api.nuget.org/v3/index.json" \
           --skip-duplicate
     

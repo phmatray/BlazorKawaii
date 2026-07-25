@@ -106,7 +106,13 @@ The GitHub Actions workflow (`ci-cd.yml`) handles:
 
 ### NuGet Publishing
 
-To publish to NuGet.org:
-1. Create an API key at https://www.nuget.org/account/apikeys
-2. Add it as `NUGET_API_KEY` in GitHub repository secrets
+Publishing uses [Trusted Publishing](https://learn.microsoft.com/nuget/nuget-org/trusted-publishing) —
+no long-lived API key is stored anywhere. The workflow exchanges GitHub's OIDC token for a NuGet key
+valid about an hour, used immediately.
+
+To set it up:
+1. On nuget.org, register a Trusted Publishing policy for the `BlazorKawaii` package, naming this
+   repository and the workflow file `ci-cd.yml`
+2. Add your nuget.org **profile name** as `NUGET_USER` in GitHub repository secrets — it is not a
+   credential; the OIDC exchange is what authorizes the push
 3. The CI/CD pipeline will automatically publish on new version tags
