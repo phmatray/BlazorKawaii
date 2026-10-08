@@ -2,7 +2,11 @@
 @inherits KawaiiComponentBase
 
 <Wrapper Class="@Class" Style="@Style">
-    <svg class="@SvgClass" style="@SvgStyle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none">
+    <svg class="@SvgClass" style="@SvgStyle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none" role="@SvgRole" aria-hidden="@SvgAriaHidden" @attributes="AdditionalAttributes">
+        @if (Title is not null)
+        {
+            <title>@Title</title>
+        }
         @((MarkupString)AstronautPaths.Body.Replace("currentColor", Color ?? DefaultColor))
         
         <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" />

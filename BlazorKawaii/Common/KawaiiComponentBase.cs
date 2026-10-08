@@ -55,6 +55,32 @@ public abstract class KawaiiComponentBase : ComponentBase
     public string? SvgStyle { get; set; }
 
     /// <summary>
+    /// Gets or sets an accessible name for the illustration.
+    /// </summary>
+    /// <value>
+    /// When set, the SVG is exposed to assistive technologies as an image with this name.
+    /// When null (the default), the mascot is treated as decorative and hidden from screen readers.
+    /// </value>
+    [Parameter]
+    public string? Title { get; set; }
+
+    /// <summary>
+    /// Gets or sets extra attributes (such as <c>aria-label</c> or <c>data-*</c>) applied to the SVG element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    /// <summary>
+    /// Gets the ARIA role of the SVG: an image when it has a <see cref="Title"/>, otherwise none.
+    /// </summary>
+    protected string? SvgRole => Title is null ? null : "img";
+
+    /// <summary>
+    /// Gets the <c>aria-hidden</c> value of the SVG: decorative mascots without a <see cref="Title"/> are hidden.
+    /// </summary>
+    protected string? SvgAriaHidden => Title is null ? "true" : null;
+
+    /// <summary>
     /// Gets the default color for the component.
     /// </summary>
     protected abstract string DefaultColor { get; }
