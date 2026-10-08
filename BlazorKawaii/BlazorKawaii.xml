@@ -39,6 +39,12 @@
             </summary>
             <value>The Y coordinate in SVG units.</value>
         </member>
+        <member name="P:BlazorKawaii.Common.Face.MouthColor">
+            <summary>
+            Gets or sets the fill color of the mouth.
+            </summary>
+            <value>Any SVG color. Default is black; a mascot can use it to turn the mouth into a beak.</value>
+        </member>
         <member name="P:BlazorKawaii.Common.Face.UniqueId">
             <summary>
             Gets the unique identifier for this face instance.
@@ -158,6 +164,30 @@
             Gets or sets the inline CSS style to apply to the SVG element.
             </summary>
         </member>
+        <member name="P:BlazorKawaii.Common.KawaiiComponentBase.Title">
+            <summary>
+            Gets or sets an accessible name for the illustration.
+            </summary>
+            <value>
+            When set, the SVG is exposed to assistive technologies as an image with this name.
+            When null (the default), the mascot is treated as decorative and hidden from screen readers.
+            </value>
+        </member>
+        <member name="P:BlazorKawaii.Common.KawaiiComponentBase.AdditionalAttributes">
+            <summary>
+            Gets or sets extra attributes (such as <c>aria-label</c> or <c>data-*</c>) applied to the SVG element.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Common.KawaiiComponentBase.SvgRole">
+            <summary>
+            Gets the ARIA role of the SVG: an image when it has a <see cref="P:BlazorKawaii.Common.KawaiiComponentBase.Title"/>, otherwise none.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Common.KawaiiComponentBase.SvgAriaHidden">
+            <summary>
+            Gets the <c>aria-hidden</c> value of the SVG: decorative mascots without a <see cref="P:BlazorKawaii.Common.KawaiiComponentBase.Title"/> are hidden.
+            </summary>
+        </member>
         <member name="P:BlazorKawaii.Common.KawaiiComponentBase.DefaultColor">
             <summary>
             Gets the default color for the component.
@@ -246,6 +276,30 @@
             This method is used to ensure that multiple instances of the same component
             on a page have unique SVG mask IDs to prevent rendering conflicts.
             </remarks>
+        </member>
+        <member name="T:BlazorKawaii.Components.Airplane">
+            <summary>
+            Represents a Airplane character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Airplane.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Airplane.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Airplane.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.AirplanePaths">
+            <summary>
+            Provides SVG path data for the Airplane component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.AirplanePaths.Body">
+            <summary>
+            Gets the SVG path data for the Airplane body.
+            </summary>
         </member>
         <member name="T:BlazorKawaii.Components.Astronaut">
             <summary>
@@ -365,6 +419,54 @@
         <member name="F:BlazorKawaii.Components.ChocolatePaths.Body">
             <summary>
             Gets the SVG path data for the Chocolate body.
+            </summary>
+        </member>
+        <member name="T:BlazorKawaii.Components.Cloud">
+            <summary>
+            Represents a Cloud character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Cloud.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Cloud.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Cloud.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.CloudPaths">
+            <summary>
+            Provides SVG path data for the Cloud component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.CloudPaths.Body">
+            <summary>
+            Gets the SVG path data for the Cloud body.
+            </summary>
+        </member>
+        <member name="T:BlazorKawaii.Components.Cookie">
+            <summary>
+            Represents a Cookie character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Cookie.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Cookie.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Cookie.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.CookiePaths">
+            <summary>
+            Provides SVG path data for the Cookie component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.CookiePaths.Body">
+            <summary>
+            Gets the SVG path data for the Cookie body.
             </summary>
         </member>
         <member name="T:BlazorKawaii.Components.CreditCard">
@@ -559,6 +661,30 @@
             Gets the SVG path data for the IceCream body.
             </summary>
         </member>
+        <member name="T:BlazorKawaii.Components.MagnifyingGlass">
+            <summary>
+            Represents a MagnifyingGlass character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.MagnifyingGlass.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.MagnifyingGlass.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.MagnifyingGlass.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.MagnifyingGlassPaths">
+            <summary>
+            Provides SVG path data for the MagnifyingGlass component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.MagnifyingGlassPaths.Body">
+            <summary>
+            Gets the SVG path data for the MagnifyingGlass body.
+            </summary>
+        </member>
         <member name="T:BlazorKawaii.Components.Mug">
             <summary>
             Represents a Mug character component with customizable mood and appearance.
@@ -583,6 +709,30 @@
             Gets the SVG path data for the Mug body.
             </summary>
         </member>
+        <member name="T:BlazorKawaii.Components.Padlock">
+            <summary>
+            Represents a Padlock character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Padlock.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Padlock.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Padlock.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.PadlockPaths">
+            <summary>
+            Provides SVG path data for the Padlock component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.PadlockPaths.Body">
+            <summary>
+            Gets the SVG path data for the Padlock body.
+            </summary>
+        </member>
         <member name="T:BlazorKawaii.Components.Planet">
             <summary>
             Represents a Planet character component with customizable mood and appearance.
@@ -605,6 +755,30 @@
         <member name="F:BlazorKawaii.Components.PlanetPaths.Body">
             <summary>
             Gets the SVG path data for the Planet body.
+            </summary>
+        </member>
+        <member name="T:BlazorKawaii.Components.RubberDuck">
+            <summary>
+            Represents a RubberDuck character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.RubberDuck.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.RubberDuck.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.RubberDuck.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.RubberDuckPaths">
+            <summary>
+            Provides SVG path data for the RubberDuck component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.RubberDuckPaths.Body">
+            <summary>
+            Gets the SVG path data for the RubberDuck body.
             </summary>
         </member>
         <member name="T:BlazorKawaii.Components.SpeechBubble">

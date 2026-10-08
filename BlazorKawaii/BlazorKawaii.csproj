@@ -7,11 +7,11 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>BlazorKawaii</PackageId>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <Authors>phmatray</Authors>
     <Company>Atypical Consulting SRL
     </Company>
-    <Description>A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 16 kawaii components with 7 different moods.</Description>
+    <Description>A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 22 kawaii components with 7 different moods.</Description>
     <PackageTags>Blazor;WebAssembly;Components;SVG;Kawaii;UI</PackageTags>
     <PackageProjectUrl>https://github.com/phmatray/BlazorKawaii</PackageProjectUrl>
     <RepositoryUrl>https://github.com/phmatray/BlazorKawaii</RepositoryUrl>
