@@ -7,7 +7,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>BlazorKawaii</PackageId>
-    <Version>2.1.0</Version>
+    <Version>2.2.0</Version>
     <Authors>phmatray</Authors>
     <Company>Atypical Consulting SRL
     </Company>
