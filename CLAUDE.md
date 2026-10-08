@@ -59,7 +59,7 @@ All components inherit from `KawaiiComponentBase` which provides:
 - Abstract methods for face positioning and scaling
 
 Each component consists of:
-1. **Component.razor** - SVG markup using the Wrapper component
+1. **Component.razor** - SVG markup using the Wrapper component; its `<Face … />` must pass `Animated="@Animated"`
 2. **Component.razor.cs** - Partial class inheriting from KawaiiComponentBase
 3. **ComponentPaths.cs** - Static class containing SVG path data
 

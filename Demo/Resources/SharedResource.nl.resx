@@ -578,4 +578,16 @@
   <data name="FaceOnlyDesc" xml:space="preserve">
     <value>Leg alleen de ogen, blosjes en mond over je eigen beeld, een foto, een avatar of een achtergrond, met KawaiiFace. Size is de breedte van de gezichtsbox in pixels (de box biedt ruimte voor elke stemming, dus het gezicht verschuift niet als Mood verandert), Color bepaalt de ogen en de mond en BlushColor de wangen.</value>
   </data>
+  <data name="AnimateFace" xml:space="preserve">
+    <value>Gezicht animeren</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animatie</value>
+  </data>
+  <data name="AnimationDesc" xml:space="preserve">
+    <value>Zet Animated="true" en het gezicht speelt een kleine animatie die bij de stemming past: knipperen, een hartslag, een draaiende spiraal. Het blijft stil wanneer de bezoeker om minder beweging vraagt. Wil je zelf één deel laten bewegen, gebruik dan de vaste klassen kawaii-face__eyes, kawaii-face__mouth en kawaii-face__cheeks.</value>
+  </data>
+  <data name="AnimatedDesc" xml:space="preserve">
+    <value>Speelt een kleine animatie die bij de stemming past. Stil onder prefers-reduced-motion</value>
+  </data>
 </root>

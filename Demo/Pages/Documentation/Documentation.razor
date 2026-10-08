@@ -122,6 +122,23 @@
             </ul>
         </section>
 
+        <section id="animation" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Animation"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["AnimationDesc"]</MudText>
+
+            <ul class="mood-grid mb-6">
+                @foreach (var mood in KawaiiCatalog.Moods)
+                {
+                    <li class="mood-tile">
+                        <Ghost Mood="@mood" Size="88" Color="#A6E191" Animated="true" />
+                        <code>Mood.@mood</code>
+                        <span class="mud-text-secondary">@Localizer[$"Mood{mood}"]</span>
+                    </li>
+                }
+            </ul>
+            <CodeBlock Language="razor" CodeFile="code-samples/animation.txt" />
+        </section>
+
         <section id="customization" class="doc-section" tabindex="-1">
             <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Customization"]</MudText>
 
@@ -239,6 +256,7 @@
         ("basic-usage", "BasicUsage"),
         ("component-props", "ComponentProperties"),
         ("moods", "Moods"),
+        ("animation", "Animation"),
         ("customization", "Customization"),
         ("face-only", "FaceOnly"),
         ("examples", "Examples"),
@@ -258,6 +276,7 @@
         ("SvgClass", "string?", "null", "SvgClassDesc"),
         ("SvgStyle", "string?", "null", "SvgStyleDesc"),
         ("Title", "string?", "null", "TitleDesc"),
+        ("Animated", "bool", "false", "AnimatedDesc"),
         ("aria-*, data-*, …", "—", "—", "AdditionalAttributesDesc")
     ];
 

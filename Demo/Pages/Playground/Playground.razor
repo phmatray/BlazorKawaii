@@ -46,6 +46,8 @@
 
         <MudDivider Class="my-4" />
 
+        <MudSwitch T="bool" @bind-Value="_animateFace" Color="Color.Tertiary" Class="mb-2">@Localizer["AnimateFace"]</MudSwitch>
+
         <MudText Typo="Typo.subtitle1" HtmlTag="h3" id="animation-label">@Localizer["AnimationEffects"]</MudText>
         <MudRadioGroup T="string" @bind-Value="_animation" aria-labelledby="animation-label">
             <MudRadio Value="@("none")" Color="Color.Tertiary">@Localizer["NoAnimation"]</MudRadio>
@@ -84,6 +86,7 @@
     private int _size = DefaultSize;
     private string _color = DefaultColor;
     private string _animation = "none";
+    private bool _animateFace;
 
     protected override void OnParametersSet()
     {
@@ -100,6 +103,7 @@
         {
             var parameters = KawaiiCatalog.Parameters(_mood, _size, _color);
             parameters[nameof(KawaiiComponentBase.Class)] = "playground-mascot";
+            parameters[nameof(KawaiiComponentBase.Animated)] = _animateFace;
             return parameters;
         }
     }
@@ -107,7 +111,7 @@
     private string GeneratedCode => $@"@using BlazorKawaii.Components
 @using BlazorKawaii.Common
 
-<{_component.Name} Mood=""Mood.{_mood}"" Size=""{_size}"" Color=""{_color}"" />";
+<{_component.Name} Mood=""Mood.{_mood}"" Size=""{_size}"" Color=""{_color}""{(_animateFace ? @" Animated=""true""" : "")} />";
 
     private void ResetToDefaults()
     {
@@ -116,5 +120,6 @@
         _size = DefaultSize;
         _color = DefaultColor;
         _animation = "none";
+        _animateFace = false;
     }
 }

@@ -578,4 +578,16 @@
   <data name="FaceOnlyDesc" xml:space="preserve">
     <value>Posez uniquement les yeux, les joues et la bouche sur vos propres visuels, une photo, un avatar ou un arrière-plan, avec KawaiiFace. Size est la largeur de la boîte du visage en pixels (la boîte laisse la place à toutes les humeurs, le visage ne bouge donc pas quand Mood change), Color règle les yeux et la bouche et BlushColor les joues.</value>
   </data>
+  <data name="AnimateFace" xml:space="preserve">
+    <value>Animer le visage</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="AnimationDesc" xml:space="preserve">
+    <value>Ajoutez Animated="true" et le visage joue une petite animation choisie selon son humeur : un clignement des yeux, un battement de cœur, une spirale qui tourne. Il reste immobile quand le visiteur demande moins d'animations. Pour animer une partie vous-même, ciblez les classes stables kawaii-face__eyes, kawaii-face__mouth et kawaii-face__cheeks.</value>
+  </data>
+  <data name="AnimatedDesc" xml:space="preserve">
+    <value>Joue une petite animation choisie selon l'humeur. Immobile sous prefers-reduced-motion</value>
+  </data>
 </root>

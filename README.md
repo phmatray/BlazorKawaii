@@ -100,6 +100,7 @@ Every component inherits `KawaiiComponentBase` and shares the same parameters:
 | `SvgClass` | `string?` | —                | CSS class on the `svg` element                |
 | `SvgStyle` | `string?` | —                | Inline style on the `svg` element             |
 | `Title`    | `string?` | —                | Accessible name; without it the mascot is decorative (`aria-hidden`) |
+| `Animated` | `bool`    | `false`          | Plays the built-in animation of the mood (see [Animation](#animation)) |
 
 Any other attribute, such as `aria-label` or `data-testid`, is passed through to the `svg` element.
 
@@ -189,6 +190,44 @@ Pair a mascot and a mood with the state your user is in:
                 BlushColor="#FF8FB1"
                 Style="position:absolute; left:50%; top:45%; transform:translate(-50%,-50%)" />
 </div>
+```
+
+### Animation
+
+`Animated="true"` plays a small animation chosen by the mood. It needs no stylesheet: the face carries its own `<style>`.
+
+| Mood | Animation |
+|------|-----------|
+| `Happy`, `Sad`, `Shocked`, `Excited` | The eyes blink every 4 s |
+| `Excited` | The mouth bounces |
+| `Sad` | The mouth droops |
+| `Blissful` | The cheeks glow |
+| `Lovestruck` | The heart eyes beat |
+| `Ko` | The cross eyes wobble |
+| `Sleepy` | The mouth snores |
+| `Dizzy` | The spiral eyes spin |
+
+Nothing moves when the visitor's system asks for reduced motion (`prefers-reduced-motion: reduce`).
+
+To animate a part yourself, target the classes every face carries, on `KawaiiFace` and every mascot alike:
+
+| Class | Element |
+|-------|---------|
+| `kawaii-face` | The face's root group |
+| `kawaii-face--<mood>` | The same group, with the mood in lower case (`kawaii-face--happy`, `kawaii-face--ko`, …) |
+| `kawaii-face--animated` | The same group, when `Animated` is on |
+| `kawaii-face__eyes`, `kawaii-face__mouth`, `kawaii-face__cheeks` | The three parts |
+
+```css
+.peeking .kawaii-face__eyes {
+    transform-box: fill-box;      /* move the eyes around their own centre */
+    transform-origin: center;
+    animation: peek 2.4s ease-in-out infinite;
+}
+```
+
+```razor
+<Cat Mood="Mood.Happy" Class="peeking" />
 ```
 
 ## 🏗️ Architecture

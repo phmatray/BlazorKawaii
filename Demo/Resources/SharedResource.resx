@@ -574,4 +574,16 @@
   <data name="FaceOnlyDesc" xml:space="preserve">
     <value>Lay just the eyes, blush and mouth over your own artwork, a photo, an avatar or a background, with KawaiiFace. Size is the width of the face's box in pixels (the box leaves room for every mood, so the face does not move when Mood changes), Color sets the eyes and the mouth and BlushColor the cheeks.</value>
   </data>
+  <data name="AnimateFace" xml:space="preserve">
+    <value>Animate the face</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="AnimationDesc" xml:space="preserve">
+    <value>Set Animated="true" and the face plays a small animation chosen by its mood: blinking, a heartbeat, a dizzy spin. It stays still when the visitor asks for reduced motion. To move one part yourself, target the stable classes kawaii-face__eyes, kawaii-face__mouth and kawaii-face__cheeks.</value>
+  </data>
+  <data name="AnimatedDesc" xml:space="preserve">
+    <value>Plays a small animation chosen by the mood. Still under prefers-reduced-motion</value>
+  </data>
 </root>
