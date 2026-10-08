@@ -640,6 +640,10 @@ main:focus,
     font-size: 0.875rem;
 }
 
+.mood-grid--large {
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+}
+
 .mood-tile code {
     font-size: 0.8125rem;
 }

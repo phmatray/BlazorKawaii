@@ -130,11 +130,11 @@
             </MudText>
             <MudSwitch T="bool" @bind-Value="_animateMoods" Color="Color.Tertiary">@Localizer["AnimateFace"]</MudSwitch>
 
-            <ul class="mood-grid mb-6">
+            <ul class="mood-grid mood-grid--large mb-6">
                 @foreach (var mood in KawaiiCatalog.Moods)
                 {
                     <li class="mood-tile">
-                        <Ghost Mood="@mood" Size="120" Color="#A6E191" Animated="@_animateMoods" />
+                        <Ghost Mood="@mood" Size="160" Color="#A6E191" Animated="@_animateMoods" />
                         <code>Mood.@mood</code>
                         <span class="mud-text-secondary">@Localizer[$"Mood{mood}"]</span>
                     </li>

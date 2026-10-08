@@ -201,10 +201,10 @@ Pair a mascot and a mood with the state your user is in:
 | `Happy`, `Sad`, `Shocked`, `Excited` | The eyes blink every few seconds |
 | `Excited` | The face hops |
 | `Sad` | The face droops |
-| `Blissful` | The cheeks glow |
-| `Lovestruck` | The heart eyes beat |
-| `Ko` | The cross eyes wobble |
-| `Sleepy` | The mouth snores |
+| `Blissful` | The face rocks gently and the cheeks glow |
+| `Lovestruck` | The face floats and the heart eyes beat |
+| `Ko` | The head sways and the cross eyes spin |
+| `Sleepy` | The head nods and the mouth snores |
 | `Dizzy` | The spiral eyes spin |
 
 Nothing moves when the visitor's system asks for reduced motion (`prefers-reduced-motion: reduce`).
