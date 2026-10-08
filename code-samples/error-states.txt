@@ -1,0 +1,8 @@
+@if (hasError)
+{
+    <div class="error-state">
+        <Browser Mood="Mood.Ko" Size="200" Color="#FF6B6B" />
+        <h3>Oops! Something went wrong</h3>
+        <p>Please try again later.</p>
+    </div>
+}

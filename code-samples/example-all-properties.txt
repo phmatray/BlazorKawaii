@@ -1,0 +1,8 @@
+<Ghost
+    Size="300"
+    Mood="Mood.Excited"
+    Color="#B19CD9"
+    Class="my-custom-wrapper"
+    Style="margin: 20px;"
+    SvgClass="my-custom-ghost"
+    SvgStyle="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));" />

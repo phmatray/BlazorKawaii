@@ -1,0 +1,11 @@
+@if (isLoading)
+{
+    <div class="text-center">
+        <Ghost Mood="Mood.Excited" Size="150" />
+        <p>Loading your data...</p>
+    </div>
+}
+else
+{
+    <p>Data loaded!</p>
+}

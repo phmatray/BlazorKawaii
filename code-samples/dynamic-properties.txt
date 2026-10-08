@@ -1,0 +1,7 @@
+@code {
+    private Mood currentMood = Mood.Happy;
+    private int size = 200;
+    private string color = "#FFD882";
+}
+
+<Planet Mood="@currentMood" Size="@size" Color="@color" />
