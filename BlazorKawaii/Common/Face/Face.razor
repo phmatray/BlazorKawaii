@@ -2,6 +2,10 @@
 
 <g transform="@GetTransform()">
   <g class="@RootClass">
+    @if (Animated)
+    {
+      <style>@FaceAnimations.Css</style>
+    }
     <g class="kawaii-face__mouth">
       <g transform="translate(18.000000, 16.000000)">
         @if (Mood is Blissful or Lovestruck or Excited)
@@ -66,7 +70,8 @@
       <g
         transform="translate(0.000000, 15.000000)"
         fill="@BlushColor"
-        opacity="@(BlushColor == "#000000" ? "0.2" : "0.6")">
+        opacity="@CheeksOpacity"
+        style="--kawaii-cheeks-opacity: @CheeksOpacity">
         <circle cx="3" cy="3" r="3"/>
         <circle cx="63" cy="3" r="3"/>
       </g>

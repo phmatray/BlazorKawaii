@@ -9,6 +9,6 @@
         }
         @((MarkupString)RubberDuckPaths.Body.Replace("currentColor", Color ?? DefaultColor))
 
-        <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" MouthColor="#F07A2A" />
+        <Face Mood="@Mood" Animated="@Animated" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" MouthColor="#F07A2A" />
     </svg>
 </Wrapper>
