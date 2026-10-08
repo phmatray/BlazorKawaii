@@ -153,6 +153,9 @@
   <data name="FolderDesc" xml:space="preserve">
     <value>Map voor het organiseren van bestanden</value>
   </data>
+  <data name="GamepadDesc" xml:space="preserve">
+    <value>Een gamecontroller, klaar voor het volgende level</value>
+  </data>
   <data name="GhostDesc" xml:space="preserve">
     <value>Vriendelijk zwevend spookje</value>
   </data>
@@ -194,6 +197,9 @@
   </data>
   <data name="PadlockDesc" xml:space="preserve">
     <value>Een hangslot voor inlog- en toegang-geweigerd-schermen</value>
+  </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>Een cassettebandje dat je favoriete nummer terugspoelt</value>
   </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>Een mollig vliegtuig voor reizen, boekingen en verzending</value>

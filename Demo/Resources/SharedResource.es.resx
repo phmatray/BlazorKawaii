@@ -153,6 +153,9 @@
   <data name="FolderDesc" xml:space="preserve">
     <value>Carpeta para organizar archivos</value>
   </data>
+  <data name="GamepadDesc" xml:space="preserve">
+    <value>Un mando, listo para el siguiente nivel</value>
+  </data>
   <data name="GhostDesc" xml:space="preserve">
     <value>Fantasma flotante amigable</value>
   </data>
@@ -194,6 +197,9 @@
   </data>
   <data name="PadlockDesc" xml:space="preserve">
     <value>Un candado para pantallas de inicio de sesión y acceso denegado</value>
+  </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>Una cinta de casete que rebobina tu canción favorita</value>
   </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>Un avión regordete para viajes, reservas y envíos</value>

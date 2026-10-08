@@ -153,6 +153,9 @@
   <data name="FolderDesc" xml:space="preserve">
     <value>Dossier pour organiser les fichiers</value>
   </data>
+  <data name="GamepadDesc" xml:space="preserve">
+    <value>Une manette, prête pour le niveau suivant</value>
+  </data>
   <data name="GhostDesc" xml:space="preserve">
     <value>Fantôme flottant amical</value>
   </data>
@@ -194,6 +197,9 @@
   </data>
   <data name="PadlockDesc" xml:space="preserve">
     <value>Un cadenas pour les écrans de connexion et d'accès refusé</value>
+  </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>Une cassette qui rembobine ta chanson préférée</value>
   </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>Un avion tout rond pour les voyages, réservations et livraisons</value>

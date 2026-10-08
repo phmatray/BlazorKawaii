@@ -404,6 +404,30 @@
             Gets the SVG path data for the Browser body.
             </summary>
         </member>
+        <member name="T:BlazorKawaii.Components.Cassette">
+            <summary>
+            Represents a Cassette character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Cassette.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Cassette.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Cassette.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.CassettePaths">
+            <summary>
+            Provides SVG path data for the Cassette component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.CassettePaths.Body">
+            <summary>
+            Gets the SVG path data for the Cassette body.
+            </summary>
+        </member>
         <member name="T:BlazorKawaii.Components.Cat">
             <summary>
             Represents a Cat character component with customizable mood and appearance.
@@ -594,6 +618,30 @@
         <member name="F:BlazorKawaii.Components.FolderPaths.Body">
             <summary>
             Gets the SVG path data for the Folder body.
+            </summary>
+        </member>
+        <member name="T:BlazorKawaii.Components.Gamepad">
+            <summary>
+            Represents a Gamepad character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Gamepad.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Gamepad.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Gamepad.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.GamepadPaths">
+            <summary>
+            Provides SVG path data for the Gamepad component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.GamepadPaths.Body">
+            <summary>
+            Gets the SVG path data for the Gamepad body, d-pad and buttons.
             </summary>
         </member>
         <member name="T:BlazorKawaii.Components.Ghost">
