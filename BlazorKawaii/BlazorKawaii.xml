@@ -68,6 +68,23 @@
             </summary>
             <returns>A formatted SVG transform string.</returns>
         </member>
+        <member name="P:BlazorKawaii.Common.Face.Animated">
+            <summary>
+            Gets or sets whether the face plays the built-in animation of its mood.
+            Off by default, and still under <c>prefers-reduced-motion: reduce</c>.
+            </summary>
+        </member>
+        <member name="T:BlazorKawaii.Common.FaceAnimations">
+            <summary>
+            The stylesheet an animated <see cref="T:BlazorKawaii.Common.Face"/> renders inside its own root group, so the animation
+            works without any stylesheet reference on the consumer's side.
+            </summary>
+            <remarks>
+            Every rule is scoped under <c>.kawaii-face--animated</c> and a mood modifier, so the text is identical
+            for every instance. It contains no <c>&lt;</c>, <c>&gt;</c>, quote or ampersand, so HTML-encoding the
+            text of the <c>&lt;style&gt;</c> element never alters it.
+            </remarks>
+        </member>
         <member name="T:BlazorKawaii.Common.FacePaths">
             <summary>
             Provides SVG path data for the Face component expressions.
@@ -243,6 +260,12 @@
             Gets the position coordinates for the face element.
             </summary>
             <returns>A tuple containing the x and y coordinates.</returns>
+        </member>
+        <member name="P:BlazorKawaii.Common.KawaiiComponentBase.Animated">
+            <summary>
+            Gets or sets whether the face plays the built-in animation of its mood (blinking, a heartbeat,
+            a dizzy spin…). Off by default, and still under <c>prefers-reduced-motion: reduce</c>.
+            </summary>
         </member>
         <member name="T:BlazorKawaii.Common.Mood">
             <summary>

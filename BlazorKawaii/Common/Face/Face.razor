@@ -1,126 +1,139 @@
 ﻿@namespace BlazorKawaii.Common
 
 <g transform="@GetTransform()">
-  <g transform="translate(18.000000, 16.000000)">
-    @if (Mood is Blissful or Lovestruck or Excited)
+  <g class="@RootClass" style="@(Animated ? AnimationDelay : null)">
+    @if (Animated)
     {
-      <g
-        transform="translate(0.000000, 1.000000)">
-        <mask id=@($"kawaii-face__mask-2-{UniqueId}") fill="white">
-          <path d="@FacePaths.Defs"/>
-        </mask>
-        @* Drawn inline: Blazor sets xlink:href without its namespace, so a <use> renders nothing *@
-        <path
-          d="@FacePaths.Defs"
-          fill="@MouthColor"/>
-        <path
-          d="@FacePaths.Tongue"
-          fill="#E74144"
-          mask=@($"url(#kawaii-face__mask-2-{UniqueId})")
-          transform="translate(15.000000, 11.431885) scale(1, -1) translate(-15.000000, -11.431885)"/>
+      <style>@FaceAnimations.Css</style>
+    }
+    <g class="kawaii-face__mouth">
+      <g transform="translate(18.000000, 16.000000)">
+        @if (Mood is Blissful or Lovestruck or Excited)
+        {
+          <g
+            transform="translate(0.000000, 1.000000)">
+            <mask id=@($"kawaii-face__mask-2-{UniqueId}") fill="white">
+              <path d="@FacePaths.Defs"/>
+            </mask>
+            @* Drawn inline: Blazor sets xlink:href without its namespace, so a <use> renders nothing *@
+            <path
+              d="@FacePaths.Defs"
+              fill="@MouthColor"/>
+            <path
+              d="@FacePaths.Tongue"
+              fill="#E74144"
+              mask=@($"url(#kawaii-face__mask-2-{UniqueId})")
+              transform="translate(15.000000, 11.431885) scale(1, -1) translate(-15.000000, -11.431885)"/>
+          </g>
+        }
+        @if (Mood is Happy)
+        {
+          <path d="@FacePaths.Happy" fill="@MouthColor"/>
+        }
+        @if (Mood is Shocked)
+        {
+          <ellipse
+            cx="15"
+            cy="14"
+            rx="9"
+            ry="10"
+            fill="@MouthColor"/>
+        }
+        @if (Mood is Sleepy)
+        {
+          <ellipse
+            cx="15"
+            cy="8"
+            rx="4.5"
+            ry="3.5"
+            fill="@MouthColor"/>
+        }
+        @if (Mood is Dizzy)
+        {
+          <path
+            d="@FacePaths.DizzyMouth"
+            fill="none"
+            stroke="@MouthColor"
+            stroke-width="3.5"
+            stroke-linecap="round"/>
+        }
+        @if (Mood is Sad or Ko)
+        {
+          <path
+            d="@FacePaths.Sad"
+            fill="@MouthColor"
+            transform="translate(14.999999, 5.500000) scale(1, -1) translate(-14.999999, -5.500000)"/>
+        }
       </g>
-    }
-    @if (Mood is Happy)
-    {
-      <path d="@FacePaths.Happy" fill="@MouthColor"/>
-    }
-    @if (Mood is Shocked)
-    {
-      <ellipse
-        cx="15"
-        cy="14"
-        rx="9"
-        ry="10"
-        fill="@MouthColor"/>
-    }
-    @if (Mood is Sleepy)
-    {
-      <ellipse
-        cx="15"
-        cy="8"
-        rx="4.5"
-        ry="3.5"
-        fill="@MouthColor"/>
-    }
-    @if (Mood is Dizzy)
-    {
-      <path
-        d="@FacePaths.DizzyMouth"
-        fill="none"
-        stroke="@MouthColor"
-        stroke-width="3.5"
-        stroke-linecap="round"/>
-    }
-    @if (Mood is Sad or Ko)
-    {
-      <path
-        d="@FacePaths.Sad"
-        fill="@MouthColor"
-        transform="translate(14.999999, 5.500000) scale(1, -1) translate(-14.999999, -5.500000)"/>
-    }
-  </g>
-  <g
-    transform="translate(0.000000, 15.000000)"
-    fill="@BlushColor"
-    opacity="@(BlushColor == "#000000" ? "0.2" : "0.6")">
-    <circle cx="3" cy="3" r="3"/>
-    <circle cx="63" cy="3" r="3"/>
-  </g>
-  <g
-    transform="translate(2.000000, 0.000000)"
-    fill="@EyeColor">
-    @if (Mood is Blissful)
-    {
+    </g>
+    <g class="kawaii-face__cheeks">
       <g
-        transform="translate(1.000000, 0.000000)">
-        <path d="@FacePaths.Bliss1"/>
-        <path d="@FacePaths.Bliss2"/>
+        transform="translate(0.000000, 15.000000)"
+        fill="@BlushColor"
+        opacity="@CheeksOpacity"
+        style="--kawaii-cheeks-opacity: @CheeksOpacity">
+        <circle cx="3" cy="3" r="3"/>
+        <circle cx="63" cy="3" r="3"/>
       </g>
-    }
-    @if (Mood is Sleepy)
-    {
+    </g>
+    <g class="kawaii-face__eyes">
       <g
-        transform="translate(1.000000, 2.000000) translate(0.000000, 10.000000) scale(1, -1)">
-        <path d="@FacePaths.Bliss1"/>
-        <path d="@FacePaths.Bliss2"/>
+        transform="translate(2.000000, 0.000000)"
+        fill="@EyeColor">
+        @if (Mood is Blissful)
+        {
+          <g
+            transform="translate(1.000000, 0.000000)">
+            <path d="@FacePaths.Bliss1"/>
+            <path d="@FacePaths.Bliss2"/>
+          </g>
+        }
+        @if (Mood is Sleepy)
+        {
+          <g
+            transform="translate(1.000000, 2.000000) translate(0.000000, 10.000000) scale(1, -1)">
+            <path d="@FacePaths.Bliss1"/>
+            <path d="@FacePaths.Bliss2"/>
+          </g>
+        }
+        @if (Mood is Dizzy)
+        {
+          <g
+            fill="none"
+            stroke="@EyeColor"
+            stroke-width="3"
+            stroke-linecap="round">
+            <path d="@FacePaths.DizzySpiral1"/>
+            <path d="@FacePaths.DizzySpiral2"/>
+          </g>
+        }
+        @if (Mood is Happy or Sad or Shocked or Excited)
+        {
+          <g
+            transform="translate(1.000000, 2.000000)">
+            <circle cx="4.5" cy="4.5" r="4.5"/>
+            <circle cx="56.5" cy="4.5" r="4.5"/>
+          </g>
+        }
+        @if (Mood is Lovestruck)
+        {
+          <g
+            transform="translate(0.000000, 2.000000)"
+            fillRule="nonzero">
+            <path d="@FacePaths.Lovestruck1"/>
+            <path d="@FacePaths.Lovestruck2"/>
+          </g>
+        }
+        @if (Mood is Ko)
+        {
+          <g
+            transform="translate(1.500000, 1.000000)"
+            fillRule="nonzero">
+            <path d="@FacePaths.Ko1"/>
+            <path d="@FacePaths.Ko2"/>
+          </g>
+        }
       </g>
-    }
-    @if (Mood is Dizzy)
-    {
-      <g
-        fill="none"
-        stroke="@EyeColor"
-        stroke-width="3"
-        stroke-linecap="round">
-        <path d="@FacePaths.DizzySpiral1"/>
-        <path d="@FacePaths.DizzySpiral2"/>
-      </g>
-    }
-    @if (Mood is Happy or Sad or Shocked or Excited)
-    {
-      <g
-        transform="translate(1.000000, 2.000000)">
-        <circle cx="4.5" cy="4.5" r="4.5"/>
-        <circle cx="56.5" cy="4.5" r="4.5"/>
-      </g>
-    }
-    @if (Mood is Lovestruck)
-    {
-      <g
-        transform="translate(0.000000, 2.000000)"
-        fillRule="nonzero">
-        <path d="@FacePaths.Lovestruck1"/>
-        <path d="@FacePaths.Lovestruck2"/>
-      </g>
-    }
-    @if (Mood is Ko)
-    {
-      <g
-        transform="translate(1.500000, 1.000000)"
-        fillRule="nonzero">
-        <path d="@FacePaths.Ko1"/>
-        <path d="@FacePaths.Ko2"/>
-      </g>
-    }
+    </g>
   </g>
 </g>

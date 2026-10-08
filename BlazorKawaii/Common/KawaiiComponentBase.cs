@@ -108,4 +108,11 @@ public abstract class KawaiiComponentBase : ComponentBase
     /// </summary>
     /// <returns>A tuple containing the x and y coordinates.</returns>
     protected abstract (double x, double y) GetFacePosition();
+
+    /// <summary>
+    /// Gets or sets whether the face plays the built-in animation of its mood (blinking, a heartbeat,
+    /// a dizzy spin…). Off by default, and still under <c>prefers-reduced-motion: reduce</c>.
+    /// </summary>
+    [Parameter]
+    public bool Animated { get; set; }
 }

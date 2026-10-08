@@ -228,7 +228,7 @@
     <value>Color</value>
   </data>
   <data name="AnimationEffects" xml:space="preserve">
-    <value>Efectos de Animación</value>
+    <value>Efecto del cuerpo (demo)</value>
   </data>
   <data name="Rotation" xml:space="preserve">
     <value>Rotación</value>
@@ -577,5 +577,23 @@
   </data>
   <data name="FaceOnlyDesc" xml:space="preserve">
     <value>Coloca solo los ojos, las mejillas y la boca sobre tu propio arte, una foto, un avatar o un fondo, con KawaiiFace. Size es el ancho de la caja de la cara en píxeles (la caja deja sitio a todos los estados de ánimo, así la cara no se mueve al cambiar Mood), Color define los ojos y la boca y BlushColor las mejillas.</value>
+  </data>
+  <data name="AnimateFace" xml:space="preserve">
+    <value>Animar la cara</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animación</value>
+  </data>
+  <data name="AnimationDesc" xml:space="preserve">
+    <value>Añade {0} y la cara reproduce una pequeña animación elegida según su estado de ánimo: un parpadeo, un latido, una espiral que gira. Se queda quieta cuando el visitante pide menos movimiento. Para animar una parte tú mismo, apunta a las clases estables {1}, {2} y {3}.</value>
+  </data>
+  <data name="AnimatedDesc" xml:space="preserve">
+    <value>Reproduce una pequeña animación elegida según el estado de ánimo. Quieta con prefers-reduced-motion</value>
+  </data>
+  <data name="FaceSection" xml:space="preserve">
+    <value>Cara</value>
+  </data>
+  <data name="AnimateFaceHelp" xml:space="preserve">
+    <value>Añade {0}</value>
   </data>
 </root>

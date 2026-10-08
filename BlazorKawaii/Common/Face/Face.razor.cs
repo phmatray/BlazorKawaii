@@ -86,4 +86,22 @@ public partial class Face : ComponentBase
         
         return $"translate({xStr} {yStr}) scale({scaleStr})";
     }
+
+    private string RootClass =>
+        $"kawaii-face kawaii-face--{Mood.ToString().ToLowerInvariant()}{(Animated ? " kawaii-face--animated" : "")}";
+
+    /// <summary>
+    /// Gets or sets whether the face plays the built-in animation of its mood.
+    /// Off by default, and still under <c>prefers-reduced-motion: reduce</c>.
+    /// </summary>
+    [Parameter]
+    public bool Animated { get; set; }
+
+    private string CheeksOpacity => BlushColor == "#000000" ? "0.2" : "0.6";
+
+    private string? _animationDelay;
+
+    // A per-instance phase, so animated faces side by side don't blink in unison.
+    private string AnimationDelay => _animationDelay ??=
+        $"--kawaii-delay: -{((uint)_uniqueId.GetHashCode() % 4000).ToString(System.Globalization.CultureInfo.InvariantCulture)}ms";
 }

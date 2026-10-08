@@ -228,7 +228,7 @@
     <value>Kleur</value>
   </data>
   <data name="AnimationEffects" xml:space="preserve">
-    <value>Animatie-effecten</value>
+    <value>Lichaamseffect (demo)</value>
   </data>
   <data name="Rotation" xml:space="preserve">
     <value>Rotatie</value>
@@ -577,5 +577,23 @@
   </data>
   <data name="FaceOnlyDesc" xml:space="preserve">
     <value>Leg alleen de ogen, blosjes en mond over je eigen beeld, een foto, een avatar of een achtergrond, met KawaiiFace. Size is de breedte van de gezichtsbox in pixels (de box biedt ruimte voor elke stemming, dus het gezicht verschuift niet als Mood verandert), Color bepaalt de ogen en de mond en BlushColor de wangen.</value>
+  </data>
+  <data name="AnimateFace" xml:space="preserve">
+    <value>Gezicht animeren</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animatie</value>
+  </data>
+  <data name="AnimationDesc" xml:space="preserve">
+    <value>Zet {0} en het gezicht speelt een kleine animatie die bij de stemming past: knipperen, een hartslag, een draaiende spiraal. Het blijft stil wanneer de bezoeker om minder beweging vraagt. Wil je zelf één deel laten bewegen, gebruik dan de vaste klassen {1}, {2} en {3}.</value>
+  </data>
+  <data name="AnimatedDesc" xml:space="preserve">
+    <value>Speelt een kleine animatie die bij de stemming past. Stil onder prefers-reduced-motion</value>
+  </data>
+  <data name="FaceSection" xml:space="preserve">
+    <value>Gezicht</value>
+  </data>
+  <data name="AnimateFaceHelp" xml:space="preserve">
+    <value>Voegt {0} toe</value>
   </data>
 </root>

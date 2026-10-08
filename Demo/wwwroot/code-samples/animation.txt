@@ -1,0 +1,4 @@
+<Ghost Mood="Mood.Lovestruck" Animated="true" />
+
+@* Or move one part yourself, with the class hooks (CSS below) *@
+<Cat Mood="Mood.Happy" Class="peeking" />
