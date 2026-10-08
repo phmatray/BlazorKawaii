@@ -533,6 +533,12 @@
   <data name="MoodKo" xml:space="preserve">
     <value>Knock-out</value>
   </data>
+  <data name="MoodSleepy" xml:space="preserve">
+    <value>Slaperig</value>
+  </data>
+  <data name="MoodDizzy" xml:space="preserve">
+    <value>Duizelig</value>
+  </data>
   <data name="UiStatesTitle" xml:space="preserve">
     <value>Gemaakt voor de toestanden van je interface</value>
   </data>

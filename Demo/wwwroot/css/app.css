@@ -65,6 +65,20 @@ main:focus,
     outline-color: var(--kawaii-ink);
 }
 
+.app-brand {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.app-brand:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
 .app-title {
     white-space: nowrap;
     overflow: hidden;

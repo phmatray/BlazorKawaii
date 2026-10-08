@@ -121,6 +121,21 @@
             Gets the SVG path data for the second knocked-out X eye.
             </summary>
         </member>
+        <member name="F:BlazorKawaii.Common.FacePaths.DizzySpiral1">
+            <summary>
+            Gets the SVG path data for the first dizzy spiral eye (to be stroked, not filled).
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Common.FacePaths.DizzySpiral2">
+            <summary>
+            Gets the SVG path data for the second dizzy spiral eye, the mirror image of the first (to be stroked, not filled).
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Common.FacePaths.DizzyMouth">
+            <summary>
+            Gets the SVG path data for the dizzy wavy mouth (to be stroked, not filled).
+            </summary>
+        </member>
         <member name="T:BlazorKawaii.Common.KawaiiComponentBase">
             <summary>
             Base class for all Kawaii components providing common functionality and properties.
@@ -255,6 +270,16 @@
         <member name="F:BlazorKawaii.Common.Mood.Ko">
             <summary>
             A knocked-out expression with X-shaped eyes.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Common.Mood.Sleepy">
+            <summary>
+            A sleepy expression with closed eyes and a small snoring mouth.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Common.Mood.Dizzy">
+            <summary>
+            A dizzy expression with spiral eyes and a wavy mouth.
             </summary>
         </member>
         <member name="M:BlazorKawaii.Common.SvgFormatHelper.FormatSvgNumber(System.Double)">

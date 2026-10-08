@@ -533,6 +533,12 @@
   <data name="MoodKo" xml:space="preserve">
     <value>K.-O.</value>
   </data>
+  <data name="MoodSleepy" xml:space="preserve">
+    <value>Endormi</value>
+  </data>
+  <data name="MoodDizzy" xml:space="preserve">
+    <value>Étourdi</value>
+  </data>
   <data name="UiStatesTitle" xml:space="preserve">
     <value>Pensées pour les états de votre interface</value>
   </data>

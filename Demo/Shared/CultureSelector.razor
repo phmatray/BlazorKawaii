@@ -4,10 +4,9 @@
 @using System.Globalization
 @using Microsoft.AspNetCore.WebUtilities
 
-<MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
-    <ActivatorContent>
-        <MudIconButton Icon="@Icons.Material.Filled.Language" Color="Color.Inherit" aria-label="@Localizer["Language"]" />
-    </ActivatorContent>
+@* The menu draws its own icon button: a MudIconButton inside ActivatorContent stops the click from reaching the menu *@
+<MudMenu Icon="@Icons.Material.Filled.Language" Color="Color.Inherit" AriaLabel="@Localizer["Language"]"
+         AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
     <ChildContent>
         @foreach (var (langCode, name) in Languages)
         {
