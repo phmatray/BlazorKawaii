@@ -86,4 +86,6 @@ public partial class Face : ComponentBase
         
         return $"translate({xStr} {yStr}) scale({scaleStr})";
     }
+
+    private string RootClass => $"kawaii-face kawaii-face--{Mood.ToString().ToLowerInvariant()}";
 }
