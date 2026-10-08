@@ -1,5 +1,8 @@
 <div style="position: relative">
-    <img src="my-photo.jpg" alt="" />
-    <KawaiiFace Mood="Mood.Happy" Size="120" Color="#FFFFFF" Title="Happy face"
-                Style="position:absolute; left:40%; top:35%" />
+    <img src="my-photo.jpg" alt="" style="display:block; width:100%" />
+    <KawaiiFace Mood="Mood.Excited"
+                Size="120"
+                Color="#FFFFFF"
+                BlushColor="#FF8FB1"
+                Style="position:absolute; left:50%; top:45%; transform:translate(-50%,-50%)" />
 </div>

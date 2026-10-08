@@ -138,9 +138,15 @@
             <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["FaceOnly"]</MudText>
             <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["FaceOnlyDesc"]</MudText>
 
-            <div class="face-overlay-demo">
-                <KawaiiFace Mood="Mood.Happy" Size="120" Title="Happy face"
-                            Style="position:absolute; left:50%; top:45%; transform:translate(-50%,-50%)" />
+            <div class="face-overlay-row">
+                <div class="face-overlay-demo">
+                    <KawaiiFace Mood="Mood.Happy" Size="120"
+                                Style="position:absolute; left:50%; top:45%; transform:translate(-50%,-50%)" />
+                </div>
+                <div class="face-overlay-demo face-overlay-demo--dark">
+                    <KawaiiFace Color="#FFFFFF" Mood="Mood.Excited" BlushColor="#FF8FB1" Size="120"
+                                Style="position:absolute; left:50%; top:45%; transform:translate(-50%,-50%)" />
+                </div>
             </div>
             <CodeBlock Language="razor" CodeFile="code-samples/face-only.txt" />
         </section>

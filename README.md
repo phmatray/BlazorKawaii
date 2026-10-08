@@ -178,13 +178,16 @@ Pair a mascot and a mood with the state your user is in:
 
 ### Face only
 
-`KawaiiFace` renders just the eyes, blush and mouth in a tight, transparent SVG, to lay over your own artwork (a photo, an avatar, a background). `Size` is the face width in pixels, you position it with CSS, and `Color` sets the eyes and the mouth (black by default).
+`KawaiiFace` renders just the eyes, blush and mouth in a tight, transparent SVG, to lay over your own artwork (a photo, an avatar, a background). `Size` is the width of the face's box in pixels (the box leaves room for every mood, so the face does not move when `Mood` changes), you position it with CSS, `Color` sets the eyes and the mouth (black by default) and `BlushColor` the cheeks.
 
 ```razor
 <div style="position: relative">
-    <img src="my-photo.jpg" alt="" />
-    <KawaiiFace Mood="Mood.Happy" Size="120" Color="#FFFFFF" Title="Happy face"
-                Style="position:absolute; left:40%; top:35%" />
+    <img src="my-photo.jpg" alt="" style="display:block; width:100%" />
+    <KawaiiFace Mood="Mood.Excited"
+                Size="120"
+                Color="#FFFFFF"
+                BlushColor="#FF8FB1"
+                Style="position:absolute; left:50%; top:45%; transform:translate(-50%,-50%)" />
 </div>
 ```
 

@@ -576,6 +576,6 @@
     <value>Solo la cara</value>
   </data>
   <data name="FaceOnlyDesc" xml:space="preserve">
-    <value>Coloca solo los ojos, las mejillas y la boca sobre tu propio arte, una foto, un avatar o un fondo, con KawaiiFace. Size es el ancho de la cara en píxeles y Color define los ojos y la boca.</value>
+    <value>Coloca solo los ojos, las mejillas y la boca sobre tu propio arte, una foto, un avatar o un fondo, con KawaiiFace. Size es el ancho de la caja de la cara en píxeles (la caja deja sitio a todos los estados de ánimo, así la cara no se mueve al cambiar Mood), Color define los ojos y la boca y BlushColor las mejillas.</value>
   </data>
 </root>

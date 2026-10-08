@@ -1,4 +1,5 @@
 using BlazorKawaii.Common;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorKawaii.Components;
 
@@ -16,6 +17,12 @@ public partial class KawaiiFace : KawaiiComponentBase
     private const double ViewBoxHeight = 50;
     private const double OffsetX = 5;
     private const double OffsetY = 9;
+
+    /// <summary>
+    /// Gets or sets the color of the cheeks. Default is black (translucent).
+    /// </summary>
+    [Parameter]
+    public string BlushColor { get; set; } = "#000000";
 
     /// <inheritdoc />
     protected override string DefaultColor => "#000000";
