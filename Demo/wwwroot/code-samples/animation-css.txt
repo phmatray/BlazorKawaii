@@ -1,0 +1,15 @@
+/* Every face exposes .kawaii-face__eyes, .kawaii-face__mouth and .kawaii-face__cheeks */
+.peeking .kawaii-face__eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: peek 2.4s ease-in-out infinite;
+}
+
+@keyframes peek {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .peeking .kawaii-face__eyes { animation: none; }
+}
