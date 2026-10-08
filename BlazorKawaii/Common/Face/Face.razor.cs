@@ -44,7 +44,14 @@ public partial class Face : ComponentBase
     /// <value>The Y coordinate in SVG units.</value>
     [Parameter]
     public double Y { get; set; }
-    
+
+    /// <summary>
+    /// Gets or sets the fill color of the mouth.
+    /// </summary>
+    /// <value>Any SVG color. Default is black; a mascot can use it to turn the mouth into a beak.</value>
+    [Parameter]
+    public string MouthColor { get; set; } = "#000000";
+
     /// <summary>
     /// Gets the unique identifier for this face instance.
     /// </summary>
