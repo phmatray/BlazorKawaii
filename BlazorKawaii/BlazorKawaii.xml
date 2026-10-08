@@ -45,6 +45,12 @@
             </summary>
             <value>Any SVG color. Default is black; a mascot can use it to turn the mouth into a beak.</value>
         </member>
+        <member name="P:BlazorKawaii.Common.Face.EyeColor">
+            <summary>
+            Gets or sets the fill color of the eyes.
+            </summary>
+            <value>Any SVG color. Default is black. The cheeks keep their translucent blush.</value>
+        </member>
         <member name="P:BlazorKawaii.Common.Face.UniqueId">
             <summary>
             Gets the unique identifier for this face instance.
@@ -685,6 +691,22 @@
             <summary>
             Gets the SVG path data for the IceCream body.
             </summary>
+        </member>
+        <member name="T:BlazorKawaii.Components.KawaiiFace">
+            <summary>
+            Renders only the kawaii face (eyes, blush and mouth) in a tight, transparent SVG,
+            so it can be laid over your own artwork. <see cref="P:BlazorKawaii.Common.KawaiiComponentBase.Size"/> is the width in pixels;
+            <see cref="P:BlazorKawaii.Common.KawaiiComponentBase.Color"/> colors the eyes and the mouth (black by default).
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.KawaiiFace.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.KawaiiFace.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.KawaiiFace.GetFacePosition">
+            <inheritdoc />
         </member>
         <member name="T:BlazorKawaii.Components.MagnifyingGlass">
             <summary>

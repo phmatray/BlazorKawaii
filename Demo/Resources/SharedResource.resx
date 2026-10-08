@@ -562,4 +562,10 @@
   <data name="StateCookiesDesc" xml:space="preserve">
     <value>A blissful cookie makes the banner everyone sees a little kinder.</value>
   </data>
+  <data name="FaceOnly" xml:space="preserve">
+    <value>Face only</value>
+  </data>
+  <data name="FaceOnlyDesc" xml:space="preserve">
+    <value>Lay just the eyes, blush and mouth over your own artwork, a photo, an avatar or a background, with KawaiiFace. Size is the face width in pixels and Color sets the eyes and the mouth.</value>
+  </data>
 </root>

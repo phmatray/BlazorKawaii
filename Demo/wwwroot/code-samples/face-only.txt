@@ -1,0 +1,5 @@
+<div style="position: relative">
+    <img src="my-photo.jpg" alt="" />
+    <KawaiiFace Mood="Mood.Happy" Size="120" Color="#FFFFFF" Title="Happy face"
+                Style="position:absolute; left:40%; top:35%" />
+</div>
