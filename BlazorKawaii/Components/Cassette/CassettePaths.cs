@@ -12,7 +12,7 @@ public static class CassettePaths
         <rect fill=""currentColor"" x=""25"" y=""62"" width=""190"" height=""124"" rx=""14"" />
         <rect fill=""#000"" opacity=""0.1"" x=""25"" y=""62"" width=""190"" height=""124"" rx=""14"" />
         <rect fill=""currentColor"" x=""25"" y=""62"" width=""178"" height=""124"" rx=""14"" />
-        <rect fill=""#FFF6E9"" x=""37"" y=""70"" width=""154"" height=""90"" rx=""8"" />
+        <rect fill=""#FFF6E9"" x=""37"" y=""70"" width=""154"" height=""84"" rx=""8"" />
         <rect fill=""currentColor"" x=""60"" y=""116"" width=""108"" height=""30"" rx=""15"" />
         <rect fill=""#000"" opacity=""0.08"" x=""60"" y=""116"" width=""108"" height=""30"" rx=""15"" />
         <circle fill=""#4A4A4A"" cx=""80"" cy=""131"" r=""11"" />
