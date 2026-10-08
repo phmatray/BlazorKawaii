@@ -13,12 +13,12 @@ public partial class Gamepad : KawaiiComponentBase
     /// <inheritdoc />
     protected override double GetFaceScale()
     {
-        return 66 / 66.0;  // 66 is the face width, 66 is the original face width
+        return 58 / 66.0;  // 58 is the face width, 66 is the original face width
     }
 
     /// <inheritdoc />
     protected override (double x, double y) GetFacePosition()
     {
-        return (87, 112);  // Fixed position in 240x240 viewBox
+        return (91, 122);  // Fixed position in 240x240 viewBox
     }
 }
