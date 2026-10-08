@@ -2,10 +2,16 @@
 @using static BlazorKawaii.Components.HumanDinosaurPaths
 @inherits KawaiiComponentBase
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none" class="@SvgClass" style="@SvgStyle">
-    <g style="color: @GetColor()">
-        @((MarkupString)Body)
-    </g>
+<Wrapper Class="@Class" Style="@Style">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="@Size" height="@Size" viewBox="0 0 240 240" fill="none" class="@SvgClass" style="@SvgStyle" role="@SvgRole" aria-hidden="@SvgAriaHidden" @attributes="AdditionalAttributes">
+        @if (Title is not null)
+        {
+            <title>@Title</title>
+        }
+        <g style="color: @GetColor()">
+            @((MarkupString)Body)
+        </g>
     
-    <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" />
-</svg>
+        <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" />
+    </svg>
+</Wrapper>
