@@ -195,6 +195,9 @@
   <data name="PadlockDesc" xml:space="preserve">
     <value>A padlock for sign-in and access-denied screens</value>
   </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>A cassette tape, rewinding your favourite song</value>
+  </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>A chubby airplane for travel, bookings and shipping</value>
   </data>

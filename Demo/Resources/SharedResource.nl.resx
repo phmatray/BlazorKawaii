@@ -195,6 +195,9 @@
   <data name="PadlockDesc" xml:space="preserve">
     <value>Een hangslot voor inlog- en toegang-geweigerd-schermen</value>
   </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>Een cassettebandje dat je favoriete nummer terugspoelt</value>
+  </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>Een mollig vliegtuig voor reizen, boekingen en verzending</value>
   </data>

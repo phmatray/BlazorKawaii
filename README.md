@@ -31,11 +31,11 @@ Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library 
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 [![Live demo](https://img.shields.io/badge/demo-live-ff69b4?style=for-the-badge)](https://phmatray.github.io/BlazorKawaii/)
 
-![All 22 BlazorKawaii components](.github/components.png)
+![All 23 BlazorKawaii components](.github/components.png)
 
 ## ✨ Features
 
-- 🎨 **22 Kawaii Components** — 16 ported from React Kawaii, plus 6 BlazorKawaii originals made for everyday UI states: Airplane, Cloud, Cookie, Magnifying Glass, Padlock, and Rubber Duck
+- 🎨 **23 Kawaii Components** — 16 ported from React Kawaii, plus 7 BlazorKawaii originals made for everyday UI states: Airplane, Cassette, Cloud, Cookie, Magnifying Glass, Padlock, and Rubber Duck
 - 😊 **9 Mood Expressions**: Sad, Shocked, Happy, Blissful, Lovestruck, Excited, Ko, Sleepy, and Dizzy
 - 🎯 **Fully Customizable**: size, color, and mood on every component, plus CSS hooks on the wrapper and the SVG
 - 📱 **Pure SVG**: crisp at any size, no images or JavaScript
@@ -277,7 +277,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Original Project**: [React Kawaii](https://react-kawaii.vercel.app/) by [Miuki Miu](https://github.com/miukimiu)
   - The 16 ported components, the face, and the moods are faithful adaptations of Miuki Miu's designs
   - Licensed under MIT License
-- Airplane, Cloud, Cookie, Magnifying Glass, Padlock, and Rubber Duck are BlazorKawaii originals drawn in the same style
+- Airplane, Cassette, Cloud, Cookie, Magnifying Glass, Padlock, and Rubber Duck are BlazorKawaii originals drawn in the same style
 - Built with [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) and [MudBlazor](https://mudblazor.com/) for the demo
 - Adapted for .NET by [Philippe Matray](https://github.com/phmatray)
 
