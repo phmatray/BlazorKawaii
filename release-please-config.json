@@ -1,9 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "last-release-sha": "d53de84749a27d5c96cb723cee1e914c0f023f41",
   "packages": {
     ".": {
-      "$comment": "last-release-sha is the merge base of dev and the v2.0.0 tag, which lives on main and is unreachable from dev. Without it release-please would walk the whole history for the first release. REMOVE IT once the first release-please release (2.1.0) is tagged, or every later release would restart from this commit.",
       "release-type": "simple",
       "package-name": "BlazorKawaii",
       "include-component-in-tag": false,
