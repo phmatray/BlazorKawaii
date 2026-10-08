@@ -22,35 +22,36 @@
 <!-- portfolio-toc:end -->
 
 
-![BlazorKawaii Logo](https://raw.githubusercontent.com/phmatray/BlazorKawaii/main/logo.png)
+Cute, customizable SVG mascots for Blazor — drop a smiling cloud into your offline screen, a curious magnifying glass into an empty search, or a sad folder into a file list with nothing in it.
 
-A collection of cute, customizable SVG components for Blazor WebAssembly applications.
+Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library by [Miuki Miu](https://github.com/miukimiu), BlazorKawaii brings these adorable, expressive components to the .NET ecosystem — and adds a few mascots of its own.
 
-Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library by [Miuki Miu](https://github.com/miukimiu), BlazorKawaii brings these adorable, expressive components to the .NET ecosystem.
-
-![Blazor Kawaii Demo](https://img.shields.io/badge/blazor-kawaii-ff69b4?style=for-the-badge)
-![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=.net)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 [![NuGet](https://img.shields.io/nuget/v/BlazorKawaii.svg?style=for-the-badge)](https://www.nuget.org/packages/BlazorKawaii/)
+![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=.net)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+[![Live demo](https://img.shields.io/badge/demo-live-ff69b4?style=for-the-badge)](https://phmatray.github.io/BlazorKawaii/)
+
+![All 22 BlazorKawaii components](.github/components.png)
 
 ## ✨ Features
 
-- 🎨 **16 Kawaii Components**: Astronaut, Backpack, Browser, Cat, Chocolate, Credit Card, Cyborg, File, Folder, Ghost, HumanCat, HumanDinosaur, Ice Cream, Mug, Planet, and Speech Bubble
+- 🎨 **22 Kawaii Components** — 16 ported from React Kawaii, plus 6 BlazorKawaii originals made for everyday UI states: Airplane, Cloud, Cookie, Magnifying Glass, Padlock, and Rubber Duck
 - 😊 **7 Mood Expressions**: Sad, Shocked, Happy, Blissful, Lovestruck, Excited, and Ko
-- 🎯 **Fully Customizable**: Size, color, and mood parameters for each component
-- 🚀 **Blazor WebAssembly**: Built specifically for Blazor WASM applications
-- 📱 **Responsive**: SVG-based components that scale perfectly
-- 🧩 **Easy Integration**: Simple component-based architecture
-- 🌍 **Internationalization**: Built-in support for English, French, Spanish, and Dutch
-- 🌓 **Dark Mode Support**: Components adapt beautifully to light and dark themes
-- 📦 **NuGet Package**: Available as a reusable Razor Class Library
+- 🎯 **Fully Customizable**: size, color, and mood on every component, plus CSS hooks on the wrapper and the SVG
+- 📱 **Pure SVG**: crisp at any size, no images or JavaScript
+- 🧩 **Isolated instances**: each component gets unique SVG mask IDs, so any number can share a page
+- 🌐 **Culture-safe rendering**: SVG numbers are always formatted with the invariant culture
+- ♿ **Accessible by default**: mascots are hidden from screen readers unless you give them a `Title`
+- 📦 **NuGet Package**: a Razor Class Library with XML docs for IntelliSense and SourceLink
+
+The [demo app](https://phmatray.github.io/BlazorKawaii/) adds a component gallery, an interactive playground, and documentation in English, French, Spanish, and Dutch.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- .NET 9.0 SDK or later
-- Visual Studio 2022, Visual Studio Code, or JetBrains Rider
+- .NET 10 SDK or later
+- Visual Studio 2026, Visual Studio Code with C# Dev Kit, or JetBrains Rider
 
 ### Installation
 
@@ -60,73 +61,60 @@ Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library 
 dotnet add package BlazorKawaii
 ```
 
-#### Option 2: Clone and Run Demo
+Then add the namespaces to your `_Imports.razor`:
 
-1. Clone the repository:
+```razor
+@using BlazorKawaii.Components
+@using BlazorKawaii.Common
+```
+
+#### Option 2: Clone and Run the Demo
+
 ```bash
 git clone https://github.com/phmatray/BlazorKawaii.git
 cd BlazorKawaii
-```
-
-2. Restore dependencies:
-```bash
-dotnet restore
-```
-
-3. Run the demo application:
-```bash
 dotnet run --project Demo/Demo.csproj
 ```
 
-4. Open your browser and navigate to `https://localhost:7195`
+Then open `https://localhost:7195`.
 
 ## 📖 Usage
 
 ### Basic Usage
 
 ```razor
-@using BlazorKawaii.Components
-@using BlazorKawaii.Common
-
 <Cat Mood="Mood.Blissful" Size="200" Color="#596881" />
 ```
 
-### Available Components
+### Parameters
 
-All components share the same parameter structure:
+Every component inherits `KawaiiComponentBase` and shares the same parameters:
 
-```csharp
-[Parameter] public int Size { get; set; }        // Component size in pixels
-[Parameter] public Mood Mood { get; set; }       // Expression mood
-[Parameter] public string Color { get; set; }    // Primary color (hex)
-[Parameter] public string? Class { get; set; }     // CSS class for wrapper
-[Parameter] public string? Style { get; set; }     // CSS style for wrapper
-[Parameter] public string? SvgClass { get; set; }  // CSS class for SVG element
-[Parameter] public string? SvgStyle { get; set; }  // CSS style for SVG element
-```
+| Parameter  | Type      | Default          | Description                                   |
+|------------|-----------|------------------|-----------------------------------------------|
+| `Size`     | `int`     | `240`            | Width and height in pixels                    |
+| `Mood`     | `Mood`    | `Mood.Blissful`  | Facial expression                             |
+| `Color`    | `string?` | `#A6E191`        | Main body color (any CSS color)               |
+| `Class`    | `string?` | —                | CSS class on the wrapper `div`                |
+| `Style`    | `string?` | —                | Inline style on the wrapper `div`             |
+| `SvgClass` | `string?` | —                | CSS class on the `svg` element                |
+| `SvgStyle` | `string?` | —                | Inline style on the `svg` element             |
+| `Title`    | `string?` | —                | Accessible name; without it the mascot is decorative (`aria-hidden`) |
 
-#### Component List
+Any other attribute, such as `aria-label` or `data-testid`, is passed through to the `svg` element.
 
-| Component     | Default Size | Default Color |
-|---------------|--------------|---------------|
-| Astronaut     | 240          | #A6E191       |
-| Backpack      | 240          | #A6E191       |
-| Browser       | 180          | #A6E191       |
-| Cat           | 320          | #A6E191       |
-| Chocolate     | 300          | #A6E191       |
-| CreditCard    | 240          | #A6E191       |
-| Cyborg        | 240          | #A6E191       |
-| File          | 200          | #A6E191       |
-| Folder        | 200          | #A6E191       |
-| Ghost         | 240          | #A6E191       |
-| HumanCat      | 240          | #A6E191       |
-| HumanDinosaur | 240          | #A6E191       |
-| IceCream      | 300          | #A6E191       |
-| Mug           | 200          | #A6E191       |
-| Planet        | 190          | #A6E191       |
-| SpeechBubble  | 170          | #A6E191       |
+### Components
 
-### Mood Expressions
+| Family    | Components                                                         |
+|-----------|--------------------------------------------------------------------|
+| Creatures | `Cat`, `Ghost`, `Astronaut`, `Cyborg`, `HumanCat`, `HumanDinosaur`, `RubberDuck` |
+| Food      | `Chocolate`, `Cookie`, `IceCream`, `Mug`                           |
+| Interface | `Browser`, `CreditCard`, `File`, `Folder`, `MagnifyingGlass`, `Padlock`, `SpeechBubble` |
+| World     | `Airplane`, `Backpack`, `Cloud`, `Planet`                          |
+
+Fixed details such as chocolate chips, a duck's bill, or a padlock's shackle keep their own colors; `Color` tints the body.
+
+### Moods
 
 ```csharp
 public enum Mood
@@ -141,25 +129,40 @@ public enum Mood
 }
 ```
 
-### Advanced Example
+### Mascots for UI States
+
+Pair a mascot and a mood with the state your user is in:
+
+| State                      | Suggestion                                   |
+|----------------------------|----------------------------------------------|
+| Search with no results     | `<MagnifyingGlass Mood="Mood.Shocked" />`    |
+| Offline or sync failure    | `<Cloud Mood="Mood.Sad" />`                  |
+| Sign-in or access denied   | `<Padlock Mood="Mood.Ko" />`                 |
+| Cookie consent banner      | `<Cookie Mood="Mood.Blissful" />`            |
+| Unexpected error           | `<RubberDuck Mood="Mood.Sad" />`             |
+| Booking or shipping status | `<Airplane Mood="Mood.Excited" />`           |
+| Empty file list            | `<Folder Mood="Mood.Sad" />`                 |
 
 ```razor
-@page "/custom-demo"
-@using BlazorKawaii.Components
-@using BlazorKawaii.Common
+@if (!results.Any())
+{
+    <div class="empty-state">
+        <MagnifyingGlass Mood="Mood.Shocked" Size="160" Color="#83D1FB" />
+        <p>No results for “@query”</p>
+    </div>
+}
+```
 
-@* Style your components with CSS classes *@
+### Styling Example
+
+```razor
 @foreach (var mood in Enum.GetValues<Mood>())
 {
-    <Ghost 
-        Mood="@mood" 
-        Size="150" 
-        Color="@GetColorForMood(mood)" 
-        SvgClass="custom-ghost" />
+    <Ghost Mood="@mood" Size="150" Color="@GetColorForMood(mood)" SvgClass="floating" />
 }
 
 @code {
-    private string GetColorForMood(Mood mood) => mood switch
+    private static string GetColorForMood(Mood mood) => mood switch
     {
         Mood.Sad => "#B0C4DE",
         Mood.Happy => "#98FB98",
@@ -173,21 +176,22 @@ public enum Mood
 
 ### Component Structure
 
-Each kawaii component follows a consistent pattern:
+Each kawaii component follows the same pattern:
 
 ```
-Components/
+BlazorKawaii/Components/
 └── ComponentName/
-    ├── ComponentName.razor      # SVG markup
-    ├── ComponentName.cs         # C# partial class with parameters
-    └── ComponentNamePaths.cs    # SVG path constants
+    ├── ComponentName.razor      # SVG markup inside the Wrapper
+    ├── ComponentName.razor.cs   # Partial class: default color and face placement
+    └── ComponentNamePaths.cs    # SVG body markup as a constant
 ```
 
-### Shared Components
+### Shared Building Blocks
 
-- **Face**: Reusable component that renders different expressions based on mood
-- **Wrapper**: Container component for consistent positioning
-- **SvgMaskHelper**: Utility for generating unique IDs to prevent SVG conflicts
+- **KawaiiComponentBase**: common parameters, unique instance IDs, and the abstract face placement
+- **Face**: renders the eyes, mouth, and blush for each mood
+- **Wrapper**: container for consistent positioning
+- **SvgMaskHelper** / **SvgFormatHelper**: unique mask IDs and culture-invariant numbers
 
 ## 🛠️ Development
 
@@ -205,24 +209,22 @@ dotnet watch run --project Demo/Demo.csproj
 
 ### Creating a New Component
 
-1. Create a new folder under `Components/[ComponentName]/`
-2. Add `[ComponentName].cs` with the standard parameters
-3. Add `[ComponentName]Paths.cs` with SVG path constants
-4. Add `[ComponentName].razor` following the wrapper pattern
-5. Ensure the Face component is positioned appropriately
+1. Create `BlazorKawaii/Components/[Name]/`
+2. Add `[Name]Paths.cs` with the SVG body in a `Body` constant, using `currentColor` for the tintable parts
+3. Add `[Name].razor` following the Wrapper pattern of an existing component such as `Mug`
+4. Add `[Name].razor.cs` inheriting `KawaiiComponentBase`
+5. Add it to `Demo/Shared/KawaiiCatalog.cs` and add a `[Name]Desc` entry to the four `Demo/Resources/SharedResource*.resx` files: the gallery, playground, and documentation all read that catalog
 
-Example structure:
 ```csharp
-// NewComponent.cs
-public partial class NewComponent
+public partial class NewComponent : KawaiiComponentBase
 {
-    [Parameter] public int Size { get; set; } = 200;
-    [Parameter] public Mood Mood { get; set; } = Mood.Blissful;
-    [Parameter] public string Color { get; set; } = "#A6E191";
-    [Parameter] public string? Class { get; set; }
-    [Parameter] public string? Style { get; set; }
-    [Parameter] public string? SvgClass { get; set; }
-    [Parameter] public string? SvgStyle { get; set; }
+    protected override string DefaultColor => "#A6E191";
+
+    // Face width in the 240×240 viewBox divided by the Face's native width (66)
+    protected override double GetFaceScale() => 56 / 66.0;
+
+    // Top-left corner of the face in the 240×240 viewBox
+    protected override (double x, double y) GetFacePosition() => (92, 120);
 }
 ```
 
@@ -246,7 +248,6 @@ public partial class NewComponent
 - [ ] Track new components and moods as they're added to the upstream [React Kawaii](https://react-kawaii.vercel.app/) library
 - [ ] Add a bUnit test project to cover component rendering and parameter binding
 - [ ] Add more locales beyond the current English, French, Spanish, and Dutch
-- [ ] Publish an interactive component gallery/playground alongside the existing demo
 - [ ] Support custom theming (palettes) beyond the single `Color` parameter
 
 See the [open issues](https://github.com/phmatray/BlazorKawaii/issues) for what's currently planned.
@@ -258,10 +259,10 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 ### Guidelines
 
 1. Follow the existing component structure
-2. Ensure all components support the standard parameters
-3. Maintain consistent SVG quality and style
-4. Add your component to the demo page
-5. Update documentation
+2. Keep the house style: flat shapes, no outlines, light from the left with a soft shadow inside the right edge
+3. Make sure all seven moods read well on your mascot, in light and dark themes
+4. Add your component to `Demo/Shared/KawaiiCatalog.cs` and describe it in the four resource files
+5. Update the README
 
 ## 📄 License
 
@@ -270,54 +271,36 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **Original Project**: [React Kawaii](https://react-kawaii.vercel.app/) by [Miuki Miu](https://github.com/miukimiu)
-  - This project is a faithful adaptation of React Kawaii for the Blazor ecosystem
-  - All original SVG designs and moods are created by Miuki Miu
+  - The 16 ported components, the face, and the moods are faithful adaptations of Miuki Miu's designs
   - Licensed under MIT License
-- Built with [Blazor WebAssembly](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
+- Airplane, Cloud, Cookie, Magnifying Glass, Padlock, and Rubber Duck are BlazorKawaii originals drawn in the same style
+- Built with [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) and [MudBlazor](https://mudblazor.com/) for the demo
 - Adapted for .NET by [Philippe Matray](https://github.com/phmatray)
 
 ## 🚀 GitHub Pages Deployment
 
-This project is configured for easy deployment to GitHub Pages.
+The demo is published to GitHub Pages at <https://phmatray.github.io/BlazorKawaii/>.
 
 ### Automatic Deployment
 
-The project includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to the main branch.
+The release workflow (`.github/workflows/release-please.yml`) deploys the demo to the `gh-pages` branch with every release, so the live demo always matches the published package.
 
-1. Enable GitHub Pages in your repository settings:
-   - Go to Settings > Pages
-   - Set Source to "Deploy from a branch"
-   - Select "gh-pages" branch and "/ (root)" folder
-   - Save the settings
-
-2. Push your changes to the main branch:
-```bash
-git push origin main
-```
-
-3. The GitHub Action will automatically build and deploy your site to `https://[your-username].github.io/BlazorKawaii/`
+To set it up on a fork, open **Settings › Pages**, choose **Deploy from a branch**, then select the `gh-pages` branch and the `/ (root)` folder.
 
 ### Manual Deployment
 
-You can also deploy manually using the command line:
-
 ```bash
-# Publish with GitHub Pages configuration
-dotnet publish Demo/Demo.csproj -c:Release -p:GHPages=true
+# Publish with the GitHub Pages configuration
+dotnet publish Demo/Demo.csproj --configuration Release --output ./dist -p:GHPages=true
 
-# The published files will be in publish/wwwroot
-```
-
-Or use the included publish profile:
-```bash
-dotnet publish Demo/Demo.csproj -p:PublishProfile=GitHubPages
+# The site is in ./dist/wwwroot
 ```
 
 ## 📞 Support
 
 - Create an issue for bug reports or feature requests
 - Check out the [live demo](https://phmatray.github.io/BlazorKawaii/) for examples
-- Refer to the CLAUDE.md file for AI-assisted development guidelines
+- See [CLAUDE.md](CLAUDE.md) for AI-assisted development guidelines
 
 ---
 

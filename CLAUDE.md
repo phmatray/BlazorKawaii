@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-BlazorKawaii is a Blazor WebAssembly component library that provides cute, customizable SVG components. It's a port of the React Kawaii library to the .NET ecosystem, featuring 16 kawaii components with 7 different mood expressions.
+BlazorKawaii is a Blazor WebAssembly component library that provides cute, customizable SVG components. It's a port of the React Kawaii library to the .NET ecosystem, featuring 22 kawaii components with 7 different mood expressions.
 
 ## Build Commands
 
@@ -73,6 +73,12 @@ Each component consists of:
 
 4. **Wrapper Pattern**: All components use the `<Wrapper>` component for consistent sizing and positioning.
 
+### Demo Mascot Catalog
+
+`Demo/Shared/KawaiiCatalog.cs` is the single list of mascots used by the gallery, the playground and the documentation (rendered through `DynamicComponent`). A new mascot needs an entry there plus a `[Name]Desc` key in the four `.resx` files.
+
+Demo links must never start with `/`: the site is served under `/BlazorKawaii/` on GitHub Pages, and `LanguageService.GetUrlWithLanguage` resolves relative URLs against the base href.
+
 ### Localization
 
 The demo app supports multiple languages (EN, FR, ES, NL) with:
@@ -82,12 +88,12 @@ The demo app supports multiple languages (EN, FR, ES, NL) with:
 
 ### CI/CD Pipeline
 
-The GitHub Actions workflow (`ci-cd.yml`) handles:
-- Multi-OS builds (Ubuntu, Windows, macOS)
-- Automatic versioning using conventional commits
-- NuGet package validation and publishing
-- GitHub Pages deployment
-- Deterministic builds for reproducible packages
+- `ci-cd.yml` builds on Ubuntu, Windows and macOS and runs CodeQL, on pushes to `dev` and on PRs.
+- `release-please.yml` runs on `dev` (the default branch; `main` is no longer used for releases). It reads the
+  Conventional Commits, keeps a release PR up to date (CHANGELOG.md, `.release-please-manifest.json`, `<Version>`
+  in `BlazorKawaii.csproj`), and when that PR is merged it tags `vX.Y.Z`, creates the GitHub Release, publishes
+  the NuGet package and deploys the demo to GitHub Pages.
+- Commit messages and PR titles must follow Conventional Commits (`feat:`, `fix:`, …): they decide the version.
 
 ### Important Configuration
 
@@ -98,11 +104,13 @@ The GitHub Actions workflow (`ci-cd.yml`) handles:
 
 ### Common Issues & Solutions
 
-1. **DOM Manipulation Errors**: The demo uses Prism.js for syntax highlighting. To prevent conflicts with Blazor's DOM updates, code highlighting is wrapped in try-catch blocks and only runs on first render.
+1. **Syntax Highlighting**: The demo's `CodeBlock` asks Prism.js (manual mode) for highlighted HTML through `PrismWrapper.highlight` and renders it itself, so Prism never edits Blazor-owned DOM and the code re-highlights when it changes.
 
-2. **SVG Rendering Issues**: Always use `SvgFormatHelper.FormatSvgNumber()` for numeric SVG attributes to ensure culture-invariant formatting.
+2. **No `<use xlink:href>`**: Blazor sets `xlink:href` without the XLink namespace, so browsers ignore it. Draw shapes inline instead of referencing them.
 
-3. **Generic Type Inference**: MudBlazor components like `MudList` require explicit type parameters (e.g., `T="string"`).
+3. **SVG Rendering Issues**: Always use `SvgFormatHelper.FormatSvgNumber()` for numeric SVG attributes to ensure culture-invariant formatting.
+
+4. **Generic Type Inference**: MudBlazor components like `MudList` require explicit type parameters (e.g., `T="string"`).
 
 ### NuGet Publishing
 
@@ -112,7 +120,7 @@ valid about an hour, used immediately.
 
 To set it up:
 1. On nuget.org, register a Trusted Publishing policy for the `BlazorKawaii` package, naming this
-   repository and the workflow file `ci-cd.yml`
+   repository and the workflow file `release-please.yml`
 2. Add your nuget.org **profile name** as `NUGET_USER` in GitHub repository secrets — it is not a
    credential; the OIDC exchange is what authorizes the push
-3. The CI/CD pipeline will automatically publish on new version tags
+3. Merging the release PR opened by release-please publishes the package
