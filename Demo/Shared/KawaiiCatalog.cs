@@ -32,6 +32,7 @@ public static class KawaiiCatalog
         new(typeof(Astronaut)),
         new(typeof(Backpack)),
         new(typeof(Browser)),
+        new(typeof(Cassette)),
         new(typeof(Cat)),
         new(typeof(Chocolate)),
         new(typeof(Cloud)),

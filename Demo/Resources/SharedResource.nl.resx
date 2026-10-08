@@ -198,6 +198,9 @@
   <data name="PadlockDesc" xml:space="preserve">
     <value>Een hangslot voor inlog- en toegang-geweigerd-schermen</value>
   </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>Een cassettebandje dat je favoriete nummer terugspoelt</value>
+  </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>Een mollig vliegtuig voor reizen, boekingen en verzending</value>
   </data>
@@ -532,6 +535,12 @@
   </data>
   <data name="MoodKo" xml:space="preserve">
     <value>Knock-out</value>
+  </data>
+  <data name="MoodSleepy" xml:space="preserve">
+    <value>Slaperig</value>
+  </data>
+  <data name="MoodDizzy" xml:space="preserve">
+    <value>Duizelig</value>
   </data>
   <data name="UiStatesTitle" xml:space="preserve">
     <value>Gemaakt voor de toestanden van je interface</value>

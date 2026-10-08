@@ -38,5 +38,15 @@ public enum Mood
     /// <summary>
     /// A knocked-out expression with X-shaped eyes.
     /// </summary>
-    Ko
+    Ko,
+
+    /// <summary>
+    /// A sleepy expression with closed eyes and a small snoring mouth.
+    /// </summary>
+    Sleepy,
+
+    /// <summary>
+    /// A dizzy expression with spiral eyes and a wavy mouth.
+    /// </summary>
+    Dizzy
 }

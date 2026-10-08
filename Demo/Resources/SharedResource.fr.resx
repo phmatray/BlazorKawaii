@@ -198,6 +198,9 @@
   <data name="PadlockDesc" xml:space="preserve">
     <value>Un cadenas pour les écrans de connexion et d'accès refusé</value>
   </data>
+  <data name="CassetteDesc" xml:space="preserve">
+    <value>Une cassette qui rembobine ta chanson préférée</value>
+  </data>
   <data name="AirplaneDesc" xml:space="preserve">
     <value>Un avion tout rond pour les voyages, réservations et livraisons</value>
   </data>
@@ -532,6 +535,12 @@
   </data>
   <data name="MoodKo" xml:space="preserve">
     <value>K.-O.</value>
+  </data>
+  <data name="MoodSleepy" xml:space="preserve">
+    <value>Endormi</value>
+  </data>
+  <data name="MoodDizzy" xml:space="preserve">
+    <value>Étourdi</value>
   </data>
   <data name="UiStatesTitle" xml:space="preserve">
     <value>Pensées pour les états de votre interface</value>

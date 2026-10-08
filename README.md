@@ -31,12 +31,12 @@ Based on the wonderful [React Kawaii](https://react-kawaii.vercel.app/) library 
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 [![Live demo](https://img.shields.io/badge/demo-live-ff69b4?style=for-the-badge)](https://phmatray.github.io/BlazorKawaii/)
 
-![All 23 BlazorKawaii components](.github/components.png)
+![All 24 BlazorKawaii components](.github/components.png)
 
 ## ✨ Features
 
-- 🎨 **23 Kawaii Components** — 16 ported from React Kawaii, plus 7 BlazorKawaii originals made for everyday UI states: Airplane, Cloud, Cookie, Gamepad, Magnifying Glass, Padlock, and Rubber Duck
-- 😊 **7 Mood Expressions**: Sad, Shocked, Happy, Blissful, Lovestruck, Excited, and Ko
+- 🎨 **24 Kawaii Components** — 16 ported from React Kawaii, plus 8 BlazorKawaii originals made for everyday UI states: Airplane, Cassette, Cloud, Cookie, Gamepad, Magnifying Glass, Padlock, and Rubber Duck
+- 😊 **9 Mood Expressions**: Sad, Shocked, Happy, Blissful, Lovestruck, Excited, Ko, Sleepy, and Dizzy
 - 🎯 **Fully Customizable**: size, color, and mood on every component, plus CSS hooks on the wrapper and the SVG
 - 📱 **Pure SVG**: crisp at any size, no images or JavaScript
 - 🧩 **Isolated instances**: each component gets unique SVG mask IDs, so any number can share a page
@@ -125,7 +125,9 @@ public enum Mood
     Blissful,
     Lovestruck,
     Excited,
-    Ko
+    Ko,
+    Sleepy,
+    Dizzy
 }
 ```
 
@@ -142,6 +144,8 @@ Pair a mascot and a mood with the state your user is in:
 | Unexpected error           | `<RubberDuck Mood="Mood.Sad" />`             |
 | Booking or shipping status | `<Airplane Mood="Mood.Excited" />`           |
 | Empty file list            | `<Folder Mood="Mood.Sad" />`                 |
+| Idle or session expired    | `<Ghost Mood="Mood.Sleepy" />`               |
+| Too many retries or a confusing error | `<Cloud Mood="Mood.Dizzy" />` |
 
 ```razor
 @if (!results.Any())
@@ -260,7 +264,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 1. Follow the existing component structure
 2. Keep the house style: flat shapes, no outlines, light from the left with a soft shadow inside the right edge
-3. Make sure all seven moods read well on your mascot, in light and dark themes
+3. Make sure all nine moods read well on your mascot, in light and dark themes
 4. Add your component to `Demo/Shared/KawaiiCatalog.cs` and describe it in the four resource files
 5. Update the README
 
@@ -273,7 +277,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Original Project**: [React Kawaii](https://react-kawaii.vercel.app/) by [Miuki Miu](https://github.com/miukimiu)
   - The 16 ported components, the face, and the moods are faithful adaptations of Miuki Miu's designs
   - Licensed under MIT License
-- Airplane, Cloud, Cookie, Gamepad, Magnifying Glass, Padlock, and Rubber Duck are BlazorKawaii originals drawn in the same style
+- Airplane, Cassette, Cloud, Cookie, Gamepad, Magnifying Glass, Padlock, and Rubber Duck are BlazorKawaii originals drawn in the same style
 - Built with [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) and [MudBlazor](https://mudblazor.com/) for the demo
 - Adapted for .NET by [Philippe Matray](https://github.com/phmatray)
 
