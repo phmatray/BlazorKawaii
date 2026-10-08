@@ -526,6 +526,12 @@
   <data name="MoodKo" xml:space="preserve">
     <value>KO (knocked out)</value>
   </data>
+  <data name="MoodSleepy" xml:space="preserve">
+    <value>Sleepy</value>
+  </data>
+  <data name="MoodDizzy" xml:space="preserve">
+    <value>Dizzy</value>
+  </data>
   <data name="UiStatesTitle" xml:space="preserve">
     <value>Made for the states your UI already has</value>
   </data>
