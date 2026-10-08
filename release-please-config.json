@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "last-release-sha": "d53de84749a27d5c96cb723cee1e914c0f023f41",
+  "packages": {
+    ".": {
+      "$comment": "last-release-sha is the merge base of dev and the v2.0.0 tag, which lives on main and is unreachable from dev. Without it release-please would walk the whole history for the first release. REMOVE IT once the first release-please release (2.1.0) is tagged, or every later release would restart from this commit.",
+      "release-type": "simple",
+      "package-name": "BlazorKawaii",
+      "include-component-in-tag": false,
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "xml",
+          "path": "BlazorKawaii/BlazorKawaii.csproj",
+          "xpath": "//Project/PropertyGroup/Version"
+        }
+      ],
+      "changelog-sections": [
+        {
+          "type": "feat",
+          "section": "Features"
+        },
+        {
+          "type": "fix",
+          "section": "Bug Fixes"
+        },
+        {
+          "type": "perf",
+          "section": "Performance"
+        },
+        {
+          "type": "refactor",
+          "section": "Refactor"
+        },
+        {
+          "type": "revert",
+          "section": "Revert"
+        },
+        {
+          "type": "docs",
+          "section": "Documentation",
+          "hidden": true
+        },
+        {
+          "type": "style",
+          "section": "Styling",
+          "hidden": true
+        },
+        {
+          "type": "test",
+          "section": "Testing",
+          "hidden": true
+        },
+        {
+          "type": "build",
+          "section": "Miscellaneous Tasks",
+          "hidden": true
+        },
+        {
+          "type": "ci",
+          "section": "Miscellaneous Tasks",
+          "hidden": true
+        },
+        {
+          "type": "chore",
+          "section": "Miscellaneous Tasks",
+          "hidden": true
+        }
+      ]
+    }
+  }
+}
