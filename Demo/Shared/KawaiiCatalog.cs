@@ -40,6 +40,7 @@ public static class KawaiiCatalog
         new(typeof(Cyborg)),
         new(typeof(BlazorKawaii.Components.File)),
         new(typeof(Folder)),
+        new(typeof(Gamepad)),
         new(typeof(Ghost)),
         new(typeof(HumanCat)),
         new(typeof(HumanDinosaur)),

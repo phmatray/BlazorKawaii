@@ -153,6 +153,9 @@
   <data name="FolderDesc" xml:space="preserve">
     <value>Map voor het organiseren van bestanden</value>
   </data>
+  <data name="GamepadDesc" xml:space="preserve">
+    <value>Een gamecontroller, klaar voor het volgende level</value>
+  </data>
   <data name="GhostDesc" xml:space="preserve">
     <value>Vriendelijk zwevend spookje</value>
   </data>

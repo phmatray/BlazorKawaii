@@ -565,6 +565,30 @@
             Gets the SVG path data for the Folder body.
             </summary>
         </member>
+        <member name="T:BlazorKawaii.Components.Gamepad">
+            <summary>
+            Represents a Gamepad character component with customizable mood and appearance.
+            </summary>
+        </member>
+        <member name="P:BlazorKawaii.Components.Gamepad.DefaultColor">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Gamepad.GetFaceScale">
+            <inheritdoc />
+        </member>
+        <member name="M:BlazorKawaii.Components.Gamepad.GetFacePosition">
+            <inheritdoc />
+        </member>
+        <member name="T:BlazorKawaii.Components.GamepadPaths">
+            <summary>
+            Provides SVG path data for the Gamepad component.
+            </summary>
+        </member>
+        <member name="F:BlazorKawaii.Components.GamepadPaths.Body">
+            <summary>
+            Gets the SVG path data for the Gamepad body, d-pad and buttons.
+            </summary>
+        </member>
         <member name="T:BlazorKawaii.Components.Ghost">
             <summary>
             Represents a Ghost character component with customizable mood and appearance.

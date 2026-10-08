@@ -153,6 +153,9 @@
   <data name="FolderDesc" xml:space="preserve">
     <value>Carpeta para organizar archivos</value>
   </data>
+  <data name="GamepadDesc" xml:space="preserve">
+    <value>Un mando, listo para el siguiente nivel</value>
+  </data>
   <data name="GhostDesc" xml:space="preserve">
     <value>Fantasma flotante amigable</value>
   </data>
