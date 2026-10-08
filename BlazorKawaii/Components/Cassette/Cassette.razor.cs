@@ -19,6 +19,6 @@ public partial class Cassette : KawaiiComponentBase
     /// <inheritdoc />
     protected override (double x, double y) GetFacePosition()
     {
-        return (88, 84);  // Fixed position in 240x240 viewBox
+        return (88, 78);  // Fixed position in 240x240 viewBox
     }
 }
