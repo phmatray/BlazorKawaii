@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject IStringLocalizer<SharedResource> Localizer
 @inject IJSRuntime JSRuntime
+@inject LanguageService LanguageService
 
 <MudThemeProvider IsDarkMode="@_isDarkMode" Theme="_theme"/>
 <MudDialogProvider />
@@ -13,8 +14,10 @@
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
                        OnClick="@(_ => DrawerToggle())" aria-label="@Localizer["ToggleNavigation"]" aria-expanded="@(_drawerOpen ? "true" : "false")" />
-        <HumanDinosaur Size="40" Mood="Mood.Blissful" Color="#A6E191" Class="d-none d-sm-flex ml-2" />
-        <MudText Typo="Typo.h5" HtmlTag="span" Class="ml-3 app-title">Blazor Kawaii</MudText>
+        <a href="@LanguageService.GetUrlWithLanguage("")" class="app-brand">
+            <HumanDinosaur Size="40" Mood="Mood.Blissful" Color="#A6E191" Class="d-none d-sm-flex ml-2" />
+            <MudText Typo="Typo.h5" HtmlTag="span" Class="ml-3 app-title">Blazor Kawaii</MudText>
+        </a>
         <MudSpacer />
         <CultureSelector />
         <MudTooltip Text="@Localizer["ToggleDarkMode"]">
