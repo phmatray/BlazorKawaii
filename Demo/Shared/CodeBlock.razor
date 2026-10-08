@@ -1,6 +1,7 @@
 @inject IJSRuntime JSRuntime
 @inject HttpClient HttpClient
-@implements IAsyncDisposable
+@inject IStringLocalizer<SharedResource> Localizer
+@inject ISnackbar Snackbar
 
 <MudPaper Class="code-block-container" Outlined="true" Elevation="0">
     <div class="code-block-header">
@@ -14,12 +15,12 @@
                        Color="@(_codeCopied ? Color.Success : Color.Default)"
                        OnClick="CopyCode"
                        Class="code-copy-btn">
-                @(_codeCopied ? "Copied!" : "Copy")
+                @(_codeCopied ? Localizer["Copied"] : Localizer["CopyToClipboard"])
             </MudButton>
         }
     </div>
     <div class="code-block-content">
-        <pre class="@($"language-{Language}")"><code>@_displayCode</code></pre>
+        <pre class="@($"language-{Language}")"><code class="@($"language-{Language}")">@Rendered</code></pre>
     </div>
 </MudPaper>
 
@@ -31,46 +32,66 @@
 
     private bool _codeCopied;
     private string _displayCode = "";
+    private string? _loadedFile;
+    private MarkupString? _highlighted;
 
-    protected override async Task OnInitializedAsync()
+    private MarkupString Rendered => _highlighted ?? new MarkupString(System.Net.WebUtility.HtmlEncode(_displayCode));
+
+    protected override async Task OnParametersSetAsync()
     {
+        var code = Code ?? "";
         if (!string.IsNullOrEmpty(CodeFile))
         {
-            try
+            if (CodeFile != _loadedFile)
             {
-                _displayCode = await HttpClient.GetStringAsync(CodeFile);
+                try
+                {
+                    _displayCode = await HttpClient.GetStringAsync(CodeFile);
+                }
+                catch
+                {
+                    _displayCode = $"// Error loading code from {CodeFile}";
+                }
+                _loadedFile = CodeFile;
+                _highlighted = await HighlightAsync(_displayCode);
             }
-            catch
-            {
-                _displayCode = $"// Error loading code from {CodeFile}";
-            }
+            return;
         }
-        else if (!string.IsNullOrEmpty(Code))
+
+        if (code != _displayCode || _highlighted is null)
         {
-            _displayCode = Code;
+            _displayCode = code;
+            _highlighted = await HighlightAsync(code);
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    // Prism returns escaped, highlighted HTML; null falls back to plain text.
+    private async Task<MarkupString?> HighlightAsync(string code)
     {
-        if (firstRender && !string.IsNullOrEmpty(_displayCode))
+        try
         {
-            try
-            {
-                // Small delay to ensure DOM is updated
-                await Task.Delay(100);
-                await JSRuntime.InvokeVoidAsync("highlightCode");
-            }
-            catch
-            {
-                // Ignore errors from Prism.js highlighting
-            }
+            var html = await JSRuntime.InvokeAsync<string?>("PrismWrapper.highlight", code, Language);
+            return html is null ? null : new MarkupString(html);
+        }
+        catch (JSException)
+        {
+            return null;
         }
     }
 
     private async Task CopyCode()
     {
-        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", _displayCode);
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", _displayCode);
+        }
+        catch (JSException)
+        {
+            // Clipboard access is refused on http, in some iframes and under some iOS settings.
+            Snackbar.Add(Localizer["CopyFailed"], Severity.Warning);
+            return;
+        }
+
         _codeCopied = true;
         StateHasChanged();
 
@@ -91,20 +112,8 @@
             "json" => "JSON",
             "xml" => "XML",
             "bash" => "Bash",
+            "powershell" => "PowerShell",
             _ => Language.ToUpper()
         };
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        try
-        {
-            // Reset Prism highlighting markers if needed
-            await JSRuntime.InvokeVoidAsync("PrismWrapper.reset");
-        }
-        catch
-        {
-            // Ignore errors during disposal
-        }
     }
 }

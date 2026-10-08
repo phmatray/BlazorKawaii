@@ -1,111 +1,135 @@
 ﻿@inherits LayoutComponentBase
 @inject IStringLocalizer<SharedResource> Localizer
+@inject IJSRuntime JSRuntime
 
-<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+<MudThemeProvider IsDarkMode="@_isDarkMode" Theme="_theme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
 
-<MudLayout>
+<button type="button" class="skip-link" @onclick="FocusMainAsync">@Localizer["SkipToContent"]</button>
+
+<MudLayout Class="@(_isDarkMode ? "dark" : null)">
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(_ => DrawerToggle())" />
-        <HumanDinosaur Size="40" Mood="Mood.Blissful" Color="#A6E191" SvgClass="ml-2" />
-        <MudText Typo="Typo.h5" Class="ml-3">Blazor Kawaii</MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                       OnClick="@(_ => DrawerToggle())" aria-label="@Localizer["ToggleNavigation"]" aria-expanded="@(_drawerOpen ? "true" : "false")" />
+        <HumanDinosaur Size="40" Mood="Mood.Blissful" Color="#A6E191" Class="d-none d-sm-flex ml-2" />
+        <MudText Typo="Typo.h5" HtmlTag="span" Class="ml-3 app-title">Blazor Kawaii</MudText>
         <MudSpacer />
         <CultureSelector />
         <MudTooltip Text="@Localizer["ToggleDarkMode"]">
             <MudIconButton Icon="@(_isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
                            Color="Color.Inherit"
+                           aria-label="@Localizer["ToggleDarkMode"]"
+                           aria-pressed="@(_isDarkMode ? "true" : "false")"
                            OnClick="@(_ => ToggleDarkMode())" />
         </MudTooltip>
         <MudTooltip Text="@Localizer["GitHubRepository"]">
             <MudIconButton Icon="@Icons.Custom.Brands.GitHub"
                            Color="Color.Inherit"
+                           aria-label="@Localizer["GitHubRepository"]"
                            Href="https://github.com/phmatray/BlazorKawaii"
                            Target="_blank" />
         </MudTooltip>
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
-        <div style="height: 100%; display: flex; flex-direction: column;">
+        <nav aria-label="@Localizer["MainNavigation"]" style="height: 100%; display: flex; flex-direction: column;">
             <NavMenu />
-        </div>
+        </nav>
     </MudDrawer>
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.False" Class="pa-6 pb-0">
-            @Body
-        </MudContainer>
+        <main id="main-content" tabindex="-1" @ref="_main">
+            <MudContainer MaxWidth="MaxWidth.False" Class="pa-6 pb-0">
+                @Body
+            </MudContainer>
+        </main>
 
-        <MudContainer MaxWidth="MaxWidth.False" Gutters="false" Class="mt-12">
+        <footer class="mt-12">
             <MudDivider />
-            <MudPaper Elevation="0" Class="pa-6">
-                <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Wrap="Wrap.Wrap" Spacing="3">
-                    <MudText Typo="Typo.body2" Color="Color.Secondary">
-                        @Localizer["BasedOn"]
-                        <MudLink Href="https://react-kawaii.vercel.app/" Target="_blank" Color="Color.Primary">React Kawaii</MudLink>
-                        @Localizer["By"] <strong>Miuki Miu</strong> -
-                        @Localizer["AdaptedFor"]
-                        <MudLink Href="https://github.com/phmatray" Target="_blank" Color="Color.Primary">Philippe Matray</MudLink>
-                    </MudText>
-                    <MudText Typo="Typo.body2" Color="Color.Secondary">
-                        © @DateTime.Now.Year BlazorKawaii - MIT License
-                    </MudText>
-                </MudStack>
-            </MudPaper>
-        </MudContainer>
+            <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Wrap="Wrap.Wrap" Spacing="3" Class="pa-6">
+                <MudText Typo="Typo.body2" Class="mud-text-secondary">
+                    @Localizer["BasedOn"]
+                    <MudLink Href="https://react-kawaii.vercel.app/" Target="_blank" Color="Color.Tertiary">React Kawaii</MudLink>
+                    @Localizer["By"] <strong>Miuki Miu</strong> -
+                    @Localizer["AdaptedFor"]
+                    <MudLink Href="https://github.com/phmatray" Target="_blank" Color="Color.Tertiary">Philippe Matray</MudLink>
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mud-text-secondary">
+                    © @DateTime.Now.Year BlazorKawaii · MIT
+                </MudText>
+            </MudStack>
+        </footer>
     </MudMainContent>
 </MudLayout>
 
 @code {
-    private MudThemeProvider _mudThemeProvider = null!;
     private bool _drawerOpen = true;
     private bool _isDarkMode;
+    private ElementReference _main;
 
-    private MudTheme _theme = new()
+    // The pastels stay for fills (app bar, buttons, chips, alerts) with dark text on top;
+    // Tertiary is the readable accent for links and the active nav item.
+    private readonly MudTheme _theme = new()
     {
         PaletteLight = new PaletteLight
         {
             Primary = "#FFD882",
+            PrimaryContrastText = "#3B2A00",
             Secondary = "#FDA7DC",
+            SecondaryContrastText = "#4A1034",
+            Tertiary = "#8A5A00",
+            TertiaryContrastText = "#FFFFFF",
             Success = "#A6E191",
+            SuccessContrastText = "#1F3D17",
             Info = "#83D1FB",
+            InfoContrastText = "#0B3A55",
             Warning = "#FCCB7E",
-            Error = "#FC105C",
+            WarningContrastText = "#4A3000",
+            Error = "#C4114E",
+            ErrorContrastText = "#FFFFFF",
             AppbarBackground = "#FFD882",
-            AppbarText = "#424242",
+            AppbarText = "#3B2A00",
             DrawerBackground = "#FFF8E1",
             DrawerText = "#424242",
+            TextSecondary = "#5F6670",
             Surface = "#FFFFFF"
         },
         PaletteDark = new PaletteDark
         {
             Primary = "#FFD882",
+            PrimaryContrastText = "#3B2A00",
             Secondary = "#FDA7DC",
+            SecondaryContrastText = "#4A1034",
+            Tertiary = "#FFD882",
+            TertiaryContrastText = "#3B2A00",
             Success = "#A6E191",
+            SuccessContrastText = "#1F3D17",
             Info = "#83D1FB",
+            InfoContrastText = "#0B3A55",
             Warning = "#FCCB7E",
-            Error = "#FC105C",
+            WarningContrastText = "#4A3000",
+            Error = "#FF7A9C",
+            ErrorContrastText = "#4A0A1E",
             AppbarBackground = "#1e1e1e",
             DrawerBackground = "#1e1e1e",
+            TextSecondary = "#B4B6BE",
             Surface = "#1e1e1e"
         }
     };
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnInitialized()
     {
-        if (firstRender)
-        {
-            _isDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
-            StateHasChanged();
-        }
+        // Read the stored (or system) theme synchronously so the first render is already right.
+        _isDarkMode = ((IJSInProcessRuntime)JSRuntime).Invoke<bool>("kawaii.isDark");
     }
 
-    private void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
+    private void DrawerToggle() => _drawerOpen = !_drawerOpen;
 
-    private void ToggleDarkMode()
+    private async Task ToggleDarkMode()
     {
         _isDarkMode = !_isDarkMode;
+        await JSRuntime.InvokeVoidAsync("kawaii.setTheme", _isDarkMode ? "dark" : "light");
     }
+
+    private async Task FocusMainAsync() => await _main.FocusAsync();
 }

@@ -2,433 +2,263 @@
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<SharedResource> Localizer
 @inject LanguageService LanguageService
+@inject INuGetVersionService NuGetVersionService
 
 <PageTitle>Blazor Kawaii - @Localizer["Documentation"]</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">@Localizer["DocumentationTitle"]</MudText>
-<MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-6">
+<MudText Typo="Typo.h3" HtmlTag="h1" GutterBottom="true">@Localizer["DocumentationTitle"]</MudText>
+<MudText Typo="Typo.body1" Class="mud-text-secondary mb-6">
     @Localizer["DocumentationSubtitle"]
 </MudText>
 
 <MudGrid>
     <MudItem xs="12" md="3">
-        <!-- Table of Contents -->
-        <MudPaper Class="pa-4 position-sticky" Style="position: sticky; top: 80px;" Elevation="2">
-            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["TableOfContents"]</MudText>
-            <MudNavMenu>
-                <MudNavLink OnClick="@(() => ScrollToSection("getting-started"))">@Localizer["GettingStarted"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("installation"))">@Localizer["Installation"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("basic-usage"))">@Localizer["BasicUsage"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("component-props"))">@Localizer["ComponentProperties"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("moods"))">@Localizer["Moods"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("customization"))">@Localizer["Customization"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("examples"))">@Localizer["Examples"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("api-reference"))">@Localizer["APIReference"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("best-practices"))">@Localizer["BestPractices"]</MudNavLink>
-                <MudNavLink OnClick="@(() => ScrollToSection("troubleshooting"))">@Localizer["Troubleshooting"]</MudNavLink>
-            </MudNavMenu>
+        <MudPaper Class="pa-4 doc-toc" Elevation="2">
+            <nav aria-labelledby="toc-title">
+                <MudText Typo="Typo.h6" HtmlTag="p" id="toc-title" GutterBottom="true">@Localizer["TableOfContents"]</MudText>
+                <ul>
+                    @foreach (var (id, key) in Sections)
+                    {
+                        <li>
+                            <a href="@($"{LanguageService.GetUrlWithLanguage("documentation")}#{id}")"
+                               @onclick="@(() => ScrollToSection(id))" @onclick:preventDefault="true">@Localizer[key]</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
         </MudPaper>
     </MudItem>
 
-    <MudItem xs="12" md="9">
-        <!-- Getting Started -->
-        <div id="getting-started" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["GettingStarted"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["GettingStartedDesc"]
-            </MudText>
-            <MudText Typo="Typo.body1">
-                @Localizer["GettingStartedDesc2"]
-            </MudText>
-        </div>
+    <MudItem xs="12" md="9" Class="doc-content">
+        <section id="getting-started" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["GettingStarted"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["GettingStartedDesc"]</MudText>
+            <MudText Typo="Typo.body1">@Localizer["GettingStartedDesc2"]</MudText>
+        </section>
 
-        <!-- Installation -->
-        <div id="installation" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Installation"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["InstallationDesc"]
-            </MudText>
+        <section id="installation" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Installation"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["InstallationDesc"]</MudText>
 
-            <MudAlert Severity="Severity.Success" Class="mb-4">
-                <MudText>
-                    <MudIcon Icon="@Icons.Material.Filled.Download" Style="vertical-align: middle; margin-right: 8px;" />
-                    @Localizer["NuGetAvailable"]
-                </MudText>
+            <MudAlert Severity="Severity.Success" Variant="Variant.Filled" Icon="@Icons.Material.Filled.Download" Class="mb-4">
+                @Localizer["NuGetAvailable"]
             </MudAlert>
 
-            <MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">@Localizer["InstallViaNuGet"]</MudText>
+            <MudText Typo="Typo.h5" HtmlTag="h3" GutterBottom="true" Class="mt-4">@Localizer["InstallViaNuGet"]</MudText>
 
-            <MudTabs Elevation="0" ApplyEffectsToContainer="true" Class="mb-4">
+            <MudTabs Elevation="0" ApplyEffectsToContainer="true" Color="Color.Transparent" SliderColor="Color.Tertiary" Class="mb-4 doc-tabs">
                 <MudTabPanel Text=".NET CLI">
-                    <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
-                        <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>dotnet add package BlazorKawaii</code></pre>
-                    </MudPaper>
+                    <CodeBlock Language="bash" Code="dotnet add package BlazorKawaii" />
                 </MudTabPanel>
                 <MudTabPanel Text="Package Manager">
-                    <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
-                        <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>Install-Package BlazorKawaii</code></pre>
-                    </MudPaper>
+                    <CodeBlock Language="powershell" Code="Install-Package BlazorKawaii" />
                 </MudTabPanel>
                 <MudTabPanel Text="PackageReference">
-                    <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
-                        <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>&lt;PackageReference Include="BlazorKawaii" Version="1.0.0" /&gt;</code></pre>
-                    </MudPaper>
+                    <CodeBlock Language="xml" Code="@($"<PackageReference Include=\"BlazorKawaii\" Version=\"{_version ?? "*"}\" />")" />
                 </MudTabPanel>
             </MudTabs>
 
-            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["AddImports"]</MudText>
-            <MudText Typo="Typo.body2" GutterBottom="true">
-                @Localizer["AddToImportsFile"]
-            </MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true">@Localizer["AddImports"]</MudText>
+            <MudText Typo="Typo.body2" GutterBottom="true">@Localizer["AddToImportsFile"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/installation-imports.txt" />
 
-            <MudDivider Class="my-4" />
-
-            <MudText Typo="Typo.h5" GutterBottom="true">@Localizer["AlternativeMethod"]</MudText>
-            <MudText Typo="Typo.body2" GutterBottom="true">
-                @Localizer["IfYouPreferSource"]
-            </MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true" Class="mt-6">@Localizer["AlternativeMethod"]</MudText>
+            <MudText Typo="Typo.body2" GutterBottom="true">@Localizer["IfYouPreferSource"]</MudText>
             <CodeBlock Language="bash" CodeFile="code-samples/installation-clone.txt" />
-        </div>
+        </section>
 
-        <!-- Basic Usage -->
-        <div id="basic-usage" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["BasicUsage"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["BasicUsageDesc"]
-            </MudText>
-
+        <section id="basic-usage" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["BasicUsage"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["BasicUsageDesc"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/basic-usage.txt" />
+            <MudText Typo="Typo.body1" Class="mt-4">@Localizer["BasicUsageDesc2"]</MudText>
+        </section>
 
-            <MudText Typo="Typo.body1">
-                @Localizer["BasicUsageDesc2"]
-            </MudText>
-        </div>
+        <section id="component-props" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["ComponentProperties"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["ComponentPropertiesDesc"]</MudText>
 
-        <!-- Component Properties -->
-        <div id="component-props" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["ComponentProperties"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["ComponentPropertiesDesc"]
-            </MudText>
+            <div class="table-scroll">
+                <MudSimpleTable Hover="true" Bordered="true" Elevation="0" Class="mb-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">@Localizer["Property"]</th>
+                            <th scope="col">@Localizer["Type"]</th>
+                            <th scope="col">@Localizer["Default"]</th>
+                            <th scope="col">@Localizer["Description"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var (name, type, defaultValue, key) in Parameters)
+                        {
+                            <tr>
+                                <td><code>@name</code></td>
+                                <td><code>@type</code></td>
+                                <td><code>@defaultValue</code></td>
+                                <td>@Localizer[key]</td>
+                            </tr>
+                        }
+                    </tbody>
+                </MudSimpleTable>
+            </div>
 
-            <MudSimpleTable Hover="true" Bordered="true" Class="mb-4">
-                <thead>
-                    <tr>
-                        <th>@Localizer["Property"]</th>
-                        <th>@Localizer["Type"]</th>
-                        <th>@Localizer["Default"]</th>
-                        <th>@Localizer["Description"]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>Size</code></td>
-                        <td><code>int</code></td>
-                        <td>@Localizer["VariesByComponent"]</td>
-                        <td>@Localizer["SizeDesc"]</td>
-                    </tr>
-                    <tr>
-                        <td><code>Mood</code></td>
-                        <td><code>Mood</code></td>
-                        <td><code>Mood.Blissful</code></td>
-                        <td>@Localizer["MoodDesc"]</td>
-                    </tr>
-                    <tr>
-                        <td><code>Color</code></td>
-                        <td><code>string</code></td>
-                        <td>@Localizer["VariesByComponent"]</td>
-                        <td>@Localizer["ColorDesc"]</td>
-                    </tr>
-                    <tr>
-                        <td><code>ClassName</code></td>
-                        <td><code>string?</code></td>
-                        <td><code>null</code></td>
-                        <td>@Localizer["ClassNameDesc"]</td>
-                    </tr>
-                </tbody>
-            </MudSimpleTable>
-
-            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["ExampleWithAllProperties"]</MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true">@Localizer["ExampleWithAllProperties"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/example-all-properties.txt" />
-        </div>
+        </section>
 
-        <!-- Moods -->
-        <div id="moods" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Moods"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["MoodsDesc"]
-            </MudText>
+        <section id="moods" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Moods"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["MoodsDesc"]</MudText>
 
-            <MudGrid Spacing="2" Class="mt-4">
-                @foreach (Mood mood in Enum.GetValues<Mood>())
+            <ul class="mood-grid">
+                @foreach (var mood in KawaiiCatalog.Moods)
                 {
-                    <MudItem xs="6" sm="4" md="3">
-                        <MudPaper Class="pa-3 text-center" Elevation="1">
-                            <ghost Mood="@mood" Size="80" />
-                            <MudText Typo="Typo.subtitle2" Class="mt-2">@mood</MudText>
-                        </MudPaper>
-                    </MudItem>
+                    <li class="mood-tile">
+                        <Ghost Mood="@mood" Size="88" Color="#A6E191" />
+                        <code>Mood.@mood</code>
+                        <span class="mud-text-secondary">@Localizer[$"Mood{mood}"]</span>
+                    </li>
                 }
-            </MudGrid>
-        </div>
+            </ul>
+        </section>
 
-        <!-- Customization -->
-        <div id="customization" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Customization"]</MudText>
+        <section id="customization" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Customization"]</MudText>
 
-            <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">@Localizer["StylingWithCSS"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["StylingWithCSSDesc"]
-            </MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true" Class="mt-4">@Localizer["StylingWithCSS"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["StylingWithCSSDesc"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/styling-with-css.txt" />
 
-            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["DynamicProperties"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["DynamicPropertiesDesc"]
-            </MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true" Class="mt-6">@Localizer["DynamicProperties"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["DynamicPropertiesDesc"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/dynamic-properties.txt" />
-        </div>
+        </section>
 
-        <!-- Examples -->
-        <div id="examples" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Examples"]</MudText>
+        <section id="examples" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Examples"]</MudText>
 
-            <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">@Localizer["LoadingStates"]</MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true" Class="mt-4">@Localizer["LoadingStates"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/loading-states.txt" />
 
-            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["ErrorStates"]</MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true" Class="mt-6">@Localizer["ErrorStates"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/error-states.txt" />
 
-            <MudText Typo="Typo.h6" GutterBottom="true">@Localizer["EmptyStates"]</MudText>
+            <MudText Typo="Typo.h6" HtmlTag="h3" GutterBottom="true" Class="mt-6">@Localizer["EmptyStates"]</MudText>
             <CodeBlock Language="razor" CodeFile="code-samples/empty-states.txt" />
-        </div>
+        </section>
 
-        <!-- API Reference -->
-        <div id="api-reference" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["APIReference"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["APIReferenceDesc"]
-            </MudText>
+        <section id="api-reference" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["APIReference"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["APIReferenceDesc"]</MudText>
 
-            <MudExpansionPanels Class="mt-4">
-                <MudExpansionPanel Text="Backpack">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Browser">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>180</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Cat">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>320</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Chocolate">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>300</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="CreditCard">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="File">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>200</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Folder">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>200</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Ghost">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="IceCream">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>300</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Mug">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>200</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Planet">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>190</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="SpeechBubble">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>170</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Astronaut">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="Cyborg">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="HumanCat">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="HumanDinosaur">
-                    <MudSimpleTable>
-                        <tbody>
-                            <tr><td>@Localizer["DefaultSizeLabel"]</td><td>240</td></tr>
-                            <tr><td>@Localizer["DefaultColorLabel"]</td><td>#A6E191</td></tr>
-                            <tr><td>@Localizer["Namespace"]</td><td>BlazorKawaii.Components</td></tr>
-                        </tbody>
-                    </MudSimpleTable>
-                </MudExpansionPanel>
-            </MudExpansionPanels>
+            <div class="table-scroll">
+                <MudSimpleTable Hover="true" Dense="true" Elevation="0" Class="mt-4 api-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"><span class="visually-hidden">@Localizer["Preview"]</span></th>
+                            <th scope="col">@Localizer["Component"]</th>
+                            <th scope="col">@Localizer["Description"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var component in KawaiiCatalog.All)
+                        {
+                            <tr>
+                                <td><DynamicComponent Type="@component.Type" Parameters="@(KawaiiCatalog.Parameters(Mood.Blissful, 44, "#A6E191"))" /></td>
+                                <td><code>&lt;@component.Name /&gt;</code></td>
+                                <td>@Localizer[component.DescriptionKey]</td>
+                            </tr>
+                        }
+                    </tbody>
+                </MudSimpleTable>
+            </div>
 
-            <MudAlert Severity="Severity.Info" Class="mt-4">
-                <MudText>
-                    @Localizer["PlaygroundCTA"]
-                    <MudLink Href="@LanguageService.GetUrlWithLanguage("playground")">@Localizer["Playground"]</MudLink> @Localizer["PlaygroundCTA2"]
-                </MudText>
+            <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Class="mt-4">
+                @Localizer["PlaygroundCTA"]
+                <a class="alert-link" href="@LanguageService.GetUrlWithLanguage("playground")">@Localizer["Playground"]</a>
+                @Localizer["PlaygroundCTA2"]
             </MudAlert>
-        </div>
+        </section>
 
-        <!-- Best Practices -->
-        <div id="best-practices" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["BestPractices"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["BestPracticesDesc"]
-            </MudText>
+        <section id="best-practices" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["BestPractices"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["BestPracticesDesc"]</MudText>
 
-            <MudList T="string">
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
-                    <MudText Typo="Typo.body2">@Localizer["BestPractice1"]</MudText>
-                </MudListItem>
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
-                    <MudText Typo="Typo.body2">@Localizer["BestPractice2"]</MudText>
-                </MudListItem>
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
-                    <MudText Typo="Typo.body2">@Localizer["BestPractice3"]</MudText>
-                </MudListItem>
-                <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle">
-                    <MudText Typo="Typo.body2">@Localizer["BestPractice4"]</MudText>
-                </MudListItem>
+            <MudList T="string" ReadOnly="true">
+                @foreach (var key in new[] { "BestPractice1", "BestPractice2", "BestPractice3", "BestPractice4" })
+                {
+                    <MudListItem T="string" Icon="@Icons.Material.Filled.CheckCircle" IconColor="Color.Success">
+                        <MudText Typo="Typo.body2">@Localizer[key]</MudText>
+                    </MudListItem>
+                }
             </MudList>
-        </div>
+        </section>
 
-        <!-- Troubleshooting -->
-        <div id="troubleshooting" class="doc-section">
-            <MudText Typo="Typo.h4" GutterBottom="true">@Localizer["Troubleshooting"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">
-                @Localizer["TroubleshootingDesc"]
-            </MudText>
+        <section id="troubleshooting" class="doc-section" tabindex="-1">
+            <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Troubleshooting"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["TroubleshootingDesc"]</MudText>
 
-            <MudExpansionPanels>
-                <MudExpansionPanel Text="@Localizer["CommonIssue1"]">
-                    <MudText Typo="Typo.body2">@Localizer["CommonIssue1Solution"]</MudText>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="@Localizer["CommonIssue2"]">
-                    <MudText Typo="Typo.body2">@Localizer["CommonIssue2Solution"]</MudText>
-                </MudExpansionPanel>
-                <MudExpansionPanel Text="@Localizer["CommonIssue3"]">
-                    <MudText Typo="Typo.body2">@Localizer["CommonIssue3Solution"]</MudText>
-                </MudExpansionPanel>
-            </MudExpansionPanels>
+            <dl class="troubleshooting">
+                @foreach (var i in new[] { 1, 2, 3 })
+                {
+                    <dt>@Localizer[$"CommonIssue{i}"]</dt>
+                    <dd>@Localizer[$"CommonIssue{i}Solution"]</dd>
+                }
+            </dl>
 
-            <MudAlert Severity="Severity.Info" Class="mt-4">
-                <MudText>
-                    @Localizer["NeedMoreHelp"]
-                    <MudLink Href="https://github.com/phmatray/BlazorKawaii/issues" Target="_blank">GitHub Issues</MudLink>
-                </MudText>
+            <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Class="mt-4">
+                @Localizer["NeedMoreHelp"]
+                <a class="alert-link" href="https://github.com/phmatray/BlazorKawaii/issues" target="_blank" rel="noopener">GitHub Issues</a>
             </MudAlert>
-        </div>
+        </section>
     </MudItem>
 </MudGrid>
 
 @code {
+    private static readonly (string Id, string Key)[] Sections =
+    [
+        ("getting-started", "GettingStarted"),
+        ("installation", "Installation"),
+        ("basic-usage", "BasicUsage"),
+        ("component-props", "ComponentProperties"),
+        ("moods", "Moods"),
+        ("customization", "Customization"),
+        ("examples", "Examples"),
+        ("api-reference", "APIReference"),
+        ("best-practices", "BestPractices"),
+        ("troubleshooting", "Troubleshooting")
+    ];
+
+    // Mirrors the parameters of KawaiiComponentBase.
+    private static readonly (string Name, string Type, string Default, string DescriptionKey)[] Parameters =
+    [
+        ("Size", "int", "240", "SizeDesc"),
+        ("Mood", "Mood", "Mood.Blissful", "MoodDesc"),
+        ("Color", "string?", "#A6E191", "ColorDesc"),
+        ("Class", "string?", "null", "ClassDesc"),
+        ("Style", "string?", "null", "StyleDesc"),
+        ("SvgClass", "string?", "null", "SvgClassDesc"),
+        ("SvgStyle", "string?", "null", "SvgStyleDesc"),
+        ("Title", "string?", "null", "TitleDesc"),
+        ("aria-*, data-*, …", "—", "—", "AdditionalAttributesDesc")
+    ];
+
+    private string? _version;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _version = await NuGetVersionService.GetLatestVersionAsync();
+    }
+
     private async Task ScrollToSection(string sectionId)
     {
         try
         {
             await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
         }
-        catch (Exception ex)
+        catch (JSException ex)
         {
-            // Log the error but don't crash the application
-            Console.WriteLine($@"Error scrolling to section {sectionId}: {ex.Message}");
+            Console.WriteLine($"Error scrolling to section {sectionId}: {ex.Message}");
         }
     }
 }

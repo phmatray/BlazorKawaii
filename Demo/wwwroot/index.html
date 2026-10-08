@@ -3,41 +3,70 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blazor Kawaii - Cute SVG Components for Blazor</title>
-    <meta name="description" content="A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 12 kawaii components with 7 different moods.">
+    <meta name="description" content="A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 22 kawaii components with 7 different moods.">
     <meta name="keywords" content="Blazor, WebAssembly, SVG, Components, Kawaii, Cute, UI, Library">
     <meta name="author" content="BlazorKawaii">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://phmatray.github.io/BlazorKawaii/">
     <meta property="og:title" content="Blazor Kawaii - Cute SVG Components for Blazor">
-    <meta property="og:description" content="A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 12 kawaii components with 7 different moods.">
+    <meta property="og:description" content="A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 22 kawaii components with 7 different moods.">
     <meta property="og:image" content="https://phmatray.github.io/BlazorKawaii/social-preview.png">
-    
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://phmatray.github.io/BlazorKawaii/">
     <meta property="twitter:title" content="Blazor Kawaii - Cute SVG Components for Blazor">
-    <meta property="twitter:description" content="A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 12 kawaii components with 7 different moods.">
+    <meta property="twitter:description" content="A collection of cute, customizable SVG components for Blazor WebAssembly applications. Features 22 kawaii components with 7 different moods.">
     <meta property="twitter:image" content="https://phmatray.github.io/BlazorKawaii/social-preview.png">
-    
+
     <base href="/" />
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#A6E191">
-    
-    <link href="css/app.css" rel="stylesheet" />
-    <link href="Demo.styles.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#FFD882">
+
+    <!-- Fonts load without blocking the first paint -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <link href="prism/prism.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+
+    <script>
+        // Same rules as WebAssemblyHostExtensions: ?lang first, then the stored choice, else English.
+        (function () {
+            var supported = ['en', 'fr', 'es', 'nl'];
+            var lang = new URLSearchParams(location.search).get('lang');
+            if (!lang) {
+                try { lang = localStorage.getItem('culture'); } catch (e) { }
+            }
+            document.documentElement.lang = supported.indexOf(lang) >= 0 ? lang : 'en';
+        })();
+
+        window.kawaii = {
+            isDark: function () {
+                try {
+                    var stored = localStorage.getItem('theme');
+                    if (stored) return stored === 'dark';
+                } catch (e) { }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches;
+            },
+            setTheme: function (theme) {
+                try { localStorage.setItem('theme', theme); } catch (e) { }
+            }
+        };
+    </script>
 </head>
 
 <body>
@@ -52,60 +81,60 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
                 font-family: 'Roboto', sans-serif;
             }
-            
+
             .loading-container {
                 text-align: center;
                 color: white;
             }
-            
+
             .loading-kawaii {
-                animation: bounce 1.5s ease-in-out infinite;
+                animation: loading-bob 1.5s ease-in-out infinite;
                 margin-bottom: 2rem;
             }
-            
-            @keyframes bounce {
+
+            @keyframes loading-bob {
                 0%, 100% { transform: translateY(0); }
                 50% { transform: translateY(-20px); }
             }
-            
+
             .loading-text {
                 font-size: 1.5rem;
                 font-weight: 300;
                 letter-spacing: 0.5px;
                 margin-bottom: 1rem;
             }
-            
+
             .loading-dots {
                 display: inline-flex;
                 gap: 0.5rem;
             }
-            
+
             .loading-dot {
                 width: 10px;
                 height: 10px;
                 background-color: white;
                 border-radius: 50%;
-                animation: pulse 1.5s ease-in-out infinite;
+                animation: loading-pulse 1.5s ease-in-out infinite;
             }
-            
+
             .loading-dot:nth-child(1) { animation-delay: 0s; }
             .loading-dot:nth-child(2) { animation-delay: 0.2s; }
             .loading-dot:nth-child(3) { animation-delay: 0.4s; }
-            
-            @keyframes pulse {
-                0%, 100% { 
+
+            @keyframes loading-pulse {
+                0%, 100% {
                     opacity: 0.3;
                     transform: scale(0.8);
                 }
-                50% { 
+                50% {
                     opacity: 1;
                     transform: scale(1);
                 }
             }
-            
+
             .loading-progress {
                 width: 200px;
                 height: 4px;
@@ -114,22 +143,28 @@
                 margin: 2rem auto 0;
                 overflow: hidden;
             }
-            
+
             .loading-progress-bar {
                 height: 100%;
                 background-color: white;
                 border-radius: 2px;
-                animation: progress 2s ease-out infinite;
+                animation: loading-progress 2s ease-out infinite;
             }
-            
-            @keyframes progress {
+
+            @keyframes loading-progress {
                 0% { width: 0%; }
                 50% { width: 70%; }
                 100% { width: 100%; }
             }
+
+            @media (prefers-reduced-motion: reduce) {
+                .loading-kawaii, .loading-dot, .loading-progress-bar { animation: none; }
+                .loading-dot { opacity: 0.8; }
+                .loading-progress-bar { width: 60%; }
+            }
         </style>
-        <div class="loading-container">
-            <div class="loading-kawaii">
+        <div class="loading-container" role="status">
+            <div class="loading-kawaii" aria-hidden="true">
                 <svg width="120" height="120" viewBox="0 0 130 168">
                     <g>
                         <path fill="#FFFFFF" fill-opacity="0.9" d="M63.004.034C27.572 1.238 0 36.002 0 76.472v76.272c0 8.116 5.832 14.718 13 14.718s13-6.602 13-14.718c0-2.705 1.944-4.906 4.333-4.906 2.39 0 4.334 2.2 4.334 4.906 0 8.116 5.831 14.718 13 14.718 3.472 0 6.737-1.53 9.192-4.31 2.456-2.78 3.808-6.477 3.807-10.408 0-2.712 1.939-4.906 4.334-4.906 2.39 0 4.333 2.2 4.333 4.906 0 8.116 5.832 14.718 13 14.718 7.169 0 13-6.602 13-14.718 0-2.705 1.944-4.906 4.334-4.906 2.39 0 4.333 2.2 4.333 4.906 0 8.116 5.832 14.718 13 14.718s13-6.602 13-14.718V73.592c0-41.028-29.82-74.82-66.996-73.558z"/>
@@ -144,25 +179,38 @@
                     </g>
                 </svg>
             </div>
-            <div class="loading-text">Loading Blazor Kawaii</div>
-            <div class="loading-dots">
+            <div class="loading-text" data-i18n="loading">Loading Blazor Kawaii</div>
+            <div class="loading-dots" aria-hidden="true">
                 <div class="loading-dot"></div>
                 <div class="loading-dot"></div>
                 <div class="loading-dot"></div>
             </div>
-            <div class="loading-progress">
+            <div class="loading-progress" aria-hidden="true">
                 <div class="loading-progress-bar"></div>
             </div>
         </div>
     </div>
 
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+    <div id="blazor-error-ui" role="alert">
+        <span data-i18n="error">An unhandled error has occurred.</span>
+        <a href="" class="reload" data-i18n="reload">Reload</a>
+        <button type="button" class="dismiss" data-i18n-label="dismiss" aria-label="Dismiss">×</button>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+
+    <script>
+        // These texts exist before Blazor (and its resources) start, so they are translated here.
+        (function () {
+            var texts = {
+                en: { loading: 'Loading Blazor Kawaii', error: 'An unhandled error has occurred.', reload: 'Reload', dismiss: 'Dismiss' },
+                fr: { loading: 'Chargement de Blazor Kawaii', error: 'Une erreur inattendue s’est produite.', reload: 'Recharger', dismiss: 'Fermer' },
+                es: { loading: 'Cargando Blazor Kawaii', error: 'Se produjo un error inesperado.', reload: 'Recargar', dismiss: 'Cerrar' },
+                nl: { loading: 'Blazor Kawaii laden', error: 'Er is een onverwachte fout opgetreden.', reload: 'Opnieuw laden', dismiss: 'Sluiten' }
+            }[document.documentElement.lang];
+            document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = texts[el.dataset.i18n]; });
+            document.querySelectorAll('[data-i18n-label]').forEach(function (el) { el.setAttribute('aria-label', texts[el.dataset.i18nLabel]); });
+        })();
+    </script>
+    <script>window.Prism = { manual: true };</script>
     <script src="prism/prism.js"></script>
     <script src="js/prism-wrapper.js"></script>
     <script>
@@ -170,13 +218,17 @@
             try {
                 const element = document.getElementById(elementId);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    element.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+                    element.focus({ preventScroll: true });
                 }
             } catch (error) {
                 console.warn('Scroll error:', error);
             }
         };
     </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 </body>
 
 </html>

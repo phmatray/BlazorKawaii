@@ -1,13 +1,13 @@
 @inject IStringLocalizer<SharedResource> Localizer
 @inject LanguageService LanguageService
 
-<PageTitle>@Localizer["NotFound"]</PageTitle>
+<PageTitle>Blazor Kawaii - @Localizer["NotFound"]</PageTitle>
 <LayoutView Layout="@typeof(MainLayout)">
     <MudContainer Class="mt-16">
         <MudGrid Justify="Justify.Center">
             <MudItem xs="12" sm="8" md="6" Class="text-center">
                 <Ghost Mood="Sad" Size="200" Color="#E0E4E8" />
-                <MudText Typo="Typo.h3" Class="mt-4">@Localizer["NotFound"]</MudText>
+                <MudText Typo="Typo.h3" HtmlTag="h1" Class="mt-4">@Localizer["NotFound"]</MudText>
                 <MudText Typo="Typo.body1" Class="mt-2">@Localizer["NotFoundMessage"]</MudText>
                 <MudButton Variant="Variant.Filled" Color="Color.Primary"
                            Href="@LanguageService.GetUrlWithLanguage("")" Class="mt-4"

@@ -74,48 +74,6 @@
   </data>
   
   <!-- Home Page -->
-  <data name="HomeTitle" xml:space="preserve">
-    <value>Componentes SVG adorables para Blazor</value>
-  </data>
-  <data name="HomeSubtitle" xml:space="preserve">
-    <value>Una colección de ilustraciones kawaii personalizables para tus aplicaciones Blazor</value>
-  </data>
-  <data name="ViewComponents" xml:space="preserve">
-    <value>Ver Componentes</value>
-  </data>
-  <data name="Features" xml:space="preserve">
-    <value>Características</value>
-  </data>
-  <data name="ComponentsCount" xml:space="preserve">
-    <value>12 Componentes</value>
-  </data>
-  <data name="ComponentsCountDesc" xml:space="preserve">
-    <value>Diversa colección de ilustraciones kawaii</value>
-  </data>
-  <data name="MoodsCount" xml:space="preserve">
-    <value>7 Estados de Ánimo</value>
-  </data>
-  <data name="MoodsCountDesc" xml:space="preserve">
-    <value>Expresa diferentes emociones</value>
-  </data>
-  <data name="FullyCustomizable" xml:space="preserve">
-    <value>Totalmente Personalizable</value>
-  </data>
-  <data name="FullyCustomizableDesc" xml:space="preserve">
-    <value>Opciones de tamaño, color y estado de ánimo</value>
-  </data>
-  <data name="QuickStart" xml:space="preserve">
-    <value>Inicio Rápido</value>
-  </data>
-  <data name="Install" xml:space="preserve">
-    <value>Instalar el paquete</value>
-  </data>
-  <data name="Import" xml:space="preserve">
-    <value>Importar el espacio de nombres</value>
-  </data>
-  <data name="UseComponent" xml:space="preserve">
-    <value>Usar un componente</value>
-  </data>
   <data name="WelcomeToBlazorKawaii" xml:space="preserve">
     <value>Bienvenido a Blazor Kawaii</value>
   </data>
@@ -128,35 +86,8 @@
   <data name="ViewDocs" xml:space="preserve">
     <value>Ver Documentación</value>
   </data>
-  <data name="SeeThemInAction" xml:space="preserve">
-    <value>Verlos en Acción</value>
-  </data>
-  <data name="SevenMoods" xml:space="preserve">
-    <value>7 Estados de Ánimo</value>
-  </data>
-  <data name="ExpressDifferentEmotions" xml:space="preserve">
-    <value>Expresa diferentes emociones con estados de ánimo predefinidos</value>
-  </data>
-  <data name="ChangeColorsAndSizes" xml:space="preserve">
-    <value>Cambia colores, tamaños y estados de ánimo para que coincidan con tu diseño</value>
-  </data>
-  <data name="BlazingFast" xml:space="preserve">
-    <value>Súper Rápido</value>
-  </data>
-  <data name="LightweightSVGComponents" xml:space="preserve">
-    <value>Componentes SVG ligeros sin dependencias</value>
-  </data>
   <data name="KawaiiComponents" xml:space="preserve">
     <value>Componentes Kawaii</value>
-  </data>
-  <data name="MoodExpressions" xml:space="preserve">
-    <value>Expresiones de Ánimo</value>
-  </data>
-  <data name="Customizations" xml:space="preserve">
-    <value>Personalizaciones</value>
-  </data>
-  <data name="ItsAsEasyAs" xml:space="preserve">
-    <value>Es tan fácil como importar un componente y usarlo:</value>
   </data>
   <data name="ReadyToMakeYourAppKawaii" xml:space="preserve">
     <value>¿Listo para hacer tu aplicación kawaii?</value>
@@ -169,38 +100,17 @@
   </data>
   
   <!-- Components Page -->
-  <data name="ComponentsTitle" xml:space="preserve">
-    <value>Galería de Componentes</value>
-  </data>
   <data name="ComponentsSubtitle" xml:space="preserve">
     <value>Explora todos los componentes kawaii disponibles</value>
   </data>
   <data name="SearchComponents" xml:space="preserve">
     <value>Buscar componentes...</value>
   </data>
-  <data name="ViewDetails" xml:space="preserve">
-    <value>Ver Detalles</value>
-  </data>
-  <data name="DefaultSize" xml:space="preserve">
-    <value>Tamaño Predeterminado</value>
-  </data>
-  <data name="DefaultColor" xml:space="preserve">
-    <value>Color Predeterminado</value>
-  </data>
-  <data name="Usage" xml:space="preserve">
-    <value>Uso</value>
-  </data>
   <data name="Close" xml:space="preserve">
     <value>Cerrar</value>
   </data>
   <data name="FilterByMood" xml:space="preserve">
-    <value>Filtrar por estado de ánimo</value>
-  </data>
-  <data name="DefaultValues" xml:space="preserve">
-    <value>Valores Predeterminados:</value>
-  </data>
-  <data name="AvailableMoods" xml:space="preserve">
-    <value>Estados de Ánimo Disponibles:</value>
+    <value>Estado de ánimo para todas</value>
   </data>
   <data name="ViewCode" xml:space="preserve">
     <value>Ver Código</value>
@@ -210,12 +120,6 @@
   </data>
   <data name="CodeExample" xml:space="preserve">
     <value>Ejemplo de Código</value>
-  </data>
-  <data name="CopyCode" xml:space="preserve">
-    <value>Copiar Código</value>
-  </data>
-  <data name="CodeCopiedToClipboard" xml:space="preserve">
-    <value>¡Código copiado al portapapeles!</value>
   </data>
   <data name="BasicUsageComment" xml:space="preserve">
     <value>Uso básico</value>
@@ -276,6 +180,24 @@
   <data name="HumanDinosaurDesc" xml:space="preserve">
     <value>Un personaje dinosaurio-humano juguetón</value>
   </data>
+  <data name="CookieDesc" xml:space="preserve">
+    <value>Una galleta recién mordida, perfecta para los avisos de cookies</value>
+  </data>
+  <data name="MagnifyingGlassDesc" xml:space="preserve">
+    <value>Una lupa curiosa para búsquedas y resultados vacíos</value>
+  </data>
+  <data name="RubberDuckDesc" xml:space="preserve">
+    <value>Un patito de goma, el compañero de depuración de todo desarrollador</value>
+  </data>
+  <data name="CloudDesc" xml:space="preserve">
+    <value>Una nube suave para sincronización, subidas y modo sin conexión</value>
+  </data>
+  <data name="PadlockDesc" xml:space="preserve">
+    <value>Un candado para pantallas de inicio de sesión y acceso denegado</value>
+  </data>
+  <data name="AirplaneDesc" xml:space="preserve">
+    <value>Un avión regordete para viajes, reservas y envíos</value>
+  </data>
   
   <!-- Playground Page -->
   <data name="PlaygroundTitle" xml:space="preserve">
@@ -321,7 +243,7 @@
     <value>Código Generado</value>
   </data>
   <data name="CopyToClipboard" xml:space="preserve">
-    <value>Copiar al portapapeles</value>
+    <value>Copiar</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>¡Copiado!</value>
@@ -373,15 +295,6 @@
   <data name="InstallationDesc" xml:space="preserve">
     <value>Para usar los componentes de Blazor Kawaii en tu proyecto, sigue estos pasos:</value>
   </data>
-  <data name="CloneRepository" xml:space="preserve">
-    <value>Clonar el repositorio</value>
-  </data>
-  <data name="CopyComponents" xml:space="preserve">
-    <value>Copiar componentes a tu proyecto</value>
-  </data>
-  <data name="CopyComponentsDesc" xml:space="preserve">
-    <value>Copia las carpetas Components y Common a tu proyecto Blazor.</value>
-  </data>
   <data name="AddImports" xml:space="preserve">
     <value>Agregar importaciones necesarias</value>
   </data>
@@ -413,13 +326,7 @@
     <value>La expresión facial del componente</value>
   </data>
   <data name="ColorDesc" xml:space="preserve">
-    <value>El color principal (formato hexadecimal)</value>
-  </data>
-  <data name="ClassNameDesc" xml:space="preserve">
-    <value>Nombre de clase CSS opcional</value>
-  </data>
-  <data name="VariesByComponent" xml:space="preserve">
-    <value>Varía según el componente</value>
+    <value>Color del cuerpo: cualquier color CSS (hex, rgb, nombre)</value>
   </data>
   <data name="ExampleWithAllProperties" xml:space="preserve">
     <value>Ejemplo con todas las propiedades:</value>
@@ -449,16 +356,7 @@
     <value>Estados Vacíos</value>
   </data>
   <data name="APIReferenceDesc" xml:space="preserve">
-    <value>Lista completa de componentes disponibles y sus valores predeterminados:</value>
-  </data>
-  <data name="DefaultSizeLabel" xml:space="preserve">
-    <value>Tamaño Predeterminado:</value>
-  </data>
-  <data name="DefaultColorLabel" xml:space="preserve">
-    <value>Color Predeterminado:</value>
-  </data>
-  <data name="Namespace" xml:space="preserve">
-    <value>Espacio de nombres:</value>
+    <value>Todas las mascotas aceptan los mismos parámetros, miden 240 px y usan #A6E191 por defecto, en el espacio de nombres BlazorKawaii.Components.</value>
   </data>
   <data name="PlaygroundCTA" xml:space="preserve">
     <value>Para una experiencia interactiva completa, visita el</value>
@@ -468,12 +366,6 @@
   </data>
   <data name="InstallViaNuGet" xml:space="preserve">
     <value>Instalar vía NuGet</value>
-  </data>
-  <data name="RecommendedApproach" xml:space="preserve">
-    <value>La forma recomendada de instalar BlazorKawaii</value>
-  </data>
-  <data name="OrViaPackageManager" xml:space="preserve">
-    <value>O a través de la Consola del Administrador de Paquetes:</value>
   </data>
   <data name="AddToImports" xml:space="preserve">
     <value>Agrega a tu _Imports.razor:</value>
@@ -509,20 +401,8 @@
   <data name="Resources" xml:space="preserve">
     <value>Recursos</value>
   </data>
-  <data name="QuickTip" xml:space="preserve">
-    <value>Consejo Rápido</value>
-  </data>
-  <data name="QuickTipText" xml:space="preserve">
-    <value>Presiona Ctrl+K para buscar componentes rápidamente</value>
-  </data>
-  <data name="ClickToChangeMood" xml:space="preserve">
-    <value>Haz clic para cambiar el estado de ánimo</value>
-  </data>
   
   <!-- Common -->
-  <data name="DarkMode" xml:space="preserve">
-    <value>Modo Oscuro</value>
-  </data>
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
@@ -558,7 +438,7 @@
     <value>Mantenga tamaños de componentes consistentes en su UI para armonía visual</value>
   </data>
   <data name="BestPractice4" xml:space="preserve">
-    <value>Use variables CSS para temas para mantener la consistencia</value>
+    <value>Da un Title a las mascotas con significado; las decorativas quedan ocultas a los lectores de pantalla</value>
   </data>
   <data name="Troubleshooting" xml:space="preserve">
     <value>Solución de Problemas</value>
@@ -582,9 +462,102 @@
     <value>Los colores no se aplican correctamente</value>
   </data>
   <data name="CommonIssue3Solution" xml:space="preserve">
-    <value>Verifique que los valores de color estén en formato hexadecimal válido (#RRGGBB)</value>
+    <value>Usa un color CSS válido, como #FFD882 o rgb(255, 216, 130)</value>
   </data>
   <data name="NeedMoreHelp" xml:space="preserve">
     <value>¿Necesita más ayuda? Visite nuestro</value>
+  </data>
+  <data name="AdditionalAttributesDesc" xml:space="preserve">
+    <value>Cualquier otro atributo (aria-label, data-*, …) se aplica al elemento SVG</value>
+  </data>
+  <data name="ChangeMoodOf" xml:space="preserve">
+    <value>{0}, {1}. Cambiar estado de ánimo</value>
+  </data>
+  <data name="ClassDesc" xml:space="preserve">
+    <value>Clase CSS del elemento contenedor</value>
+  </data>
+  <data name="StyleDesc" xml:space="preserve">
+    <value>Estilo en línea del elemento contenedor</value>
+  </data>
+  <data name="SvgClassDesc" xml:space="preserve">
+    <value>Clase CSS del elemento SVG</value>
+  </data>
+  <data name="SvgStyleDesc" xml:space="preserve">
+    <value>Estilo en línea del elemento SVG</value>
+  </data>
+  <data name="TitleDesc" xml:space="preserve">
+    <value>Nombre accesible. Sin él, la mascota es decorativa y se oculta a los lectores de pantalla</value>
+  </data>
+  <data name="CopyFailed" xml:space="preserve">
+    <value>No se pudo copiar. Selecciona el código y cópialo manualmente.</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>Navegación principal</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>Mostrar u ocultar el menú</value>
+  </data>
+  <data name="SkipToContent" xml:space="preserve">
+    <value>Saltar al contenido</value>
+  </data>
+  <data name="NuGetPackage" xml:space="preserve">
+    <value>Paquete NuGet</value>
+  </data>
+  <data name="NoAnimation" xml:space="preserve">
+    <value>Ninguna</value>
+  </data>
+  <data name="NoComponentsFound" xml:space="preserve">
+    <value>Ninguna mascota coincide con «{0}».</value>
+  </data>
+  <data name="MoodSad" xml:space="preserve">
+    <value>Triste</value>
+  </data>
+  <data name="MoodShocked" xml:space="preserve">
+    <value>Sorprendido</value>
+  </data>
+  <data name="MoodHappy" xml:space="preserve">
+    <value>Feliz</value>
+  </data>
+  <data name="MoodBlissful" xml:space="preserve">
+    <value>Dichoso</value>
+  </data>
+  <data name="MoodLovestruck" xml:space="preserve">
+    <value>Enamorado</value>
+  </data>
+  <data name="MoodExcited" xml:space="preserve">
+    <value>Emocionado</value>
+  </data>
+  <data name="MoodKo" xml:space="preserve">
+    <value>K.O.</value>
+  </data>
+  <data name="UiStatesTitle" xml:space="preserve">
+    <value>Pensadas para los estados de tu interfaz</value>
+  </data>
+  <data name="UiStatesSubtitle" xml:space="preserve">
+    <value>Resultados vacíos, modo sin conexión, una página bloqueada, un aviso de cookies: dale una cara a cada uno.</value>
+  </data>
+  <data name="StateNoResults" xml:space="preserve">
+    <value>Sin resultados</value>
+  </data>
+  <data name="StateNoResultsDesc" xml:space="preserve">
+    <value>Una lupa sorprendida suaviza una búsqueda vacía.</value>
+  </data>
+  <data name="StateOffline" xml:space="preserve">
+    <value>Sin conexión</value>
+  </data>
+  <data name="StateOfflineDesc" xml:space="preserve">
+    <value>Una nube triste avisa de la desconexión, sin alarmar.</value>
+  </data>
+  <data name="StateAccessDenied" xml:space="preserve">
+    <value>Acceso denegado</value>
+  </data>
+  <data name="StateAccessDeniedDesc" xml:space="preserve">
+    <value>Un candado K.O. para pantallas de inicio de sesión y páginas 403.</value>
+  </data>
+  <data name="StateCookies" xml:space="preserve">
+    <value>Aviso de cookies</value>
+  </data>
+  <data name="StateCookiesDesc" xml:space="preserve">
+    <value>Una galleta dichosa hace más amable el aviso que todos ven.</value>
   </data>
 </root>

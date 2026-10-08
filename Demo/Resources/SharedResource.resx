@@ -74,48 +74,6 @@
   </data>
   
   <!-- Home Page -->
-  <data name="HomeTitle" xml:space="preserve">
-    <value>Cute SVG components for Blazor</value>
-  </data>
-  <data name="HomeSubtitle" xml:space="preserve">
-    <value>A collection of customizable kawaii illustrations for your Blazor applications</value>
-  </data>
-  <data name="ViewComponents" xml:space="preserve">
-    <value>View Components</value>
-  </data>
-  <data name="Features" xml:space="preserve">
-    <value>Features</value>
-  </data>
-  <data name="ComponentsCount" xml:space="preserve">
-    <value>12 Components</value>
-  </data>
-  <data name="ComponentsCountDesc" xml:space="preserve">
-    <value>Diverse collection of kawaii illustrations</value>
-  </data>
-  <data name="MoodsCount" xml:space="preserve">
-    <value>7 Moods</value>
-  </data>
-  <data name="MoodsCountDesc" xml:space="preserve">
-    <value>Express different emotions</value>
-  </data>
-  <data name="FullyCustomizable" xml:space="preserve">
-    <value>Fully Customizable</value>
-  </data>
-  <data name="FullyCustomizableDesc" xml:space="preserve">
-    <value>Size, color, and mood options</value>
-  </data>
-  <data name="QuickStart" xml:space="preserve">
-    <value>Quick Start</value>
-  </data>
-  <data name="Install" xml:space="preserve">
-    <value>Install the package</value>
-  </data>
-  <data name="Import" xml:space="preserve">
-    <value>Import the namespace</value>
-  </data>
-  <data name="UseComponent" xml:space="preserve">
-    <value>Use a component</value>
-  </data>
   <data name="WelcomeToBlazorKawaii" xml:space="preserve">
     <value>Welcome to Blazor Kawaii</value>
   </data>
@@ -128,35 +86,8 @@
   <data name="ViewDocs" xml:space="preserve">
     <value>View Docs</value>
   </data>
-  <data name="SeeThemInAction" xml:space="preserve">
-    <value>See Them in Action</value>
-  </data>
-  <data name="SevenMoods" xml:space="preserve">
-    <value>7 Moods</value>
-  </data>
-  <data name="ExpressDifferentEmotions" xml:space="preserve">
-    <value>Express different emotions with built-in mood presets</value>
-  </data>
-  <data name="ChangeColorsAndSizes" xml:space="preserve">
-    <value>Change colors, sizes, and moods to match your design</value>
-  </data>
-  <data name="BlazingFast" xml:space="preserve">
-    <value>Blazing Fast</value>
-  </data>
-  <data name="LightweightSVGComponents" xml:space="preserve">
-    <value>Lightweight SVG components with zero dependencies</value>
-  </data>
   <data name="KawaiiComponents" xml:space="preserve">
     <value>Kawaii Components</value>
-  </data>
-  <data name="MoodExpressions" xml:space="preserve">
-    <value>Mood Expressions</value>
-  </data>
-  <data name="Customizations" xml:space="preserve">
-    <value>Customizations</value>
-  </data>
-  <data name="ItsAsEasyAs" xml:space="preserve">
-    <value>It's as easy as importing a component and using it:</value>
   </data>
   <data name="ReadyToMakeYourAppKawaii" xml:space="preserve">
     <value>Ready to make your app kawaii?</value>
@@ -169,38 +100,17 @@
   </data>
   
   <!-- Components Page -->
-  <data name="ComponentsTitle" xml:space="preserve">
-    <value>Component Gallery</value>
-  </data>
   <data name="ComponentsSubtitle" xml:space="preserve">
     <value>Explore all available kawaii components</value>
   </data>
   <data name="SearchComponents" xml:space="preserve">
     <value>Search components...</value>
   </data>
-  <data name="ViewDetails" xml:space="preserve">
-    <value>View Details</value>
-  </data>
-  <data name="DefaultSize" xml:space="preserve">
-    <value>Default Size</value>
-  </data>
-  <data name="DefaultColor" xml:space="preserve">
-    <value>Default Color</value>
-  </data>
-  <data name="Usage" xml:space="preserve">
-    <value>Usage</value>
-  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="FilterByMood" xml:space="preserve">
-    <value>Filter by mood</value>
-  </data>
-  <data name="DefaultValues" xml:space="preserve">
-    <value>Default Values:</value>
-  </data>
-  <data name="AvailableMoods" xml:space="preserve">
-    <value>Available Moods:</value>
+    <value>Mood for every mascot</value>
   </data>
   <data name="ViewCode" xml:space="preserve">
     <value>View Code</value>
@@ -210,12 +120,6 @@
   </data>
   <data name="CodeExample" xml:space="preserve">
     <value>Code Example</value>
-  </data>
-  <data name="CopyCode" xml:space="preserve">
-    <value>Copy Code</value>
-  </data>
-  <data name="CodeCopiedToClipboard" xml:space="preserve">
-    <value>Code copied to clipboard!</value>
   </data>
   <data name="BasicUsageComment" xml:space="preserve">
     <value>Basic usage</value>
@@ -276,6 +180,24 @@
   <data name="HumanDinosaurDesc" xml:space="preserve">
     <value>A playful dinosaur-human character</value>
   </data>
+  <data name="CookieDesc" xml:space="preserve">
+    <value>A freshly bitten cookie, perfect for consent banners</value>
+  </data>
+  <data name="MagnifyingGlassDesc" xml:space="preserve">
+    <value>A curious magnifying glass for search and empty results</value>
+  </data>
+  <data name="RubberDuckDesc" xml:space="preserve">
+    <value>A rubber duck, every developer's debugging companion</value>
+  </data>
+  <data name="CloudDesc" xml:space="preserve">
+    <value>A soft cloud for sync, uploads and offline states</value>
+  </data>
+  <data name="PadlockDesc" xml:space="preserve">
+    <value>A padlock for sign-in and access-denied screens</value>
+  </data>
+  <data name="AirplaneDesc" xml:space="preserve">
+    <value>A chubby airplane for travel, bookings and shipping</value>
+  </data>
   
   <!-- Playground Page -->
   <data name="PlaygroundTitle" xml:space="preserve">
@@ -321,7 +243,7 @@
     <value>Generated Code</value>
   </data>
   <data name="CopyToClipboard" xml:space="preserve">
-    <value>Copy to clipboard</value>
+    <value>Copy</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied!</value>
@@ -373,15 +295,6 @@
   <data name="InstallationDesc" xml:space="preserve">
     <value>To use Blazor Kawaii components in your project, follow these steps:</value>
   </data>
-  <data name="CloneRepository" xml:space="preserve">
-    <value>Clone the repository</value>
-  </data>
-  <data name="CopyComponents" xml:space="preserve">
-    <value>Copy components to your project</value>
-  </data>
-  <data name="CopyComponentsDesc" xml:space="preserve">
-    <value>Copy the Components and Common folders to your Blazor project.</value>
-  </data>
   <data name="AddImports" xml:space="preserve">
     <value>Add necessary imports</value>
   </data>
@@ -413,13 +326,7 @@
     <value>The facial expression of the component</value>
   </data>
   <data name="ColorDesc" xml:space="preserve">
-    <value>The primary color (hex format)</value>
-  </data>
-  <data name="ClassNameDesc" xml:space="preserve">
-    <value>Optional CSS class name</value>
-  </data>
-  <data name="VariesByComponent" xml:space="preserve">
-    <value>Varies by component</value>
+    <value>Body color: any CSS color (hex, rgb, name)</value>
   </data>
   <data name="ExampleWithAllProperties" xml:space="preserve">
     <value>Example with all properties:</value>
@@ -449,16 +356,7 @@
     <value>Empty States</value>
   </data>
   <data name="APIReferenceDesc" xml:space="preserve">
-    <value>Complete list of available components and their default values:</value>
-  </data>
-  <data name="DefaultSizeLabel" xml:space="preserve">
-    <value>Default Size:</value>
-  </data>
-  <data name="DefaultColorLabel" xml:space="preserve">
-    <value>Default Color:</value>
-  </data>
-  <data name="Namespace" xml:space="preserve">
-    <value>Namespace:</value>
+    <value>Every mascot takes the same parameters, defaults to 240 px and #A6E191, and lives in the BlazorKawaii.Components namespace.</value>
   </data>
   <data name="PlaygroundCTA" xml:space="preserve">
     <value>For a complete interactive experience, visit the</value>
@@ -468,12 +366,6 @@
   </data>
   <data name="InstallViaNuGet" xml:space="preserve">
     <value>Install via NuGet</value>
-  </data>
-  <data name="RecommendedApproach" xml:space="preserve">
-    <value>The recommended way to install BlazorKawaii</value>
-  </data>
-  <data name="OrViaPackageManager" xml:space="preserve">
-    <value>Or via Package Manager Console:</value>
   </data>
   <data name="AddToImports" xml:space="preserve">
     <value>Add to your _Imports.razor:</value>
@@ -505,20 +397,8 @@
   <data name="Resources" xml:space="preserve">
     <value>Resources</value>
   </data>
-  <data name="QuickTip" xml:space="preserve">
-    <value>Quick Tip</value>
-  </data>
-  <data name="QuickTipText" xml:space="preserve">
-    <value>Press Ctrl+K to quickly search for components</value>
-  </data>
-  <data name="ClickToChangeMood" xml:space="preserve">
-    <value>Click to change mood</value>
-  </data>
   
   <!-- Common -->
-  <data name="DarkMode" xml:space="preserve">
-    <value>Dark Mode</value>
-  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
@@ -554,7 +434,7 @@
     <value>Keep component sizes consistent across your UI for visual harmony</value>
   </data>
   <data name="BestPractice4" xml:space="preserve">
-    <value>Use CSS variables for theming to maintain consistency</value>
+    <value>Give a Title to mascots that carry meaning; decorative ones stay hidden from screen readers</value>
   </data>
   <data name="Troubleshooting" xml:space="preserve">
     <value>Troubleshooting</value>
@@ -578,9 +458,102 @@
     <value>Colors not applying correctly</value>
   </data>
   <data name="CommonIssue3Solution" xml:space="preserve">
-    <value>Verify that color values are in valid hex format (#RRGGBB)</value>
+    <value>Use a valid CSS color, such as #FFD882 or rgb(255, 216, 130)</value>
   </data>
   <data name="NeedMoreHelp" xml:space="preserve">
     <value>Need more help? Visit our</value>
+  </data>
+  <data name="AdditionalAttributesDesc" xml:space="preserve">
+    <value>Any other attribute (aria-label, data-*, …) is applied to the SVG element</value>
+  </data>
+  <data name="ChangeMoodOf" xml:space="preserve">
+    <value>{0}, {1}. Change mood</value>
+  </data>
+  <data name="ClassDesc" xml:space="preserve">
+    <value>CSS class on the wrapper element</value>
+  </data>
+  <data name="StyleDesc" xml:space="preserve">
+    <value>Inline style on the wrapper element</value>
+  </data>
+  <data name="SvgClassDesc" xml:space="preserve">
+    <value>CSS class on the SVG element</value>
+  </data>
+  <data name="SvgStyleDesc" xml:space="preserve">
+    <value>Inline style on the SVG element</value>
+  </data>
+  <data name="TitleDesc" xml:space="preserve">
+    <value>Accessible name. Without it, the mascot is decorative and hidden from screen readers</value>
+  </data>
+  <data name="CopyFailed" xml:space="preserve">
+    <value>Couldn't copy. Select the code and copy it manually.</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>Main navigation</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>Show or hide the menu</value>
+  </data>
+  <data name="SkipToContent" xml:space="preserve">
+    <value>Skip to content</value>
+  </data>
+  <data name="NuGetPackage" xml:space="preserve">
+    <value>NuGet package</value>
+  </data>
+  <data name="NoAnimation" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="NoComponentsFound" xml:space="preserve">
+    <value>No mascot matches “{0}”.</value>
+  </data>
+  <data name="MoodSad" xml:space="preserve">
+    <value>Sad</value>
+  </data>
+  <data name="MoodShocked" xml:space="preserve">
+    <value>Shocked</value>
+  </data>
+  <data name="MoodHappy" xml:space="preserve">
+    <value>Happy</value>
+  </data>
+  <data name="MoodBlissful" xml:space="preserve">
+    <value>Blissful</value>
+  </data>
+  <data name="MoodLovestruck" xml:space="preserve">
+    <value>Lovestruck</value>
+  </data>
+  <data name="MoodExcited" xml:space="preserve">
+    <value>Excited</value>
+  </data>
+  <data name="MoodKo" xml:space="preserve">
+    <value>KO (knocked out)</value>
+  </data>
+  <data name="UiStatesTitle" xml:space="preserve">
+    <value>Made for the states your UI already has</value>
+  </data>
+  <data name="UiStatesSubtitle" xml:space="preserve">
+    <value>Empty results, offline mode, a locked page, a cookie banner: give each one a face.</value>
+  </data>
+  <data name="StateNoResults" xml:space="preserve">
+    <value>No search results</value>
+  </data>
+  <data name="StateNoResultsDesc" xml:space="preserve">
+    <value>A surprised magnifying glass softens an empty search.</value>
+  </data>
+  <data name="StateOffline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="StateOfflineDesc" xml:space="preserve">
+    <value>A sad cloud says the connection dropped, without alarm.</value>
+  </data>
+  <data name="StateAccessDenied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="StateAccessDeniedDesc" xml:space="preserve">
+    <value>A knocked-out padlock for sign-in walls and 403 pages.</value>
+  </data>
+  <data name="StateCookies" xml:space="preserve">
+    <value>Cookie consent</value>
+  </data>
+  <data name="StateCookiesDesc" xml:space="preserve">
+    <value>A blissful cookie makes the banner everyone sees a little kinder.</value>
   </data>
 </root>

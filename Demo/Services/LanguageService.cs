@@ -15,42 +15,18 @@ public class LanguageService
 
     public string CurrentLanguage => CultureInfo.CurrentUICulture.Name;
 
+    /// <summary>
+    /// Returns <paramref name="url"/> with the current language in its <c>lang</c> query parameter.
+    /// Relative URLs must not start with "/": they resolve against the app's base href, which is
+    /// /BlazorKawaii/ on GitHub Pages.
+    /// </summary>
     public string GetUrlWithLanguage(string url)
     {
-        var currentLang = CurrentLanguage;
+        var uri = _navigationManager.ToAbsoluteUri(url);
+        var queryParams = QueryHelpers.ParseQuery(uri.Query)
+            .ToDictionary(kvp => kvp.Key, kvp => (string?)kvp.Value.ToString());
+        queryParams["lang"] = CurrentLanguage;
 
-        // If it's a relative URL, make it absolute
-        if (!url.StartsWith("http"))
-        {
-            url = _navigationManager.ToAbsoluteUri(url).ToString();
-        }
-
-        var uri = new Uri(url);
-        var queryParams = QueryHelpers.ParseQuery(uri.Query);
-
-        // Add or update the lang parameter
-        queryParams["lang"] = currentLang;
-
-        // Rebuild the URL
-        var queryDict = queryParams.ToDictionary(
-            kvp => kvp.Key,
-            kvp => kvp.Value.ToString()
-        );
-        var newQueryString = QueryHelpers.AddQueryString(uri.GetLeftPart(UriPartial.Path), queryDict!);
-
-        // For relative navigation, return just the path and query
-        if (!url.StartsWith("http"))
-        {
-            var baseUri = new Uri(_navigationManager.BaseUri);
-            return newQueryString.Replace(baseUri.GetLeftPart(UriPartial.Authority), "");
-        }
-
-        return newQueryString;
-    }
-
-    public void NavigateWithLanguage(string uri, bool forceLoad = false)
-    {
-        var urlWithLang = GetUrlWithLanguage(uri);
-        _navigationManager.NavigateTo(urlWithLang, forceLoad);
+        return QueryHelpers.AddQueryString(uri.GetLeftPart(UriPartial.Path), queryParams);
     }
 }
