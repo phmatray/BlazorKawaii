@@ -572,4 +572,10 @@
   <data name="StateCookiesDesc" xml:space="preserve">
     <value>Un cookie aux anges rend la bannière que tout le monde voit un peu plus aimable.</value>
   </data>
+  <data name="FaceOnly" xml:space="preserve">
+    <value>Visage seul</value>
+  </data>
+  <data name="FaceOnlyDesc" xml:space="preserve">
+    <value>Posez uniquement les yeux, les joues et la bouche sur vos propres visuels, une photo, un avatar ou un arrière-plan, avec KawaiiFace. Size est la largeur de la boîte du visage en pixels (la boîte laisse la place à toutes les humeurs, le visage ne bouge donc pas quand Mood change), Color règle les yeux et la bouche et BlushColor les joues.</value>
+  </data>
 </root>

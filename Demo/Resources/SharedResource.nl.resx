@@ -572,4 +572,10 @@
   <data name="StateCookiesDesc" xml:space="preserve">
     <value>Een gelukzalig koekje maakt de banner die iedereen ziet wat vriendelijker.</value>
   </data>
+  <data name="FaceOnly" xml:space="preserve">
+    <value>Alleen het gezicht</value>
+  </data>
+  <data name="FaceOnlyDesc" xml:space="preserve">
+    <value>Leg alleen de ogen, blosjes en mond over je eigen beeld, een foto, een avatar of een achtergrond, met KawaiiFace. Size is de breedte van de gezichtsbox in pixels (de box biedt ruimte voor elke stemming, dus het gezicht verschuift niet als Mood verandert), Color bepaalt de ogen en de mond en BlushColor de wangen.</value>
+  </data>
 </root>

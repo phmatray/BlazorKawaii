@@ -838,3 +838,29 @@ main:focus,
         transition: none;
     }
 }
+
+/* "Face only" documentation demo: the bare face laid over a pastel box */
+.face-overlay-demo {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    max-width: 480px;
+    margin-bottom: 16px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #ffd1e8 0%, #d9c8ff 55%, #c4ecff 100%);
+}
+
+.face-overlay-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.face-overlay-row .face-overlay-demo {
+    flex: 1 1 220px;
+    margin: 0;
+}
+
+.face-overlay-demo--dark {
+    background: linear-gradient(135deg, #3a2f5c 0%, #1f2a44 100%);
+}

@@ -1,0 +1,12 @@
+@namespace BlazorKawaii.Components
+@inherits KawaiiComponentBase
+
+<Wrapper Class="@Class" Style="@Style">
+    <svg class="@SvgClass" style="@SvgStyle" xmlns="http://www.w3.org/2000/svg" width="@Size" height="@SvgFormatHelper.FormatSvgNumber(Size * ViewBoxHeight / ViewBoxWidth)" viewBox="0 0 @SvgFormatHelper.FormatSvgNumber(ViewBoxWidth) @SvgFormatHelper.FormatSvgNumber(ViewBoxHeight)" fill="none" role="@SvgRole" aria-hidden="@SvgAriaHidden" @attributes="AdditionalAttributes">
+        @if (Title is not null)
+        {
+            <title>@Title</title>
+        }
+        <Face Mood="@Mood" Scale="@GetFaceScale()" X="@GetFacePosition().x" Y="@GetFacePosition().y" MouthColor="@GetColor()" EyeColor="@GetColor()" BlushColor="@BlushColor" />
+    </svg>
+</Wrapper>

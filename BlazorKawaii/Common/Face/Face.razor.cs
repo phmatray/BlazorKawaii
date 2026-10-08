@@ -53,6 +53,20 @@ public partial class Face : ComponentBase
     public string MouthColor { get; set; } = "#000000";
 
     /// <summary>
+    /// Gets or sets the fill color of the eyes.
+    /// </summary>
+    /// <value>Any SVG color. Default is black. The cheeks keep their translucent blush.</value>
+    [Parameter]
+    public string EyeColor { get; set; } = "#000000";
+
+    /// <summary>
+    /// Gets or sets the fill color of the cheeks.
+    /// </summary>
+    /// <value>Any SVG color. Default is black, drawn translucent; a custom color is drawn more opaque so it stays visible on dark art.</value>
+    [Parameter]
+    public string BlushColor { get; set; } = "#000000";
+
+    /// <summary>
     /// Gets the unique identifier for this face instance.
     /// </summary>
     private string UniqueId => _uniqueId;
