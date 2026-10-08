@@ -9,10 +9,10 @@ namespace Demo.Services;
 public interface INuGetVersionService
 {
     /// <summary>
-    /// Gets the latest version of the BlazorKawaii package.
+    /// Gets the latest stable version of the BlazorKawaii package.
     /// </summary>
-    /// <returns>The version string or a fallback value if unavailable.</returns>
-    Task<string> GetLatestVersionAsync();
+    /// <returns>The version string, or null when NuGet.org cannot be reached.</returns>
+    Task<string?> GetLatestVersionAsync();
 }
 
 /// <summary>
@@ -32,7 +32,7 @@ public class NuGetVersionService : INuGetVersionService
         _logger = logger;
     }
 
-    public async Task<string> GetLatestVersionAsync()
+    public async Task<string?> GetLatestVersionAsync()
     {
         // Return cached version if still valid
         if (!string.IsNullOrEmpty(_cachedVersion) && DateTime.UtcNow < _cacheExpiry)
@@ -44,16 +44,17 @@ public class NuGetVersionService : INuGetVersionService
         {
             // Query NuGet API for package metadata
             var response = await _httpClient.GetAsync("https://api.nuget.org/v3-flatcontainer/blazorkawaii/index.json");
-            
+
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
                 var versionData = JsonSerializer.Deserialize<NuGetVersionResponse>(json);
-                
-                if (versionData?.Versions != null && versionData.Versions.Any())
+
+                // Versions are listed oldest first; skip pre-releases such as 2.1.0-beta.1
+                var latest = versionData?.Versions?.LastOrDefault(v => !v.Contains('-'));
+                if (latest is not null)
                 {
-                    // Get the latest version (last in the array)
-                    _cachedVersion = versionData.Versions.Last();
+                    _cachedVersion = latest;
                     _cacheExpiry = DateTime.UtcNow.Add(_cacheTimeout);
                     return _cachedVersion;
                 }
@@ -64,8 +65,7 @@ public class NuGetVersionService : INuGetVersionService
             _logger.LogWarning(ex, "Failed to fetch version from NuGet.org");
         }
 
-        // Fallback to a default version if API call fails
-        return "1.0.0";
+        return null;
     }
 
     private class NuGetVersionResponse

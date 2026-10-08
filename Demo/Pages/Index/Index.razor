@@ -1,254 +1,169 @@
 @page "/"
 @inject IStringLocalizer<SharedResource> Localizer
 @inject LanguageService LanguageService
-@implements IDisposable
-@using System.Globalization
 
 <PageTitle>Blazor Kawaii - @Localizer["Home"]</PageTitle>
 
-
-<div class="hero-section">
-    <div class="floating-kawaii floating-kawaii-1">
-        <Ghost Size="200" Mood="Blissful" Color="#FFFFFF" SvgStyle="opacity: 0.8;" />
-    </div>
-    <div class="floating-kawaii floating-kawaii-2">
-        <Cat Size="150" Mood="Happy" Color="#FFFFFF" SvgStyle="opacity: 0.8;" />
-    </div>
-    <div class="floating-kawaii floating-kawaii-3">
-        <Planet Size="180" Mood="Lovestruck" Color="#FFFFFF" SvgStyle="opacity: 0.8;" />
-    </div>
-    <div class="floating-kawaii floating-kawaii-4">
-        <IceCream Size="160" Mood="Excited" Color="#FFFFFF" SvgStyle="opacity: 0.8;" />
-    </div>
-    <div class="floating-kawaii floating-kawaii-5">
-        <Mug Size="140" Mood="Blissful" Color="#FFFFFF" SvgStyle="opacity: 0.8;" />
-    </div>
-
-    <MudContainer Class="hero-content">
-        <!-- GitHub Badges -->
-        <MudStack Row="true" Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="2" Class="mb-6">
-            <MudLink Href="https://www.nuget.org/packages/BlazorKawaii" Target="_blank" Underline="Underline.None">
-                <MudChip T="string" Size="Size.Small" Style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);">
-                    <img src="https://img.shields.io/nuget/v/BlazorKawaii?style=flat" alt="NuGet Version" style="height: 18px;" />
-                </MudChip>
-            </MudLink>
-            <MudLink Href="https://www.nuget.org/packages/BlazorKawaii" Target="_blank" Underline="Underline.None">
-                <MudChip T="string" Size="Size.Small" Style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);">
-                    <img src="https://img.shields.io/nuget/dt/BlazorKawaii?style=flat" alt="NuGet Downloads" style="height: 18px;" />
-                </MudChip>
-            </MudLink>
-            <MudLink Href="https://github.com/phmatray/BlazorKawaii/blob/main/LICENSE" Target="_blank" Underline="Underline.None">
-                <MudChip T="string" Size="Size.Small" Style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);">
-                    <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="License" style="height: 18px;" />
-                </MudChip>
-            </MudLink>
-            <MudLink Href="https://github.com/phmatray/BlazorKawaii" Target="_blank" Underline="Underline.None">
-                <MudChip T="string" Size="Size.Small" Style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);">
-                    <img src="https://img.shields.io/github/stars/phmatray/BlazorKawaii?style=flat" alt="GitHub Stars" style="height: 18px;" />
-                </MudChip>
-            </MudLink>
-        </MudStack>
-
-        <h1 class="hero-title">@Localizer["WelcomeToBlazorKawaii"]</h1>
-        <p class="hero-subtitle">@Localizer["CuteCustomizableSVGComponents"]</p>
-
-        <MudStack Row="true" Justify="Justify.Center" Spacing="4" Class="mt-6">
-            <MudButton Variant="Variant.Filled"
-                       Color="Color.Primary"
-                       Size="Size.Large"
-                       StartIcon="@Icons.Material.Filled.Brush"
-                       Href="@LanguageService.GetUrlWithLanguage("playground")">
-                @Localizer["TryPlayground"]
-            </MudButton>
-            <MudButton Variant="Variant.Outlined"
-                       Size="Size.Large"
-                       StartIcon="@Icons.Material.Filled.Code"
-                       Href="@LanguageService.GetUrlWithLanguage("documentation")"
-                       Style="color: white; border-color: rgba(255, 255, 255, 0.8); background-color: rgba(255, 255, 255, 0.1);">
-                @Localizer["ViewDocs"]
-            </MudButton>
-        </MudStack>
-    </MudContainer>
-</div>
-
-<MudContainer>
-    <!-- Demo Section -->
-    <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true" Class="mb-8">
-        @Localizer["SeeThemInAction"]
-    </MudText>
-
-    <MudPaper Elevation="2" Class="pa-6 mb-8">
-        <div class="demo-kawaii-container">
-            @{
-                var components = _demoComponents.ToList();
-                const int spacing = 120; // Horizontal spacing between items
-                const int waveAmplitude = 20; // Vertical wave amplitude
-                const double waveSpeed = 0.02; // Speed of the wave
-            }
-            @foreach (var (component, index) in components.Select((c, i) => (c, i)))
-            {
-                // Horizontal position
-                var x = (index - (components.Count - 1) / 2.0) * spacing;
-
-                // Vertical wave position
-                var phaseOffset = index * 0.5; // Phase difference between items
-                var y = Math.Sin((_angle * waveSpeed) + phaseOffset) * waveAmplitude;
-
-                <div class="demo-kawaii-item" style="transform: translate(@(x.ToString(CultureInfo.InvariantCulture))px, @(y.ToString(CultureInfo.InvariantCulture))px)">
-                    @component(Happy, 80)
+<section class="hero-section">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid Spacing="6" Class="hero-grid">
+            <MudItem xs="12" md="6" Class="hero-copy">
+                <div class="hero-badges">
+                    <a href="https://www.nuget.org/packages/BlazorKawaii" target="_blank" rel="noopener">
+                        <img src="https://img.shields.io/nuget/v/BlazorKawaii?style=flat" alt="NuGet version" height="20" />
+                    </a>
+                    <a href="https://www.nuget.org/packages/BlazorKawaii" target="_blank" rel="noopener">
+                        <img src="https://img.shields.io/nuget/dt/BlazorKawaii?style=flat" alt="NuGet downloads" height="20" />
+                    </a>
+                    <a href="https://github.com/phmatray/BlazorKawaii/blob/main/LICENSE" target="_blank" rel="noopener">
+                        <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="MIT license" height="20" />
+                    </a>
                 </div>
-            }
-        </div>
-    </MudPaper>
 
-    <!-- Features Grid -->
-    <MudGrid Spacing="4" Class="mb-8">
-        <MudItem xs="12" md="4">
-            <MudCard Class="feature-card">
-                <MudCardContent Class="text-center">
-                    <MudIcon Icon="@Icons.Material.Filled.EmojiEmotions"
-                             Style="font-size: 3rem;"
-                             Color="Color.Primary" />
-                    <MudText Typo="Typo.h5" Class="mt-3">@Localizer["SevenMoods"]</MudText>
-                    <MudText Typo="Typo.body2" Color="Color.Secondary">
-                        @Localizer["ExpressDifferentEmotions"]
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-        <MudItem xs="12" md="4">
-            <MudCard Class="feature-card">
-                <MudCardContent Class="text-center">
-                    <MudIcon Icon="@Icons.Material.Filled.Palette"
-                             Style="font-size: 3rem;"
-                             Color="Color.Secondary" />
-                    <MudText Typo="Typo.h5" Class="mt-3">@Localizer["FullyCustomizable"]</MudText>
-                    <MudText Typo="Typo.body2" Color="Color.Secondary">
-                        @Localizer["ChangeColorsAndSizes"]
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-        <MudItem xs="12" md="4">
-            <MudCard Class="feature-card">
-                <MudCardContent Class="text-center">
-                    <MudIcon Icon="@Icons.Material.Filled.Speed"
-                             Style="font-size: 3rem;"
-                             Color="Color.Success" />
-                    <MudText Typo="Typo.h5" Class="mt-3">@Localizer["BlazingFast"]</MudText>
-                    <MudText Typo="Typo.body2" Color="Color.Secondary">
-                        @Localizer["LightweightSVGComponents"]
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-    </MudGrid>
+                <h1 class="hero-title">@Localizer["WelcomeToBlazorKawaii"]</h1>
+                <p class="hero-subtitle">@Localizer["CuteCustomizableSVGComponents"]</p>
 
-    <!-- Stats Section -->
-    <MudPaper Elevation="0" Class="pa-8 mb-8" Style="background-color: var(--mud-palette-background-grey);">
-        <MudGrid>
-            <MudItem xs="12" md="4" Class="text-center">
-                <div class="stats-number">16</div>
-                <MudText Typo="Typo.h6">@Localizer["KawaiiComponents"]</MudText>
+                <div class="hero-actions">
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               Size="Size.Large"
+                               StartIcon="@Icons.Material.Filled.Brush"
+                               Href="@LanguageService.GetUrlWithLanguage("playground")">
+                        @Localizer["TryPlayground"]
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined"
+                               Size="Size.Large"
+                               StartIcon="@Icons.Material.Filled.MenuBook"
+                               Href="@LanguageService.GetUrlWithLanguage("documentation")"
+                               Class="hero-secondary-action">
+                        @Localizer["ViewDocs"]
+                    </MudButton>
+                </div>
             </MudItem>
-            <MudItem xs="12" md="4" Class="text-center">
-                <div class="stats-number">7</div>
-                <MudText Typo="Typo.h6">@Localizer["MoodExpressions"]</MudText>
-            </MudItem>
-            <MudItem xs="12" md="4" Class="text-center">
-                <div class="stats-number">∞</div>
-                <MudText Typo="Typo.h6">@Localizer["Customizations"]</MudText>
+
+            <MudItem xs="12" md="6">
+                <div class="mood-demo">
+                    <div class="mood-demo-stage">
+                        <div @key="@($"{_mascot.Name}-{_mood}-{_color}")" class="mood-demo-pop">
+                            <DynamicComponent Type="@_mascot.Type" Parameters="@StageParameters" />
+                        </div>
+                    </div>
+
+                    <div class="mood-demo-group" role="group" aria-labelledby="demo-mascot-label">
+                        <span id="demo-mascot-label" class="mood-demo-label">@Localizer["Component"]</span>
+                        <div class="mood-demo-options">
+                            @foreach (var mascot in DemoMascots)
+                            {
+                                <button type="button" class="mascot-option" aria-pressed="@(mascot == _mascot ? "true" : "false")"
+                                        aria-label="@mascot.Name" title="@mascot.Name" @onclick="@(() => _mascot = mascot)">
+                                    <DynamicComponent Type="@mascot.Type" Parameters="@(KawaiiCatalog.Parameters(Mood.Blissful, 36, _color))" />
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="mood-demo-group" role="group" aria-labelledby="demo-mood-label">
+                        <span id="demo-mood-label" class="mood-demo-label">@Localizer["Mood"]</span>
+                        <div class="mood-demo-options">
+                            @foreach (var mood in KawaiiCatalog.Moods)
+                            {
+                                <button type="button" class="mood-option" aria-pressed="@(mood == _mood ? "true" : "false")"
+                                        @onclick="@(() => _mood = mood)">
+                                    @Localizer[$"Mood{mood}"]
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="mood-demo-group" role="group" aria-labelledby="demo-color-label">
+                        <span id="demo-color-label" class="mood-demo-label">@Localizer["Color"]</span>
+                        <div class="mood-demo-options">
+                            @foreach (var color in KawaiiCatalog.Palette)
+                            {
+                                <button type="button" class="color-option" aria-pressed="@(color == _color ? "true" : "false")"
+                                        aria-label="@color" title="@color" style="--swatch: @color" @onclick="@(() => _color = color)"></button>
+                            }
+                        </div>
+                    </div>
+
+                    <CodeBlock Code="@DemoCode" Language="razor" />
+                </div>
             </MudItem>
         </MudGrid>
-    </MudPaper>
+    </MudContainer>
+</section>
 
-    <!-- Installation Section -->
-    <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-4">
-        @Localizer["Installation"]
-    </MudText>
+<MudContainer MaxWidth="MaxWidth.Large">
+    <section class="home-section" aria-labelledby="ui-states-title">
+        <MudText Typo="Typo.h4" HtmlTag="h2" id="ui-states-title" Align="Align.Center" GutterBottom="true">@Localizer["UiStatesTitle"]</MudText>
+        <MudText Typo="Typo.body1" Align="Align.Center" Class="mud-text-secondary home-lead">@Localizer["UiStatesSubtitle"]</MudText>
 
-    <MudGrid Spacing="4" Class="mb-8">
-        <MudItem xs="12" md="6">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%;">
-                <MudText Typo="Typo.h6" GutterBottom="true">
-                    <MudIcon Icon="@Icons.Material.Filled.Download" Style="vertical-align: middle; margin-right: 8px;" />
-                    @Localizer["InstallViaNuGet"]
-                </MudText>
-                <MudText Typo="Typo.body2" Class="mb-3" Color="Color.Secondary">
-                    @Localizer["RecommendedApproach"]
-                </MudText>
-                <MudPaper Outlined="true" Class="pa-3" Style="background-color: var(--mud-palette-background-grey);">
-                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>dotnet add package BlazorKawaii</code></pre>
-                </MudPaper>
-                <MudText Typo="Typo.caption" Class="mt-2">
-                    @Localizer["OrViaPackageManager"]
-                </MudText>
-                <MudPaper Outlined="true" Class="pa-3 mt-2" Style="background-color: var(--mud-palette-background-grey);">
-                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace;"><code>Install-Package BlazorKawaii</code></pre>
-                </MudPaper>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" md="6">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%;">
-                <MudText Typo="Typo.h6" GutterBottom="true">
-                    <MudIcon Icon="@Icons.Material.Filled.Code" Style="vertical-align: middle; margin-right: 8px;" />
-                    @Localizer["QuickStart"]
-                </MudText>
-                <MudText Typo="Typo.body2" Class="mb-3" Color="Color.Secondary">
-                    @Localizer["AddToImports"]
-                </MudText>
+        <MudGrid Spacing="4" Class="mt-6">
+            @foreach (var state in UiStates)
+            {
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Outlined="true" Class="ui-state">
+                        <DynamicComponent Type="@state.Mascot.Type" Parameters="@(KawaiiCatalog.Parameters(state.Mood, 112, state.Color))" />
+                        <MudText Typo="Typo.h6" HtmlTag="h3" Class="mt-2">@Localizer[state.TitleKey]</MudText>
+                        <MudText Typo="Typo.body2" Class="mud-text-secondary">@Localizer[state.TextKey]</MudText>
+                        <code class="ui-state-code">&lt;@state.Mascot.Name Mood="Mood.@state.Mood"&nbsp;/&gt;</code>
+                    </MudPaper>
+                </MudItem>
+            }
+        </MudGrid>
+    </section>
+
+    <section class="home-section install-steps" aria-labelledby="install-title">
+        <MudText Typo="Typo.h4" HtmlTag="h2" id="install-title" Align="Align.Center" GutterBottom="true">@Localizer["Installation"]</MudText>
+
+        <ol class="steps">
+            <li>
+                <MudText Typo="Typo.h6" HtmlTag="h3">@Localizer["InstallViaNuGet"]</MudText>
+                <CodeBlock Language="bash" Code="dotnet add package BlazorKawaii" />
+            </li>
+            <li>
+                <MudText Typo="Typo.h6" HtmlTag="h3">@Localizer["AddToImports"]</MudText>
                 <CodeBlock Language="razor" CodeFile="code-samples/installation-imports.txt" />
-                <MudText Typo="Typo.body2" Class="mt-3 mb-2" Color="Color.Secondary">
-                    @Localizer["ThenUseComponents"]
-                </MudText>
+            </li>
+            <li>
+                <MudText Typo="Typo.h6" HtmlTag="h3">@Localizer["ThenUseComponents"]</MudText>
                 <CodeBlock Language="razor" CodeFile="code-samples/quick-start-example.txt" />
-            </MudPaper>
-        </MudItem>
-    </MudGrid>
+            </li>
+        </ol>
+    </section>
 
-    <!-- Call to Action -->
-    <MudPaper Elevation="3" Class="pa-8 text-center" Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-        <MudText Typo="Typo.h4" GutterBottom="true">
-            @Localizer["ReadyToMakeYourAppKawaii"]
-        </MudText>
-        <MudText Typo="Typo.body1" Class="mb-4">
-            @Localizer["ExploreAllComponents"]
-        </MudText>
+    <section class="cta-section" aria-labelledby="cta-title">
+        <MudText Typo="Typo.h4" HtmlTag="h2" id="cta-title" GutterBottom="true">@Localizer["ReadyToMakeYourAppKawaii"]</MudText>
+        <MudText Typo="Typo.body1" Class="mb-6">@Localizer["ExploreAllComponents"]</MudText>
         <MudButton Variant="Variant.Filled"
-                   Color="Color.Primary"
                    Size="Size.Large"
                    StartIcon="@Icons.Material.Filled.Apps"
-                   Href="@LanguageService.GetUrlWithLanguage("/components")"
-                   Style="background-color: white; color: #667eea;">
+                   Href="@LanguageService.GetUrlWithLanguage("components")"
+                   Class="cta-button">
             @Localizer["BrowseComponents"]
         </MudButton>
-    </MudPaper>
+    </section>
 </MudContainer>
 
 @code {
-    private Timer? _timer;
-    private int _angle;
+    private record UiState(KawaiiEntry Mascot, Mood Mood, string Color, string TitleKey, string TextKey);
 
-    private readonly List<Func<Mood, int, RenderFragment>> _demoComponents = new()
-    {
-        (mood, size) => @<Cat Mood="@mood" Size="@size" />,
-        (mood, size) => @<Ghost Mood="@mood" Size="@size" />,
-        (mood, size) => @<IceCream Mood="@mood" Size="@size" />,
-        (mood, size) => @<Planet Mood="@mood" Size="@size" />,
-        (mood, size) => @<Astronaut Mood="@mood" Size="@size" />
-    };
+    private static readonly KawaiiEntry[] DemoMascots =
+        new[] { "Cat", "Ghost", "RubberDuck", "Cloud", "Cookie", "Airplane" }.Select(n => KawaiiCatalog.Find(n)!).ToArray();
 
-    protected override void OnInitialized()
-    {
-        _timer = new Timer(_ =>
-        {
-            _angle = (_angle + 1) % 360;
-            InvokeAsync(StateHasChanged);
-        }, null, 0, 50);
-    }
+    private static readonly UiState[] UiStates =
+    [
+        new(KawaiiCatalog.Find("MagnifyingGlass")!, Mood.Shocked, "#C9B6F2", "StateNoResults", "StateNoResultsDesc"),
+        new(KawaiiCatalog.Find("Cloud")!, Mood.Sad, "#83D1FB", "StateOffline", "StateOfflineDesc"),
+        new(KawaiiCatalog.Find("Padlock")!, Mood.Ko, "#FF8EAD", "StateAccessDenied", "StateAccessDeniedDesc"),
+        new(KawaiiCatalog.Find("Cookie")!, Mood.Blissful, "#FFB37A", "StateCookies", "StateCookiesDesc")
+    ];
 
-    public void Dispose()
-    {
-        _timer?.Dispose();
-    }
+    private KawaiiEntry _mascot = DemoMascots[0];
+    private Mood _mood = Mood.Blissful;
+    private string _color = KawaiiCatalog.Palette[1];
+
+    private Dictionary<string, object> StageParameters => KawaiiCatalog.Parameters(_mood, 200, _color);
+
+    private string DemoCode => $"<{_mascot.Name} Mood=\"Mood.{_mood}\" Color=\"{_color}\" />";
 }

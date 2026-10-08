@@ -74,48 +74,6 @@
   </data>
   
   <!-- Home Page -->
-  <data name="HomeTitle" xml:space="preserve">
-    <value>Schattige SVG-componenten voor Blazor</value>
-  </data>
-  <data name="HomeSubtitle" xml:space="preserve">
-    <value>Een collectie aanpasbare kawaii-illustraties voor je Blazor-applicaties</value>
-  </data>
-  <data name="ViewComponents" xml:space="preserve">
-    <value>Bekijk Componenten</value>
-  </data>
-  <data name="Features" xml:space="preserve">
-    <value>Functies</value>
-  </data>
-  <data name="ComponentsCount" xml:space="preserve">
-    <value>12 Componenten</value>
-  </data>
-  <data name="ComponentsCountDesc" xml:space="preserve">
-    <value>Diverse collectie kawaii-illustraties</value>
-  </data>
-  <data name="MoodsCount" xml:space="preserve">
-    <value>7 Stemmingen</value>
-  </data>
-  <data name="MoodsCountDesc" xml:space="preserve">
-    <value>Druk verschillende emoties uit</value>
-  </data>
-  <data name="FullyCustomizable" xml:space="preserve">
-    <value>Volledig Aanpasbaar</value>
-  </data>
-  <data name="FullyCustomizableDesc" xml:space="preserve">
-    <value>Grootte-, kleur- en stemmingsopties</value>
-  </data>
-  <data name="QuickStart" xml:space="preserve">
-    <value>Snel Starten</value>
-  </data>
-  <data name="Install" xml:space="preserve">
-    <value>Installeer het pakket</value>
-  </data>
-  <data name="Import" xml:space="preserve">
-    <value>Importeer de namespace</value>
-  </data>
-  <data name="UseComponent" xml:space="preserve">
-    <value>Gebruik een component</value>
-  </data>
   <data name="WelcomeToBlazorKawaii" xml:space="preserve">
     <value>Welkom bij Blazor Kawaii</value>
   </data>
@@ -128,35 +86,8 @@
   <data name="ViewDocs" xml:space="preserve">
     <value>Bekijk Docs</value>
   </data>
-  <data name="SeeThemInAction" xml:space="preserve">
-    <value>Zie ze in actie</value>
-  </data>
-  <data name="SevenMoods" xml:space="preserve">
-    <value>7 Stemmingen</value>
-  </data>
-  <data name="ExpressDifferentEmotions" xml:space="preserve">
-    <value>Druk verschillende emoties uit met ingebouwde stemmingsvoorinstellingen</value>
-  </data>
-  <data name="ChangeColorsAndSizes" xml:space="preserve">
-    <value>Pas kleuren, groottes en stemmingen aan om bij je ontwerp te passen</value>
-  </data>
-  <data name="BlazingFast" xml:space="preserve">
-    <value>Bliksemsnel</value>
-  </data>
-  <data name="LightweightSVGComponents" xml:space="preserve">
-    <value>Lichtgewicht SVG-componenten zonder afhankelijkheden</value>
-  </data>
   <data name="KawaiiComponents" xml:space="preserve">
     <value>Kawaii Componenten</value>
-  </data>
-  <data name="MoodExpressions" xml:space="preserve">
-    <value>Stemmingsuitdrukkingen</value>
-  </data>
-  <data name="Customizations" xml:space="preserve">
-    <value>Aanpassingen</value>
-  </data>
-  <data name="ItsAsEasyAs" xml:space="preserve">
-    <value>Het is zo eenvoudig als een component importeren en gebruiken:</value>
   </data>
   <data name="ReadyToMakeYourAppKawaii" xml:space="preserve">
     <value>Klaar om je app kawaii te maken?</value>
@@ -169,38 +100,17 @@
   </data>
   
   <!-- Components Page -->
-  <data name="ComponentsTitle" xml:space="preserve">
-    <value>Componentengalerij</value>
-  </data>
   <data name="ComponentsSubtitle" xml:space="preserve">
     <value>Verken alle beschikbare kawaii-componenten</value>
   </data>
   <data name="SearchComponents" xml:space="preserve">
     <value>Zoek componenten...</value>
   </data>
-  <data name="ViewDetails" xml:space="preserve">
-    <value>Bekijk Details</value>
-  </data>
-  <data name="DefaultSize" xml:space="preserve">
-    <value>Standaardgrootte</value>
-  </data>
-  <data name="DefaultColor" xml:space="preserve">
-    <value>Standaardkleur</value>
-  </data>
-  <data name="Usage" xml:space="preserve">
-    <value>Gebruik</value>
-  </data>
   <data name="Close" xml:space="preserve">
     <value>Sluiten</value>
   </data>
   <data name="FilterByMood" xml:space="preserve">
-    <value>Filter op stemming</value>
-  </data>
-  <data name="DefaultValues" xml:space="preserve">
-    <value>Standaardwaarden:</value>
-  </data>
-  <data name="AvailableMoods" xml:space="preserve">
-    <value>Beschikbare Stemmingen:</value>
+    <value>Stemming voor alle mascottes</value>
   </data>
   <data name="ViewCode" xml:space="preserve">
     <value>Bekijk Code</value>
@@ -210,12 +120,6 @@
   </data>
   <data name="CodeExample" xml:space="preserve">
     <value>Codevoorbeeld</value>
-  </data>
-  <data name="CopyCode" xml:space="preserve">
-    <value>Kopieer Code</value>
-  </data>
-  <data name="CodeCopiedToClipboard" xml:space="preserve">
-    <value>Code gekopieerd naar klembord!</value>
   </data>
   <data name="BasicUsageComment" xml:space="preserve">
     <value>Basisgebruik</value>
@@ -276,6 +180,24 @@
   <data name="HumanDinosaurDesc" xml:space="preserve">
     <value>Een speels dinosaurus-mens personage</value>
   </data>
+  <data name="CookieDesc" xml:space="preserve">
+    <value>Een aangebeten koekje, perfect voor cookiebanners</value>
+  </data>
+  <data name="MagnifyingGlassDesc" xml:space="preserve">
+    <value>Een nieuwsgierig vergrootglas voor zoeken en lege resultaten</value>
+  </data>
+  <data name="RubberDuckDesc" xml:space="preserve">
+    <value>Een badeendje, het debugmaatje van elke ontwikkelaar</value>
+  </data>
+  <data name="CloudDesc" xml:space="preserve">
+    <value>Een zachte wolk voor synchronisatie, uploads en offline-status</value>
+  </data>
+  <data name="PadlockDesc" xml:space="preserve">
+    <value>Een hangslot voor inlog- en toegang-geweigerd-schermen</value>
+  </data>
+  <data name="AirplaneDesc" xml:space="preserve">
+    <value>Een mollig vliegtuig voor reizen, boekingen en verzending</value>
+  </data>
   
   <!-- Playground Page -->
   <data name="PlaygroundTitle" xml:space="preserve">
@@ -321,7 +243,7 @@
     <value>Gegenereerde Code</value>
   </data>
   <data name="CopyToClipboard" xml:space="preserve">
-    <value>Kopieer naar klembord</value>
+    <value>Kopiëren</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Gekopieerd!</value>
@@ -373,15 +295,6 @@
   <data name="InstallationDesc" xml:space="preserve">
     <value>Om Blazor Kawaii-componenten in je project te gebruiken, volg deze stappen:</value>
   </data>
-  <data name="CloneRepository" xml:space="preserve">
-    <value>Kloon de repository</value>
-  </data>
-  <data name="CopyComponents" xml:space="preserve">
-    <value>Kopieer componenten naar je project</value>
-  </data>
-  <data name="CopyComponentsDesc" xml:space="preserve">
-    <value>Kopieer de Components en Common mappen naar je Blazor-project.</value>
-  </data>
   <data name="AddImports" xml:space="preserve">
     <value>Voeg benodigde imports toe</value>
   </data>
@@ -413,13 +326,7 @@
     <value>De gezichtsuitdrukking van het component</value>
   </data>
   <data name="ColorDesc" xml:space="preserve">
-    <value>De primaire kleur (hex-formaat)</value>
-  </data>
-  <data name="ClassNameDesc" xml:space="preserve">
-    <value>Optionele CSS-klassenaam</value>
-  </data>
-  <data name="VariesByComponent" xml:space="preserve">
-    <value>Varieert per component</value>
+    <value>Lichaamskleur: elke CSS-kleur (hex, rgb, naam)</value>
   </data>
   <data name="ExampleWithAllProperties" xml:space="preserve">
     <value>Voorbeeld met alle eigenschappen:</value>
@@ -449,16 +356,7 @@
     <value>Lege Toestanden</value>
   </data>
   <data name="APIReferenceDesc" xml:space="preserve">
-    <value>Volledige lijst van beschikbare componenten en hun standaardwaarden:</value>
-  </data>
-  <data name="DefaultSizeLabel" xml:space="preserve">
-    <value>Standaardgrootte:</value>
-  </data>
-  <data name="DefaultColorLabel" xml:space="preserve">
-    <value>Standaardkleur:</value>
-  </data>
-  <data name="Namespace" xml:space="preserve">
-    <value>Namespace:</value>
+    <value>Alle mascottes hebben dezelfde parameters, zijn standaard 240 px en #A6E191, en staan in de namespace BlazorKawaii.Components.</value>
   </data>
   <data name="PlaygroundCTA" xml:space="preserve">
     <value>Voor een complete interactieve ervaring, bezoek de</value>
@@ -468,12 +366,6 @@
   </data>
   <data name="InstallViaNuGet" xml:space="preserve">
     <value>Installeren via NuGet</value>
-  </data>
-  <data name="RecommendedApproach" xml:space="preserve">
-    <value>De aanbevolen manier om BlazorKawaii te installeren</value>
-  </data>
-  <data name="OrViaPackageManager" xml:space="preserve">
-    <value>Of via de Package Manager Console:</value>
   </data>
   <data name="AddToImports" xml:space="preserve">
     <value>Voeg toe aan je _Imports.razor:</value>
@@ -509,20 +401,8 @@
   <data name="Resources" xml:space="preserve">
     <value>Bronnen</value>
   </data>
-  <data name="QuickTip" xml:space="preserve">
-    <value>Snelle Tip</value>
-  </data>
-  <data name="QuickTipText" xml:space="preserve">
-    <value>Druk op Ctrl+K om snel componenten te zoeken</value>
-  </data>
-  <data name="ClickToChangeMood" xml:space="preserve">
-    <value>Klik om de stemming te veranderen</value>
-  </data>
   
   <!-- Common -->
-  <data name="DarkMode" xml:space="preserve">
-    <value>Donkere Modus</value>
-  </data>
   <data name="Language" xml:space="preserve">
     <value>Taal</value>
   </data>
@@ -558,7 +438,7 @@
     <value>Houd componentgroottes consistent in uw UI voor visuele harmonie</value>
   </data>
   <data name="BestPractice4" xml:space="preserve">
-    <value>Gebruik CSS-variabelen voor thema's om consistentie te behouden</value>
+    <value>Geef mascottes met betekenis een Title; decoratieve blijven verborgen voor schermlezers</value>
   </data>
   <data name="Troubleshooting" xml:space="preserve">
     <value>Probleemoplossing</value>
@@ -582,9 +462,102 @@
     <value>Kleuren worden niet correct toegepast</value>
   </data>
   <data name="CommonIssue3Solution" xml:space="preserve">
-    <value>Controleer of kleurwaarden in een geldig hexadecimaal formaat zijn (#RRGGBB)</value>
+    <value>Gebruik een geldige CSS-kleur, zoals #FFD882 of rgb(255, 216, 130)</value>
   </data>
   <data name="NeedMoreHelp" xml:space="preserve">
     <value>Meer hulp nodig? Bezoek onze</value>
+  </data>
+  <data name="AdditionalAttributesDesc" xml:space="preserve">
+    <value>Elk ander attribuut (aria-label, data-*, …) wordt op het SVG-element toegepast</value>
+  </data>
+  <data name="ChangeMoodOf" xml:space="preserve">
+    <value>{0}, {1}. Stemming wijzigen</value>
+  </data>
+  <data name="ClassDesc" xml:space="preserve">
+    <value>CSS-klasse op het omhullende element</value>
+  </data>
+  <data name="StyleDesc" xml:space="preserve">
+    <value>Inline-stijl op het omhullende element</value>
+  </data>
+  <data name="SvgClassDesc" xml:space="preserve">
+    <value>CSS-klasse op het SVG-element</value>
+  </data>
+  <data name="SvgStyleDesc" xml:space="preserve">
+    <value>Inline-stijl op het SVG-element</value>
+  </data>
+  <data name="TitleDesc" xml:space="preserve">
+    <value>Toegankelijke naam. Zonder naam is de mascotte decoratief en verborgen voor schermlezers</value>
+  </data>
+  <data name="CopyFailed" xml:space="preserve">
+    <value>Kopiëren mislukt. Selecteer de code en kopieer die handmatig.</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>Hoofdnavigatie</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>Menu tonen of verbergen</value>
+  </data>
+  <data name="SkipToContent" xml:space="preserve">
+    <value>Naar de inhoud</value>
+  </data>
+  <data name="NuGetPackage" xml:space="preserve">
+    <value>NuGet-pakket</value>
+  </data>
+  <data name="NoAnimation" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="NoComponentsFound" xml:space="preserve">
+    <value>Geen mascotte gevonden voor ‘{0}’.</value>
+  </data>
+  <data name="MoodSad" xml:space="preserve">
+    <value>Verdrietig</value>
+  </data>
+  <data name="MoodShocked" xml:space="preserve">
+    <value>Geschrokken</value>
+  </data>
+  <data name="MoodHappy" xml:space="preserve">
+    <value>Blij</value>
+  </data>
+  <data name="MoodBlissful" xml:space="preserve">
+    <value>Gelukzalig</value>
+  </data>
+  <data name="MoodLovestruck" xml:space="preserve">
+    <value>Verliefd</value>
+  </data>
+  <data name="MoodExcited" xml:space="preserve">
+    <value>Enthousiast</value>
+  </data>
+  <data name="MoodKo" xml:space="preserve">
+    <value>Knock-out</value>
+  </data>
+  <data name="UiStatesTitle" xml:space="preserve">
+    <value>Gemaakt voor de toestanden van je interface</value>
+  </data>
+  <data name="UiStatesSubtitle" xml:space="preserve">
+    <value>Lege resultaten, offline, een vergrendelde pagina, een cookiebanner: geef ze elk een gezicht.</value>
+  </data>
+  <data name="StateNoResults" xml:space="preserve">
+    <value>Geen zoekresultaten</value>
+  </data>
+  <data name="StateNoResultsDesc" xml:space="preserve">
+    <value>Een verbaasd vergrootglas verzacht een lege zoekopdracht.</value>
+  </data>
+  <data name="StateOffline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="StateOfflineDesc" xml:space="preserve">
+    <value>Een verdrietige wolk meldt dat de verbinding weg is, zonder paniek.</value>
+  </data>
+  <data name="StateAccessDenied" xml:space="preserve">
+    <value>Geen toegang</value>
+  </data>
+  <data name="StateAccessDeniedDesc" xml:space="preserve">
+    <value>Een knock-out hangslot voor inlogschermen en 403-pagina's.</value>
+  </data>
+  <data name="StateCookies" xml:space="preserve">
+    <value>Cookietoestemming</value>
+  </data>
+  <data name="StateCookiesDesc" xml:space="preserve">
+    <value>Een gelukzalig koekje maakt de banner die iedereen ziet wat vriendelijker.</value>
   </data>
 </root>
