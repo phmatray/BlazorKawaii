@@ -81,17 +81,17 @@ public static class FacePaths
     /// Gets the SVG path data for the first dizzy spiral eye (to be stroked, not filled).
     /// </summary>
     public const string DizzySpiral1 =
-        "M5.5,6.5 A1.4,1.4 0 0 1 8.3,6.5 A2.8,2.8 0 0 1 2.7,6.5 A4.2,4.2 0 0 1 11.1,6.5 A5.6,5.6 0 0 1 -0.1,6.5";
+        "M3.7,7.4 a1.8,1.8 0 0 1 3.6,0 a3.6,3.6 0 0 1 -7.2,0 a5.4,5.4 0 0 1 10.8,0";
 
     /// <summary>
-    /// Gets the SVG path data for the second dizzy spiral eye (to be stroked, not filled).
+    /// Gets the SVG path data for the second dizzy spiral eye, the mirror image of the first (to be stroked, not filled).
     /// </summary>
     public const string DizzySpiral2 =
-        "M57.5,6.5 A1.4,1.4 0 0 1 60.3,6.5 A2.8,2.8 0 0 1 54.7,6.5 A4.2,4.2 0 0 1 63.1,6.5 A5.6,5.6 0 0 1 51.9,6.5";
+        "M59.3,7.4 a1.8,1.8 0 0 0 -3.6,0 a3.6,3.6 0 0 0 7.2,0 a5.4,5.4 0 0 0 -10.8,0";
 
     /// <summary>
     /// Gets the SVG path data for the dizzy wavy mouth (to be stroked, not filled).
     /// </summary>
     public const string DizzyMouth =
-        "M5,6 q2.5,-6 5,0 t5,0 t5,0 t5,0";
+        "M5,7 q2,-5 4,0 t4,0 t4,0 t4,0 t4,0";
 }
