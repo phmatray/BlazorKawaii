@@ -36,6 +36,15 @@ dotnet tool install -g Meziantou.Framework.NuGetPackageValidation.Tool
 meziantou.validate-nuget-package ./artifacts/*.nupkg
 ```
 
+### Face animation check
+```bash
+# With the demo running: measures how far each animated face's eyes, mouth and cheeks move on screen
+# (VISIBLE / SUBTLE / NONE per mood, exit 1 on NONE), and writes a frame-by-frame sheet
+node tools/face-motion.mjs "http://localhost:5000/documentation#animation" --out ./artifacts/face-motion
+# Every face must stay still when the system asks for reduced motion
+node tools/face-motion.mjs "http://localhost:5000/documentation#animation" --reduced-motion
+```
+
 ### Publishing
 ```bash
 # Pack the library for NuGet
