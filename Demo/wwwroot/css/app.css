@@ -644,6 +644,10 @@ main:focus,
     font-size: 0.8125rem;
 }
 
+.code-term {
+    white-space: nowrap;
+}
+
 .troubleshooting dt {
     font-weight: 500;
     margin-top: 16px;

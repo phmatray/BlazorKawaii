@@ -228,7 +228,7 @@
     <value>Couleur</value>
   </data>
   <data name="AnimationEffects" xml:space="preserve">
-    <value>Effets d'animation</value>
+    <value>Effet du corps (démo)</value>
   </data>
   <data name="Rotation" xml:space="preserve">
     <value>Rotation</value>
@@ -585,9 +585,15 @@
     <value>Animation</value>
   </data>
   <data name="AnimationDesc" xml:space="preserve">
-    <value>Ajoutez Animated="true" et le visage joue une petite animation choisie selon son humeur : un clignement des yeux, un battement de cœur, une spirale qui tourne. Il reste immobile quand le visiteur demande moins d'animations. Pour animer une partie vous-même, ciblez les classes stables kawaii-face__eyes, kawaii-face__mouth et kawaii-face__cheeks.</value>
+    <value>Ajoutez {0} et le visage joue une petite animation choisie selon son humeur : un clignement des yeux, un battement de cœur, une spirale qui tourne. Il reste immobile quand le visiteur demande moins d'animations. Pour animer une partie vous-même, ciblez les classes stables {1}, {2} et {3}.</value>
   </data>
   <data name="AnimatedDesc" xml:space="preserve">
     <value>Joue une petite animation choisie selon l'humeur. Immobile sous prefers-reduced-motion</value>
+  </data>
+  <data name="FaceSection" xml:space="preserve">
+    <value>Visage</value>
+  </data>
+  <data name="AnimateFaceHelp" xml:space="preserve">
+    <value>Ajoute {0}</value>
   </data>
 </root>

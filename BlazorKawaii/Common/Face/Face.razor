@@ -1,7 +1,7 @@
 ﻿@namespace BlazorKawaii.Common
 
 <g transform="@GetTransform()">
-  <g class="@RootClass">
+  <g class="@RootClass" style="@(Animated ? AnimationDelay : null)">
     @if (Animated)
     {
       <style>@FaceAnimations.Css</style>

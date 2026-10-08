@@ -98,4 +98,10 @@ public partial class Face : ComponentBase
     public bool Animated { get; set; }
 
     private string CheeksOpacity => BlushColor == "#000000" ? "0.2" : "0.6";
+
+    private string? _animationDelay;
+
+    // A per-instance phase, so animated faces side by side don't blink in unison.
+    private string AnimationDelay => _animationDelay ??=
+        $"--kawaii-delay: -{((uint)_uniqueId.GetHashCode() % 4000).ToString(System.Globalization.CultureInfo.InvariantCulture)}ms";
 }

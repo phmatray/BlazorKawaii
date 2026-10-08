@@ -124,14 +124,17 @@
 
         <section id="animation" class="doc-section" tabindex="-1">
             <MudText Typo="Typo.h4" HtmlTag="h2" GutterBottom="true">@Localizer["Animation"]</MudText>
-            <MudText Typo="Typo.body1" GutterBottom="true">@Localizer["AnimationDesc"]</MudText>
+            <MudText Typo="Typo.body1" GutterBottom="true">
+                <CodeText Text="@Localizer["AnimationDesc"]"
+                          Codes="@(["Animated=\"true\"", "kawaii-face__eyes", "kawaii-face__mouth", "kawaii-face__cheeks"])" />
+            </MudText>
             <MudSwitch T="bool" @bind-Value="_animateMoods" Color="Color.Tertiary">@Localizer["AnimateFace"]</MudSwitch>
 
             <ul class="mood-grid mb-6">
                 @foreach (var mood in KawaiiCatalog.Moods)
                 {
                     <li class="mood-tile">
-                        <Ghost Mood="@mood" Size="88" Color="#A6E191" Animated="@_animateMoods" />
+                        <Ghost Mood="@mood" Size="120" Color="#A6E191" Animated="@_animateMoods" />
                         <code>Mood.@mood</code>
                         <span class="mud-text-secondary">@Localizer[$"Mood{mood}"]</span>
                     </li>

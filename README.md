@@ -198,9 +198,9 @@ Pair a mascot and a mood with the state your user is in:
 
 | Mood | Animation |
 |------|-----------|
-| `Happy`, `Sad`, `Shocked`, `Excited` | The eyes blink every 4 s |
-| `Excited` | The mouth bounces |
-| `Sad` | The mouth droops |
+| `Happy`, `Sad`, `Shocked`, `Excited` | The eyes blink every few seconds |
+| `Excited` | The face hops |
+| `Sad` | The face droops |
 | `Blissful` | The cheeks glow |
 | `Lovestruck` | The heart eyes beat |
 | `Ko` | The cross eyes wobble |

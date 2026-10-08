@@ -1,0 +1,23 @@
+@* Renders a localized sentence, replacing {0}, {1}… with code terms that never break mid-word. *@
+@for (var i = 0; i < _parts.Length; i++)
+{
+    if (i % 2 == 0)
+    {
+        @_parts[i]
+    }
+    else
+    {
+        <code class="code-term">@Codes[int.Parse(_parts[i], System.Globalization.CultureInfo.InvariantCulture)]</code>
+    }
+}
+
+@code {
+    [Parameter, EditorRequired] public string Text { get; set; } = "";
+    [Parameter] public string[] Codes { get; set; } = [];
+
+    private string[] _parts = [];
+
+    // The capture group keeps each placeholder's index at the odd positions of the split.
+    protected override void OnParametersSet() =>
+        _parts = System.Text.RegularExpressions.Regex.Split(Text, @"\{(\d+)\}");
+}

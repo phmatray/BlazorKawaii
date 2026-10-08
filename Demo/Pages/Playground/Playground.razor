@@ -46,7 +46,13 @@
 
         <MudDivider Class="my-4" />
 
-        <MudSwitch T="bool" @bind-Value="_animateFace" Color="Color.Tertiary" Class="mb-2">@Localizer["AnimateFace"]</MudSwitch>
+        <MudText Typo="Typo.subtitle1" HtmlTag="h3">@Localizer["FaceSection"]</MudText>
+        <MudSwitch T="bool" @bind-Value="_animateFace" Color="Color.Tertiary">@Localizer["AnimateFace"]</MudSwitch>
+        <MudText Typo="Typo.caption" Class="mud-text-secondary d-block">
+            <CodeText Text="@Localizer["AnimateFaceHelp"]" Codes="@(["Animated=\"true\""])" />
+        </MudText>
+
+        <MudDivider Class="my-4" />
 
         <MudText Typo="Typo.subtitle1" HtmlTag="h3" id="animation-label">@Localizer["AnimationEffects"]</MudText>
         <MudRadioGroup T="string" @bind-Value="_animation" aria-labelledby="animation-label">
