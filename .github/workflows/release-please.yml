@@ -13,8 +13,13 @@ on:
   push:
     branches: [dev]
   # Manual re-run for a missed or failed push run. Without a merged-but-unprocessed release PR,
-  # release_created stays false and nothing is published or deployed.
+  # release_created stays false and nothing is published or deployed — unless `tag` is given.
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Re-publish an existing release tag to nuget.org (e.g. v2.1.0). Leave empty to only refresh the release PR.'
+        required: false
+        default: 
 
 permissions:
   contents: write
@@ -55,7 +60,7 @@ jobs:
   # (push uses --skip-duplicate, so a re-run is idempotent).
   nupkg:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    if: ${{ needs.release-please.outputs.release_created == 'true' || inputs.tag != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -64,14 +69,19 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ needs.release-please.outputs.tag_name }}
+          ref: ${{ inputs.tag || needs.release-please.outputs.tag_name }}
 
       - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      # A Razor class library cannot be packed from a clean checkout in one step: pack looks for the
+      # static web assets manifest that only a build writes (obj/Release/…/staticwebassets.build.json).
+      - name: Build
+        run: dotnet build BlazorKawaii/BlazorKawaii.csproj --configuration Release
+
       - name: Pack
-        run: dotnet pack BlazorKawaii/BlazorKawaii.csproj --configuration Release --output ./artifacts
+        run: dotnet pack BlazorKawaii/BlazorKawaii.csproj --configuration Release --no-build --output ./artifacts
 
       - name: Validate package
         run: |
@@ -98,7 +108,7 @@ jobs:
       - name: Attach package to the GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ needs.release-please.outputs.tag_name }}
+          TAG: ${{ inputs.tag || needs.release-please.outputs.tag_name }}
         run: gh release upload "$TAG" ./artifacts/*.nupkg --clobber
 
   # Deploys the demo of the released version to GitHub Pages (gh-pages branch).
